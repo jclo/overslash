@@ -8,7 +8,7 @@
     "watch": "gulp watch",
     "makedist": "gulp",
     "test": "cross-env NODE_ENV=test nyc --reporter=lcov _mocha ./test/main.js",
-    "check-coverage": "nyc check-coverage --statements 100 --branches 95 --functions 100 --lines 100",
+    "check-coverage": "nyc check-coverage --statements 100 --branches 94 --functions 100 --lines 100",
     "display-coverage": "opener ./coverage/lcov-report/index.html",
     "report-coverage": "cat ./coverage/lcov.info | coveralls",
     "report": "nyc report",
