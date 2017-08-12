@@ -10,7 +10,7 @@
    * @returns {Boolean}   returns true or false,
    * @since 0.0.0
    */
-  _.isObject = function(obj) {
+  overslash.isObject = function(obj) {
     var type = typeof obj;
     return (type === 'function' || type === 'object') && !!obj;
   };
@@ -24,7 +24,7 @@
    * @returns {Boolean}   returns true or false,
    * @since 0.0.0
    */
-  _.isFunction = function(obj) {
+  overslash.isFunction = function(obj) {
     return Object.prototype.toString.call(obj) === '[object Function]';
   };
 
@@ -39,7 +39,7 @@
    * @returns {Boolean}   returns true or false,
    * @since 0.0.0
    */
-  _.isArray = Array.isArray || /* istanbul ignore next */ function(obj) {
+  overslash.isArray = Array.isArray || /* istanbul ignore next */ function(obj) {
     return Object.prototype.toString.call(obj) === '[object Array]';
   };
 
@@ -52,7 +52,7 @@
    * @returns {Boolean}   returns true or false,
    * @since 0.0.0
    */
-  _.isMath = /* istanbul ignore next */ function(obj) {
+  overslash.isMath = /* istanbul ignore next */ function(obj) {
     return Object.prototype.toString.call(obj) === '[object Math]';
   };
 
@@ -65,7 +65,7 @@
    * @returns {Boolean}   returns true or false,
    * @since 0.0.0
    */
-  _.isDate = function(obj) {
+  overslash.isDate = function(obj) {
     return Object.prototype.toString.call(obj) === '[object Date]';
   };
 
@@ -79,10 +79,10 @@
    * @since 0.0.0
    */
   /* eslint-disable no-restricted-syntax, no-prototype-builtins */
-  _.isEmpty = function(obj) {
+  overslash.isEmpty = function(obj) {
     var key;
     if (obj === null) return true;
-    if (_.isArray(obj) || _.isString(obj)) return obj.length === 0;
+    if (overslash.isArray(obj) || overslash.isString(obj)) return obj.length === 0;
     // Check that the object has no enumerable own-properties.
     // If ECMAScript 5 support only: 'return Object.keys(obj).length === 0;'
     // Otherwise, parse all properties.

@@ -1,12 +1,13 @@
 {
   "name": "overslash",
-  "version": "0.0.0",
+  "version": "0.0.1beta1",
   "description": "A tiny modular Javascript utility library",
   "main": "index.js",
   "scripts": {
     "build": "gulp build",
     "watch": "gulp watch",
     "makedist": "gulp",
+    "makelib": "gulp makenoparentlib",
     "test": "cross-env NODE_ENV=test nyc --reporter=lcov _mocha ./test/main.js",
     "check-coverage": "nyc check-coverage --statements 100 --branches 94 --functions 100 --lines 100",
     "display-coverage": "opener ./coverage/lcov-report/index.html",

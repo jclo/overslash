@@ -6,6 +6,7 @@
 const del     = require('del')
     , gulp    = require('gulp')
     , concat  = require('gulp-concat')
+    , replace     = require('gulp-replace')
     , runSequence = require('run-sequence')
     ;
 
@@ -17,6 +18,7 @@ const config  = require('./config')
 const dest = config.libdir
     , src  = config.src
     , lib  = config.libname
+    , parent = config.parent
     ;
 
 // -- Local variables
@@ -32,6 +34,7 @@ gulp.task('dellib', function() {
 // Create the complete library:
 gulp.task('dofulllib', function() {
   return gulp.src(src.full)
+    .pipe(replace('{{lib:parent}}', parent))
     .pipe(concat(`${lib}-full.js`))
     .pipe(gulp.dest(dest));
 });
@@ -39,6 +42,7 @@ gulp.task('dofulllib', function() {
 // Create the core library:
 gulp.task('docorelib', function() {
   return gulp.src(src.core)
+    .pipe(replace('{{lib:parent}}', parent))
     .pipe(concat(`${lib}-core.js`))
     .pipe(gulp.dest(dest));
 });

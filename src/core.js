@@ -9,7 +9,7 @@
    * @returns {Boolean}   returns true or false,
    * @since 0.0.0
    */
-  _.isUndefined = function(obj) {
+  overslash.isUndefined = function(obj) {
     return obj === undefined;
   };
 
@@ -22,7 +22,7 @@
    * @returns {Boolean}   returns true or false,
    * @since 0.0.0
    */
-  _.isNull = function(obj) {
+  overslash.isNull = function(obj) {
     return obj === null;
   };
 
@@ -35,7 +35,7 @@
    * @returns {Boolean}   returns true or false,
    * @since 0.0.0
    */
-  _.isBoolean = function(obj) {
+  overslash.isBoolean = function(obj) {
     return obj === true || obj === false || Object.prototype.toString.call(obj) === '[object Boolean]';
   };
 
@@ -48,7 +48,7 @@
    * @returns {Boolean}   returns true or false,
    * @since 0.0.0
    */
-  _.isString = function(obj) {
+  overslash.isString = function(obj) {
     return Object.prototype.toString.call(obj) === '[object String]';
   };
 
@@ -61,7 +61,7 @@
    * @returns {Boolean}   returns true or false,
    * @since 0.0.0
    */
-  _.isNumber = function(obj) {
+  overslash.isNumber = function(obj) {
     return Object.prototype.toString.call(obj) === '[object Number]';
   };
 
@@ -76,8 +76,8 @@
    * @returns {Boolean}   returns true or false,
    * @since 0.0.0
    */
-  _.isNaN = function(obj) {
-    return _.isNumber(obj) && obj !== +obj;
+  overslash.isNaN = function(obj) {
+    return overslash.isNumber(obj) && obj !== +obj;
   };
 
   /**
@@ -90,7 +90,7 @@
    * @since 0.0.0
    */
   /* eslint-disable no-void */
-  _.isOdd = function(obj) {
+  overslash.isOdd = function(obj) {
     var n = obj % 2;
     return obj === parseFloat(obj) ? !!n : void 0;
   };

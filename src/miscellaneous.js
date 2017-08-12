@@ -9,7 +9,7 @@
    * @returns             -,
    * @since 0.0.0
    */
-  _.nop = /* istanbul ignore next */ function() {
+  overslash.nop = /* istanbul ignore next */ function() {
     //
   };
 
@@ -22,7 +22,7 @@
    * @returns {String}    returns a random string,
    * @since 0.0.0
    */
-  _.token = function() {
+  overslash.token = function() {
     return Math.random().toString(36).substr(2);
   };
 
@@ -35,8 +35,8 @@
    * @returns {String}    returns a random string from the charset defined in c,
    * @since 0.0.0
    */
-  _.makeid = function(l) {
-    var ll = _.isNumber(l) ? l : 16
+  overslash.makeid = function(l) {
+    var ll = overslash.isNumber(l) ? l : 16
       , c  = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz'
       , id = ''
       , i
@@ -60,7 +60,7 @@
    * @since 0.0.6
    */
   /* eslint-disable no-param-reassign, no-plusplus */
-  _.csv2array = function(data, delimeter) {
+  overslash.csv2array = function(data, delimeter) {
     var newline = '\n'
       , EOF = ''
       , value

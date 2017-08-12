@@ -14,7 +14,7 @@
    * @returns {Boolean} returns true if the array contains the value,
    * @since 0.0.0
    */
-  _.contains = function(list, value) {
+  overslash.contains = function(list, value) {
     // jreturn list.indexOf(value) === -1 ? false : true;
     return list.indexOf(value) !== -1;
   };
@@ -30,18 +30,18 @@
    * @since 0.0.0
    */
   /* eslint-disable no-void, no-plusplus */
-  _.flatten = function(obj, shallow) {
+  overslash.flatten = function(obj, shallow) {
     var o = []
       , idx = 0
       , i
       ;
 
-    if (!_.isArray(obj)) return void 0;
+    if (!overslash.isArray(obj)) return void 0;
     if (shallow) return [].concat.apply([], obj);
 
     for (i = 0; i < obj.length; i++) {
-      if (_.isArray(obj[i])) {
-        o = o.concat(_.flatten(obj[i]));
+      if (overslash.isArray(obj[i])) {
+        o = o.concat(overslash.flatten(obj[i]));
         idx = o.length;
       } else {
         o[idx++] = obj[i];
@@ -61,15 +61,15 @@
    * @since 0.0.0
    */
   /* eslint-disable no-void */
-  _.max = function(obj) {
+  overslash.max = function(obj) {
     var max = null
       , o
       , i
       ;
 
-    if (!_.isArray(obj)) return void 0;
+    if (!overslash.isArray(obj)) return void 0;
 
-    o = _.flatten(obj);
+    o = overslash.flatten(obj);
     for (i = 0; i < o.length; i++) {
       if (max === null || max < o[i]) {
         max = typeof o[i] === 'number' ? o[i] : max;
@@ -89,15 +89,15 @@
    * @since 0.0.0
    */
    /* eslint-disable no-void */
-  _.min = function(obj) {
+  overslash.min = function(obj) {
     var min = null
       , o
       , i
       ;
 
-    if (!_.isArray(obj)) return void 0;
+    if (!overslash.isArray(obj)) return void 0;
 
-    o = _.flatten(obj);
+    o = overslash.flatten(obj);
     for (i = 0; i < o.length; i++) {
       if (min === null || min > o[i]) {
         min = typeof o[i] === 'number' ? o[i] : min;
@@ -116,7 +116,7 @@
    * @returns {Array}     returns the list of elements in common or empty,
    * @since 0.1
    */
-  _.share = function(array) {
+  overslash.share = function(array) {
     var result = []
       , item
       , i
@@ -125,17 +125,17 @@
 
     // for (i = 0; i < array.length; i++) {
     //   item = array[i];
-    //   if (_.contains(result, item)) continue;
+    //   if (overslash.contains(result, item)) continue;
     //   for (j = 1; j < arguments.length; j++) {
-    //     if (!_.contains(arguments[j], item)) break;
+    //     if (!overslash.contains(arguments[j], item)) break;
     //   }
     //   if (j === arguments.length) result.push(item);
     // }
     for (i = 0; i < array.length; i++) {
       item = array[i];
-      if (!_.contains(result, item)) {
+      if (!overslash.contains(result, item)) {
         for (j = 1; j < arguments.length; j++) {
-          if (!_.contains(arguments[j], item)) {
+          if (!overslash.contains(arguments[j], item)) {
             break;
           }
         }

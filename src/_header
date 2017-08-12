@@ -1,6 +1,7 @@
 // ESLint declarations
 /* global define */
 /* eslint strict: ["error", "function"], one-var: 0 */
+/* eslint-disable no-param-reassign */
 (function(root, factory) {
   'use strict';
 
@@ -15,16 +16,15 @@
     module.exports = factory(root);
   } else {
     // Browser globals.
-    /* eslint-disable no-param-reassign */
     root.overslash = factory(root);
-    /* eslint-enable no-param-reassign */
   }
-}(this, function() {
+}({{lib:parent}}, function() {
   'use strict';
 
   var overslash
-    , _
     ;
+
+  /* eslint-enable no-param-reassign */
 
   /**
    * Functions:
@@ -69,4 +69,3 @@
    *  . csv2array         converts an csv block to an array or arrays,
    */
   overslash = {};
-  _ = overslash;

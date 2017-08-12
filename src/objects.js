@@ -11,18 +11,18 @@
    * @since 0.0.0
    */
   /* eslint-disable no-void, no-restricted-syntax */
-  _.clone = function(obj) {
-    var clone = _.isArray(obj) ? [] : {}
+  overslash.clone = function(obj) {
+    var clone = overslash.isArray(obj) ? [] : {}
       , prop
       ;
 
-    if (!_.isObject(obj)) return void 0;
+    if (!overslash.isObject(obj)) return void 0;
 
     for (prop in obj) {
-      if (_.isArray(obj[prop])) {
-        clone[prop] = _.clone(obj[prop]);
-      } else if (_.isObject(obj[prop])) {
-        clone[prop] = _.extend(obj[prop]);
+      if (overslash.isArray(obj[prop])) {
+        clone[prop] = overslash.clone(obj[prop]);
+      } else if (overslash.isObject(obj[prop])) {
+        clone[prop] = overslash.extend(obj[prop]);
       } else {
         clone[prop] = obj[prop];
       }
@@ -42,22 +42,22 @@
    * since 0.0.0
    */
   /* eslint-disable no-restricted-syntax, no-param-reassign */
-  _.extend = function(obj) {
+  overslash.extend = function(obj) {
     var source
       , prop
       , i
       ;
 
-    if (!_.isObject(obj)) return obj;
+    if (!overslash.isObject(obj)) return obj;
 
     for (i = 1; i < arguments.length; i++) {
       source = arguments[i];
       for (prop in source) {
-        if (!_.isArray(arguments[i][prop]) && _.isObject(arguments[i][prop])) {
+        if (!overslash.isArray(arguments[i][prop]) && overslash.isObject(arguments[i][prop])) {
           obj[prop] = obj[prop] !== undefined ? obj[prop] : {};
-          _.extend(obj[prop], arguments[i][prop]);
+          overslash.extend(obj[prop], arguments[i][prop]);
         } else if (hasOwnProperty.call(source, prop)) {
-          obj[prop] = _.isArray(source[prop]) ? _.clone(source[prop]) : source[prop];
+          obj[prop] = overslash.isArray(source[prop]) ? overslash.clone(source[prop]) : source[prop];
         }
       }
     }
@@ -75,7 +75,7 @@
    * @returns {Array}     returns the names of the keys,
    * @since 0.0.0
    */
-  _.keys = function(obj) {
+  overslash.keys = function(obj) {
     return Object.keys(obj);
   };
 
@@ -90,9 +90,9 @@
    * @returns {Array}     returns the names of the keys,
    * @since 0.0.0
    */
-  _.forPropIn = function(obj, callback) {
-    // var keys = _.keys(obj);
-    _.keys(obj).forEach(function(key) {
+  overslash.forPropIn = function(obj, callback) {
+    // var keys = overslash.keys(obj);
+    overslash.keys(obj).forEach(function(key) {
       if ({}.hasOwnProperty.call(obj, key)) {
         callback(key);
       }

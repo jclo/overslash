@@ -1,5 +1,5 @@
 /**
- * overslash-core v0.0.0
+ * overslash-core v0.0.1beta1
  *
  * A tiny modular Javascript utility library.
  * Copyright (c) 2017 Jclo <jclo@mobilabs.fr> (http://www.mobilabs.fr).
@@ -9,6 +9,7 @@
 // ESLint declarations
 /* global define */
 /* eslint strict: ["error", "function"], one-var: 0 */
+/* eslint-disable no-param-reassign */
 (function(root, factory) {
   'use strict';
 
@@ -23,16 +24,15 @@
     module.exports = factory(root);
   } else {
     // Browser globals.
-    /* eslint-disable no-param-reassign */
     root.overslash = factory(root);
-    /* eslint-enable no-param-reassign */
   }
 }(this, function() {
   'use strict';
 
   var overslash
-    , _
     ;
+
+  /* eslint-enable no-param-reassign */
 
   /**
    * Functions:
@@ -77,7 +77,6 @@
    *  . csv2array         converts an csv block to an array or arrays,
    */
   overslash = {};
-  _ = overslash;
 
 
   // --- Primitives types ------------------------------------------------------
@@ -90,7 +89,7 @@
    * @returns {Boolean}   returns true or false,
    * @since 0.0.0
    */
-  _.isUndefined = function(obj) {
+  overslash.isUndefined = function(obj) {
     return obj === undefined;
   };
 
@@ -103,7 +102,7 @@
    * @returns {Boolean}   returns true or false,
    * @since 0.0.0
    */
-  _.isNull = function(obj) {
+  overslash.isNull = function(obj) {
     return obj === null;
   };
 
@@ -116,7 +115,7 @@
    * @returns {Boolean}   returns true or false,
    * @since 0.0.0
    */
-  _.isBoolean = function(obj) {
+  overslash.isBoolean = function(obj) {
     return obj === true || obj === false || Object.prototype.toString.call(obj) === '[object Boolean]';
   };
 
@@ -129,7 +128,7 @@
    * @returns {Boolean}   returns true or false,
    * @since 0.0.0
    */
-  _.isString = function(obj) {
+  overslash.isString = function(obj) {
     return Object.prototype.toString.call(obj) === '[object String]';
   };
 
@@ -142,7 +141,7 @@
    * @returns {Boolean}   returns true or false,
    * @since 0.0.0
    */
-  _.isNumber = function(obj) {
+  overslash.isNumber = function(obj) {
     return Object.prototype.toString.call(obj) === '[object Number]';
   };
 
@@ -157,8 +156,8 @@
    * @returns {Boolean}   returns true or false,
    * @since 0.0.0
    */
-  _.isNaN = function(obj) {
-    return _.isNumber(obj) && obj !== +obj;
+  overslash.isNaN = function(obj) {
+    return overslash.isNumber(obj) && obj !== +obj;
   };
 
   /**
@@ -171,7 +170,7 @@
    * @since 0.0.0
    */
   /* eslint-disable no-void */
-  _.isOdd = function(obj) {
+  overslash.isOdd = function(obj) {
     var n = obj % 2;
     return obj === parseFloat(obj) ? !!n : void 0;
   };
@@ -189,7 +188,7 @@
    * @returns {Boolean}   returns true or false,
    * @since 0.0.0
    */
-  _.isObject = function(obj) {
+  overslash.isObject = function(obj) {
     var type = typeof obj;
     return (type === 'function' || type === 'object') && !!obj;
   };
@@ -203,7 +202,7 @@
    * @returns {Boolean}   returns true or false,
    * @since 0.0.0
    */
-  _.isFunction = function(obj) {
+  overslash.isFunction = function(obj) {
     return Object.prototype.toString.call(obj) === '[object Function]';
   };
 
@@ -218,7 +217,7 @@
    * @returns {Boolean}   returns true or false,
    * @since 0.0.0
    */
-  _.isArray = Array.isArray || /* istanbul ignore next */ function(obj) {
+  overslash.isArray = Array.isArray || /* istanbul ignore next */ function(obj) {
     return Object.prototype.toString.call(obj) === '[object Array]';
   };
 
@@ -231,7 +230,7 @@
    * @returns {Boolean}   returns true or false,
    * @since 0.0.0
    */
-  _.isMath = /* istanbul ignore next */ function(obj) {
+  overslash.isMath = /* istanbul ignore next */ function(obj) {
     return Object.prototype.toString.call(obj) === '[object Math]';
   };
 
@@ -244,7 +243,7 @@
    * @returns {Boolean}   returns true or false,
    * @since 0.0.0
    */
-  _.isDate = function(obj) {
+  overslash.isDate = function(obj) {
     return Object.prototype.toString.call(obj) === '[object Date]';
   };
 
@@ -258,10 +257,10 @@
    * @since 0.0.0
    */
   /* eslint-disable no-restricted-syntax, no-prototype-builtins */
-  _.isEmpty = function(obj) {
+  overslash.isEmpty = function(obj) {
     var key;
     if (obj === null) return true;
-    if (_.isArray(obj) || _.isString(obj)) return obj.length === 0;
+    if (overslash.isArray(obj) || overslash.isString(obj)) return obj.length === 0;
     // Check that the object has no enumerable own-properties.
     // If ECMAScript 5 support only: 'return Object.keys(obj).length === 0;'
     // Otherwise, parse all properties.
@@ -271,7 +270,7 @@
   /* eslint-enable no-restricted-syntax, no-prototype-builtins */
 
 // Current version of the library.
-  overslash.VERSION = '0.0.0';
+  overslash.VERSION = '0.0.1beta1';
 
   // Returns the library name:
   return overslash;

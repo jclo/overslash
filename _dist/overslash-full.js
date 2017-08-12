@@ -1,5 +1,5 @@
 /**
- * overslash-full v0.0.0
+ * overslash-full v0.0.1beta1
  *
  * A tiny modular Javascript utility library.
  * Copyright (c) 2017 Jclo <jclo@mobilabs.fr> (http://www.mobilabs.fr).
@@ -9,6 +9,7 @@
 // ESLint declarations
 /* global define */
 /* eslint strict: ["error", "function"], one-var: 0 */
+/* eslint-disable no-param-reassign */
 (function(root, factory) {
   'use strict';
 
@@ -23,16 +24,15 @@
     module.exports = factory(root);
   } else {
     // Browser globals.
-    /* eslint-disable no-param-reassign */
     root.overslash = factory(root);
-    /* eslint-enable no-param-reassign */
   }
 }(this, function() {
   'use strict';
 
   var overslash
-    , _
     ;
+
+  /* eslint-enable no-param-reassign */
 
   /**
    * Functions:
@@ -77,7 +77,6 @@
    *  . csv2array         converts an csv block to an array or arrays,
    */
   overslash = {};
-  _ = overslash;
 
 
   // --- Primitives types ------------------------------------------------------
@@ -90,7 +89,7 @@
    * @returns {Boolean}   returns true or false,
    * @since 0.0.0
    */
-  _.isUndefined = function(obj) {
+  overslash.isUndefined = function(obj) {
     return obj === undefined;
   };
 
@@ -103,7 +102,7 @@
    * @returns {Boolean}   returns true or false,
    * @since 0.0.0
    */
-  _.isNull = function(obj) {
+  overslash.isNull = function(obj) {
     return obj === null;
   };
 
@@ -116,7 +115,7 @@
    * @returns {Boolean}   returns true or false,
    * @since 0.0.0
    */
-  _.isBoolean = function(obj) {
+  overslash.isBoolean = function(obj) {
     return obj === true || obj === false || Object.prototype.toString.call(obj) === '[object Boolean]';
   };
 
@@ -129,7 +128,7 @@
    * @returns {Boolean}   returns true or false,
    * @since 0.0.0
    */
-  _.isString = function(obj) {
+  overslash.isString = function(obj) {
     return Object.prototype.toString.call(obj) === '[object String]';
   };
 
@@ -142,7 +141,7 @@
    * @returns {Boolean}   returns true or false,
    * @since 0.0.0
    */
-  _.isNumber = function(obj) {
+  overslash.isNumber = function(obj) {
     return Object.prototype.toString.call(obj) === '[object Number]';
   };
 
@@ -157,8 +156,8 @@
    * @returns {Boolean}   returns true or false,
    * @since 0.0.0
    */
-  _.isNaN = function(obj) {
-    return _.isNumber(obj) && obj !== +obj;
+  overslash.isNaN = function(obj) {
+    return overslash.isNumber(obj) && obj !== +obj;
   };
 
   /**
@@ -171,7 +170,7 @@
    * @since 0.0.0
    */
   /* eslint-disable no-void */
-  _.isOdd = function(obj) {
+  overslash.isOdd = function(obj) {
     var n = obj % 2;
     return obj === parseFloat(obj) ? !!n : void 0;
   };
@@ -189,7 +188,7 @@
    * @returns {Boolean}   returns true or false,
    * @since 0.0.0
    */
-  _.isObject = function(obj) {
+  overslash.isObject = function(obj) {
     var type = typeof obj;
     return (type === 'function' || type === 'object') && !!obj;
   };
@@ -203,7 +202,7 @@
    * @returns {Boolean}   returns true or false,
    * @since 0.0.0
    */
-  _.isFunction = function(obj) {
+  overslash.isFunction = function(obj) {
     return Object.prototype.toString.call(obj) === '[object Function]';
   };
 
@@ -218,7 +217,7 @@
    * @returns {Boolean}   returns true or false,
    * @since 0.0.0
    */
-  _.isArray = Array.isArray || /* istanbul ignore next */ function(obj) {
+  overslash.isArray = Array.isArray || /* istanbul ignore next */ function(obj) {
     return Object.prototype.toString.call(obj) === '[object Array]';
   };
 
@@ -231,7 +230,7 @@
    * @returns {Boolean}   returns true or false,
    * @since 0.0.0
    */
-  _.isMath = /* istanbul ignore next */ function(obj) {
+  overslash.isMath = /* istanbul ignore next */ function(obj) {
     return Object.prototype.toString.call(obj) === '[object Math]';
   };
 
@@ -244,7 +243,7 @@
    * @returns {Boolean}   returns true or false,
    * @since 0.0.0
    */
-  _.isDate = function(obj) {
+  overslash.isDate = function(obj) {
     return Object.prototype.toString.call(obj) === '[object Date]';
   };
 
@@ -258,10 +257,10 @@
    * @since 0.0.0
    */
   /* eslint-disable no-restricted-syntax, no-prototype-builtins */
-  _.isEmpty = function(obj) {
+  overslash.isEmpty = function(obj) {
     var key;
     if (obj === null) return true;
-    if (_.isArray(obj) || _.isString(obj)) return obj.length === 0;
+    if (overslash.isArray(obj) || overslash.isString(obj)) return obj.length === 0;
     // Check that the object has no enumerable own-properties.
     // If ECMAScript 5 support only: 'return Object.keys(obj).length === 0;'
     // Otherwise, parse all properties.
@@ -283,18 +282,18 @@
    * @since 0.0.0
    */
   /* eslint-disable no-void, no-restricted-syntax */
-  _.clone = function(obj) {
-    var clone = _.isArray(obj) ? [] : {}
+  overslash.clone = function(obj) {
+    var clone = overslash.isArray(obj) ? [] : {}
       , prop
       ;
 
-    if (!_.isObject(obj)) return void 0;
+    if (!overslash.isObject(obj)) return void 0;
 
     for (prop in obj) {
-      if (_.isArray(obj[prop])) {
-        clone[prop] = _.clone(obj[prop]);
-      } else if (_.isObject(obj[prop])) {
-        clone[prop] = _.extend(obj[prop]);
+      if (overslash.isArray(obj[prop])) {
+        clone[prop] = overslash.clone(obj[prop]);
+      } else if (overslash.isObject(obj[prop])) {
+        clone[prop] = overslash.extend(obj[prop]);
       } else {
         clone[prop] = obj[prop];
       }
@@ -314,22 +313,22 @@
    * since 0.0.0
    */
   /* eslint-disable no-restricted-syntax, no-param-reassign */
-  _.extend = function(obj) {
+  overslash.extend = function(obj) {
     var source
       , prop
       , i
       ;
 
-    if (!_.isObject(obj)) return obj;
+    if (!overslash.isObject(obj)) return obj;
 
     for (i = 1; i < arguments.length; i++) {
       source = arguments[i];
       for (prop in source) {
-        if (!_.isArray(arguments[i][prop]) && _.isObject(arguments[i][prop])) {
+        if (!overslash.isArray(arguments[i][prop]) && overslash.isObject(arguments[i][prop])) {
           obj[prop] = obj[prop] !== undefined ? obj[prop] : {};
-          _.extend(obj[prop], arguments[i][prop]);
+          overslash.extend(obj[prop], arguments[i][prop]);
         } else if (hasOwnProperty.call(source, prop)) {
-          obj[prop] = _.isArray(source[prop]) ? _.clone(source[prop]) : source[prop];
+          obj[prop] = overslash.isArray(source[prop]) ? overslash.clone(source[prop]) : source[prop];
         }
       }
     }
@@ -347,7 +346,7 @@
    * @returns {Array}     returns the names of the keys,
    * @since 0.0.0
    */
-  _.keys = function(obj) {
+  overslash.keys = function(obj) {
     return Object.keys(obj);
   };
 
@@ -362,9 +361,9 @@
    * @returns {Array}     returns the names of the keys,
    * @since 0.0.0
    */
-  _.forPropIn = function(obj, callback) {
-    // var keys = _.keys(obj);
-    _.keys(obj).forEach(function(key) {
+  overslash.forPropIn = function(obj, callback) {
+    // var keys = overslash.keys(obj);
+    overslash.keys(obj).forEach(function(key) {
       if ({}.hasOwnProperty.call(obj, key)) {
         callback(key);
       }
@@ -387,7 +386,7 @@
    * @returns {Boolean} returns true if the array contains the value,
    * @since 0.0.0
    */
-  _.contains = function(list, value) {
+  overslash.contains = function(list, value) {
     // jreturn list.indexOf(value) === -1 ? false : true;
     return list.indexOf(value) !== -1;
   };
@@ -403,18 +402,18 @@
    * @since 0.0.0
    */
   /* eslint-disable no-void, no-plusplus */
-  _.flatten = function(obj, shallow) {
+  overslash.flatten = function(obj, shallow) {
     var o = []
       , idx = 0
       , i
       ;
 
-    if (!_.isArray(obj)) return void 0;
+    if (!overslash.isArray(obj)) return void 0;
     if (shallow) return [].concat.apply([], obj);
 
     for (i = 0; i < obj.length; i++) {
-      if (_.isArray(obj[i])) {
-        o = o.concat(_.flatten(obj[i]));
+      if (overslash.isArray(obj[i])) {
+        o = o.concat(overslash.flatten(obj[i]));
         idx = o.length;
       } else {
         o[idx++] = obj[i];
@@ -434,15 +433,15 @@
    * @since 0.0.0
    */
   /* eslint-disable no-void */
-  _.max = function(obj) {
+  overslash.max = function(obj) {
     var max = null
       , o
       , i
       ;
 
-    if (!_.isArray(obj)) return void 0;
+    if (!overslash.isArray(obj)) return void 0;
 
-    o = _.flatten(obj);
+    o = overslash.flatten(obj);
     for (i = 0; i < o.length; i++) {
       if (max === null || max < o[i]) {
         max = typeof o[i] === 'number' ? o[i] : max;
@@ -462,15 +461,15 @@
    * @since 0.0.0
    */
    /* eslint-disable no-void */
-  _.min = function(obj) {
+  overslash.min = function(obj) {
     var min = null
       , o
       , i
       ;
 
-    if (!_.isArray(obj)) return void 0;
+    if (!overslash.isArray(obj)) return void 0;
 
-    o = _.flatten(obj);
+    o = overslash.flatten(obj);
     for (i = 0; i < o.length; i++) {
       if (min === null || min > o[i]) {
         min = typeof o[i] === 'number' ? o[i] : min;
@@ -489,7 +488,7 @@
    * @returns {Array}     returns the list of elements in common or empty,
    * @since 0.1
    */
-  _.share = function(array) {
+  overslash.share = function(array) {
     var result = []
       , item
       , i
@@ -498,17 +497,17 @@
 
     // for (i = 0; i < array.length; i++) {
     //   item = array[i];
-    //   if (_.contains(result, item)) continue;
+    //   if (overslash.contains(result, item)) continue;
     //   for (j = 1; j < arguments.length; j++) {
-    //     if (!_.contains(arguments[j], item)) break;
+    //     if (!overslash.contains(arguments[j], item)) break;
     //   }
     //   if (j === arguments.length) result.push(item);
     // }
     for (i = 0; i < array.length; i++) {
       item = array[i];
-      if (!_.contains(result, item)) {
+      if (!overslash.contains(result, item)) {
         for (j = 1; j < arguments.length; j++) {
-          if (!_.contains(arguments[j], item)) {
+          if (!overslash.contains(arguments[j], item)) {
             break;
           }
         }
@@ -535,7 +534,7 @@
    * @returns             -,
    * @since 0.0.0
    */
-  _.nop = /* istanbul ignore next */ function() {
+  overslash.nop = /* istanbul ignore next */ function() {
     //
   };
 
@@ -548,7 +547,7 @@
    * @returns {String}    returns a random string,
    * @since 0.0.0
    */
-  _.token = function() {
+  overslash.token = function() {
     return Math.random().toString(36).substr(2);
   };
 
@@ -561,8 +560,8 @@
    * @returns {String}    returns a random string from the charset defined in c,
    * @since 0.0.0
    */
-  _.makeid = function(l) {
-    var ll = _.isNumber(l) ? l : 16
+  overslash.makeid = function(l) {
+    var ll = overslash.isNumber(l) ? l : 16
       , c  = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz'
       , id = ''
       , i
@@ -586,7 +585,7 @@
    * @since 0.0.6
    */
   /* eslint-disable no-param-reassign, no-plusplus */
-  _.csv2array = function(data, delimeter) {
+  overslash.csv2array = function(data, delimeter) {
     var newline = '\n'
       , EOF = ''
       , value
@@ -704,7 +703,7 @@
   /* eslint-enable no-param-reassign, no-plusplus */
 
 // Current version of the library.
-  overslash.VERSION = '0.0.0';
+  overslash.VERSION = '0.0.1beta1';
 
   // Returns the library name:
   return overslash;
