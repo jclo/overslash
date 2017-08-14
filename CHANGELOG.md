@@ -5,7 +5,7 @@
   * Replaced _ par overslash everywhere,
   * Added a script to build a library ready to be embedded (without this),
   * Slightly improved makelibwithoutdefinedroot.js build script,
-  * ...,
+  * Release.
 
 
 ### 0.0.0 (July 19, 2017)
