@@ -6,6 +6,7 @@
 const del         = require('del')
     , gulp        = require('gulp')
     , concat      = require('gulp-concat')
+    , footer      = require('gulp-footer')
     , header      = require('gulp-header')
     , replace     = require('gulp-replace')
     , runSequence = require('run-sequence')
@@ -52,6 +53,19 @@ gulp.task('doemlibfull', function() {
     .pipe(header(license))
     .pipe(replace('{{lib:name}}', `${lib}-full`))
     .pipe(replace('{{lib:version}}', version))
+    // indent each line with 2 spaces:
+    .pipe(replace(/\n/g, '\n  '))
+    // remove the indent added to blanck lines:
+    // (we need to add an extra line otherwise the indent isn't removed
+    // from the last line!)
+    .pipe(footer('\n'))
+    .pipe(replace(/\s\s\n/g, '\n'))
+    // Fix the indent for the first line:
+    .pipe(replace(/\/\*\*\s\*\*\*/, '  /** *'))
+    // Remove the extra * to the bottom marker of the comment header:
+    .pipe(replace(/\s\s\*\s\*\*\*/, '  * *'))
+    // Comment 'use strict' (redondant when the lib is embedded):
+    .pipe(replace('\'use strict\';', '//  \'use strict\';'))
     .pipe(gulp.dest(destlib));
 });
 
@@ -62,6 +76,19 @@ gulp.task('doemlibcore', function() {
     .pipe(header(license))
     .pipe(replace('{{lib:name}}', `${lib}-core`))
     .pipe(replace('{{lib:version}}', version))
+    // indent each line with 2 spaces:
+    .pipe(replace(/\n/g, '\n  '))
+    // remove the indent added to blanck lines:
+    // (we need to add an extra line otherwise the indent isn't removed
+    // from the last line!)
+    .pipe(footer('\n'))
+    .pipe(replace(/\s\s\n/g, '\n'))
+    // Fix the indent for the first line:
+    .pipe(replace(/\/\*\*\s\*\*\*/, '  /** *'))
+    // Remove the extra * to the bottom marker of the comment header:
+    .pipe(replace(/\s\s\*\s\*\*\*/, '  * *'))
+    // Comment 'use strict' (redondant when the lib is embedded):
+    .pipe(replace('\'use strict\';', '//  \'use strict\';'))
     .pipe(gulp.dest(destlib));
 });
 

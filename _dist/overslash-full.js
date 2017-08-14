@@ -1,11 +1,11 @@
-/**
- * overslash-full v0.0.1beta1
+/** ****************************************************************************
+ * overslash-full v0.0.1
  *
  * A tiny modular Javascript utility library.
  * Copyright (c) 2017 Jclo <jclo@mobilabs.fr> (http://www.mobilabs.fr).
  * Released under the MIT license. You may obtain a copy of the License
  * at: http://www.opensource.org/licenses/mit-license.php).
- */
+ * ****************************************************************************/
 // ESLint declarations
 /* global define */
 /* eslint strict: ["error", "function"], one-var: 0 */
@@ -328,7 +328,9 @@
           obj[prop] = obj[prop] !== undefined ? obj[prop] : {};
           overslash.extend(obj[prop], arguments[i][prop]);
         } else if (hasOwnProperty.call(source, prop)) {
-          obj[prop] = overslash.isArray(source[prop]) ? overslash.clone(source[prop]) : source[prop];
+          obj[prop] = overslash.isArray(source[prop])
+            ? overslash.clone(source[prop])
+            : source[prop];
         }
       }
     }
@@ -703,7 +705,7 @@
   /* eslint-enable no-param-reassign, no-plusplus */
 
 // Current version of the library.
-  overslash.VERSION = '0.0.1beta1';
+  overslash.VERSION = '0.0.1';
 
   // Returns the library name:
   return overslash;

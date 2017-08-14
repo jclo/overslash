@@ -1,6 +1,6 @@
 {
   "name": "overslash",
-  "version": "0.0.1beta1",
+  "version": "0.0.1",
   "description": "A tiny modular Javascript utility library",
   "main": "index.js",
   "scripts": {
@@ -50,7 +50,6 @@
     "gulp-replace": "0.6.1",
     "gulp-uglify": "3.0.0",
     "husky": "0.14.3",
-    "istanbul": "0.4.5",
     "mocha": "3.4.2",
     "nyc": "10.3.0",
     "opener": "1.4.3",

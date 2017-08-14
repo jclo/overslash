@@ -57,7 +57,9 @@
           obj[prop] = obj[prop] !== undefined ? obj[prop] : {};
           overslash.extend(obj[prop], arguments[i][prop]);
         } else if (hasOwnProperty.call(source, prop)) {
-          obj[prop] = overslash.isArray(source[prop]) ? overslash.clone(source[prop]) : source[prop];
+          obj[prop] = overslash.isArray(source[prop])
+            ? overslash.clone(source[prop])
+            : source[prop];
         }
       }
     }

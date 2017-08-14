@@ -1,9 +1,10 @@
 ### HEAD
 
-### 0.0.x (August 12, 2017)
+### 0.0.1 (August 14, 2017)
 
   * Replaced _ par overslash everywhere,
   * Added a script to build a library ready to be embedded (without this),
+  * Slightly improved makelibwithoutdefinedroot.js build script,
   * ...,
 
 
