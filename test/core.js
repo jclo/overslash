@@ -17,6 +17,12 @@ const _ = require('../index.js')
 module.exports = () => {
   describe('Test the Javascript primitive types:', () => {
     //
+    describe('_.VERSION:', () => {
+      it('Expects _.VERSION to return a string.', () => {
+        expect(_.VERSION).to.be.a('string');
+      });
+    });
+
     describe('_.isUndefined():', () => {
       const a = undefined
           , b = null

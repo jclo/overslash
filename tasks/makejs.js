@@ -34,16 +34,18 @@ gulp.task('dellib', function() {
 // Create the complete library:
 gulp.task('dofulllib', function() {
   return gulp.src(src.full)
+    .pipe(replace('{{lib:name}}', lib))
     .pipe(replace('{{lib:parent}}', parent))
-    .pipe(concat(`${lib}-full.js`))
+    .pipe(concat(`${lib.toLowerCase()}-full.js`))
     .pipe(gulp.dest(dest));
 });
 
 // Create the core library:
 gulp.task('docorelib', function() {
   return gulp.src(src.core)
+    .pipe(replace('{{lib:name}}', lib))
     .pipe(replace('{{lib:parent}}', parent))
-    .pipe(concat(`${lib}-core.js`))
+    .pipe(concat(`${lib.toLowerCase()}-core.js`))
     .pipe(gulp.dest(dest));
 });
 

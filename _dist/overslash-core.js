@@ -1,7 +1,8 @@
 /** ****************************************************************************
- * overslash-core v0.0.1
+ * overslash-core v0.0.2
  *
  * A tiny modular Javascript utility library.
+ * (you can download it from npm or github repositories)
  * Copyright (c) 2017 Jclo <jclo@mobilabs.fr> (http://www.mobilabs.fr).
  * Released under the MIT license. You may obtain a copy of the License
  * at: http://www.opensource.org/licenses/mit-license.php).
@@ -269,8 +270,8 @@
   };
   /* eslint-enable no-restricted-syntax, no-prototype-builtins */
 
-// Current version of the library.
-  overslash.VERSION = '0.0.1';
+  // Current version of the library:
+  overslash.VERSION = '0.0.2';
 
   // Returns the library name:
   return overslash;

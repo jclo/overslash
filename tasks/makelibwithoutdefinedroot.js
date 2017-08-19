@@ -49,7 +49,7 @@ gulp.task('rmjsfiles', function() {
 // Create the full library:
 gulp.task('doemlibfull', function() {
   return gulp.src(src.full)
-    .pipe(concat(`${lib}-full.js`))
+    .pipe(concat(`${lib.toLowerCase()}-full.js`))
     .pipe(header(license))
     .pipe(replace('{{lib:name}}', `${lib}-full`))
     .pipe(replace('{{lib:version}}', version))
@@ -72,7 +72,7 @@ gulp.task('doemlibfull', function() {
 // Create the core library:
 gulp.task('doemlibcore', function() {
   return gulp.src(src.core)
-    .pipe(concat(`${lib}-core.js`))
+    .pipe(concat(`${lib.toLowerCase()}-core.js`))
     .pipe(header(license))
     .pipe(replace('{{lib:name}}', `${lib}-core`))
     .pipe(replace('{{lib:version}}', version))
