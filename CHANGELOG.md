@@ -1,10 +1,10 @@
 ### HEAD
 
-### 0.0.2 (August 18, 2017)
+### 0.0.2 (August 19, 2017)
 
   * Fixed some slight issues in the build,
   * Added a test to check that overslash.VERSION is defined,
-  * ...,
+  * Release.
 
 
 ### 0.0.1 (August 14, 2017)
