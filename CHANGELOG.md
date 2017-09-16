@@ -3,7 +3,7 @@
 ### 0.0.3 (September 16, 2017)
 
   * Reorganized the library to make it more modular (methods are added to the core dynamically),
-  * ...,
+  * Release.
 
 
 ### 0.0.2 (August 19, 2017)
