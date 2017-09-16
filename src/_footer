@@ -1,6 +1,4 @@
-  // Current version of the library:
-  overslash.VERSION = '{{lib:version}}';
-
   // Returns the library name:
   return overslash;
 }));
+/* eslint-enable one-var */

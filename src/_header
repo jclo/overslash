@@ -1,7 +1,8 @@
+// Based on UMD Lib template v0.5.3alpha2
 // ESLint declarations
 /* global define */
-/* eslint strict: ["error", "function"], one-var: 0 */
-/* eslint-disable no-param-reassign */
+/* eslint-disable one-var */
+/* eslint-disable strict, no-param-reassign */
 (function(root, factory) {
   'use strict';
 
@@ -18,54 +19,11 @@
     // Browser globals.
     root.overslash = factory(root);
   }
-}({{lib:parent}}, function() {
+}({{lib:parent}}, function(root) {
   'use strict';
 
   var overslash
+    , previousoverslash
     ;
 
-  /* eslint-enable no-param-reassign */
-
-  /**
-   * Functions:
-   *
-   *  Primitives types (mandatory):
-   *  . isUndefined       is a given variable undefined?
-   *  . isNull            is a given value null?
-   *  . isBoolean         is a given value a boolean?
-   *  . isString          is a given value a string?
-   *  . isNumber          is a given value a number?
-   *  . isNaN             is a given value NaN?
-   *  . isOdd             is a given value an odd number?
-   *
-   * Object types (mandatory):
-   *  . isObject          is a given variable an object?
-   *  . isMath            is a given value a Math object?
-   *  . isDate            is a given value a Date?
-   *  . isArray           is a given value an array?
-   *  . isFunction        is a given variable a function?
-   *  . isEmpty           is a given array, string or object empty?
-   *
-   * Operations on Objects (optional):
-   *  . clone             clones a literal object or an array,
-   *  . extend            extends a given object with all the properties in passed-in object(s),
-   *  . keys              retrieves all the names of the object's own enumerable properties,
-   *  . forPropIn         Parses all the names of the object's own enumerable properties,
-   *
-   * Operations on Arrays (optional):
-   *  . contains          returns true if the array contains the passed-in value,
-   *  . flatten           flattens a nested array (the nesting can be to any depth),
-   *  . max               returns the maximum value in the array,
-   *  . min               returns the minimum value in the array,
-   *  . share             returns the list of the elements the passed-in arrays have in common,
-   *
-   * Operations on functions (optional):
-   *  . -
-   *
-   * Miscellaneous (optional):
-   *  . nop               executes an empty function,
-   *  . token             returns a unique string pattern in base 36 ([0-9a-z]),
-   *  . makeid            returns a unique string pattern with a predefined length,
-   *  . csv2array         converts an csv block to an array or arrays,
-   */
-  overslash = {};
+  /* eslint-enable strict, no-param-reassign */

@@ -21,6 +21,7 @@ const version = require('../package.json').version
     , dist    = config.dist
     , src     = config.src
     , lib     = config.libname
+    , name    = lib.replace(/\s+/g, '').toLowerCase()
     , license = config.license
     , destlib = `./_${lib}-${version}`
     ;
@@ -46,12 +47,12 @@ gulp.task('rmjsfiles', function() {
   return del.sync(`${destlib}/*.js`);
 });
 
-// Create the full library:
-gulp.task('doemlibfull', function() {
-  return gulp.src(src.full)
-    .pipe(concat(`${lib.toLowerCase()}-full.js`))
+// Create the lib:
+function handle(type) {
+  return gulp.src(src[type])
+    .pipe(concat(`${name}-${type}.js`))
     .pipe(header(license))
-    .pipe(replace('{{lib:name}}', `${lib}-full`))
+    .pipe(replace('{{lib:name}}', `${lib}-${type}`))
     .pipe(replace('{{lib:version}}', version))
     // indent each line with 2 spaces:
     .pipe(replace(/\n/g, '\n  '))
@@ -65,34 +66,40 @@ gulp.task('doemlibfull', function() {
     // Remove the extra * to the bottom marker of the comment header:
     .pipe(replace(/\s\s\*\s\*\*\*/, '  * *'))
     // Comment 'use strict' (redondant when the lib is embedded):
-    .pipe(replace('\'use strict\';', '//  \'use strict\';'))
+    .pipe(replace('\'use strict\';', '// \'use strict\';'))
     .pipe(gulp.dest(destlib));
-});
+}
 
 // Create the core library:
 gulp.task('doemlibcore', function() {
-  return gulp.src(src.core)
-    .pipe(concat(`${lib.toLowerCase()}-core.js`))
-    .pipe(header(license))
-    .pipe(replace('{{lib:name}}', `${lib}-core`))
-    .pipe(replace('{{lib:version}}', version))
-    // indent each line with 2 spaces:
-    .pipe(replace(/\n/g, '\n  '))
-    // remove the indent added to blanck lines:
-    // (we need to add an extra line otherwise the indent isn't removed
-    // from the last line!)
-    .pipe(footer('\n'))
-    .pipe(replace(/\s\s\n/g, '\n'))
-    // Fix the indent for the first line:
-    .pipe(replace(/\/\*\*\s\*\*\*/, '  /** *'))
-    // Remove the extra * to the bottom marker of the comment header:
-    .pipe(replace(/\s\s\*\s\*\*\*/, '  * *'))
-    // Comment 'use strict' (redondant when the lib is embedded):
-    .pipe(replace('\'use strict\';', '//  \'use strict\';'))
-    .pipe(gulp.dest(destlib));
+  return handle('core');
 });
+
+// Create the core and object library:
+gulp.task('doemlibobj', function() {
+  return handle('obj');
+});
+
+// Create the core, object and token library:
+gulp.task('doemlibtok', function() {
+  return handle('tok');
+});
+
+// Create the core, object, token and csv library:
+gulp.task('doemlibcsv', function() {
+  return handle('csv');
+});
+
+// Create the full library:
+gulp.task('doemlibfull', function() {
+  return handle('full');
+});
+
 
 // -- Gulp Main Task
 gulp.task('makenoparentlib', function(callback) {
-  runSequence('delemlib', 'cpdist', 'rmjsfiles', ['doemlibfull', 'doemlibcore'], callback);
+  runSequence(
+    'delemlib', 'cpdist', 'rmjsfiles',
+    ['doemlibcore', 'doemlibobj', 'doemlibtok', 'doemlibcsv', 'doemlibfull'],
+    callback);
 });

@@ -24,6 +24,7 @@ const release   = require('../package.json').version
 const dist      = config.dist
     , libdir    = config.libdir
     , libname   = config.libname
+    , name      = libname.replace(/\s+/g, '').toLowerCase()
     , license   = config.license
     ;
 
@@ -43,49 +44,76 @@ gulp.task('skeleton', function() {
     .pipe(gulp.dest(dist));
 });
 
-// Copy the full development version:
-gulp.task('copyfulldev', function() {
-  return gulp.src(`${libdir}/${libname.toLowerCase()}-full.js`)
+// Copy the development version:
+function copydev(type) {
+  return gulp.src(`${libdir}/${name}-${type}.js`)
     .pipe(header(license))
-    .pipe(replace('{{lib:name}}', `${libname}-full`))
+    .pipe(replace('{{lib:name}}', `${libname}-${type}`))
     .pipe(replace('{{lib:version}}', release))
     .pipe(gulp.dest(dist));
-});
+}
 
-// Create the full minified version:
-gulp.task('makefullminified', function() {
-  return gulp.src(`${libdir}/${libname.toLowerCase()}-full.js`)
+// Make a minified version:
+function minify(type) {
+  return gulp.src(`${libdir}/${name}-${type}.js`)
     .pipe(uglify())
     .pipe(header(license))
-    .pipe(replace('{{lib:name}}', `${libname}-full`))
+    .pipe(replace('{{lib:name}}', `${libname}-${type}`))
     .pipe(replace('{{lib:version}}', release))
-    .pipe(concat(`${libname.toLowerCase()}-full.min.js`))
+    .pipe(concat(`${name}-${type}.min.js`))
     .pipe(gulp.dest(dist));
-});
+}
 
-// Copy the core development version:
+// Copy the core development version and create a minified one:
 gulp.task('copycoredev', function() {
-  return gulp.src(`${libdir}/${libname.toLowerCase()}-core.js`)
-    .pipe(header(license))
-    .pipe(replace('{{lib:name}}', `${libname}-core`))
-    .pipe(replace('{{lib:version}}', release))
-    .pipe(gulp.dest(dist));
+  return copydev('core');
+});
+gulp.task('makecoreminified', function() {
+  return minify('core');
 });
 
-// Create the core minified version:
-gulp.task('makecoreminified', function() {
-  return gulp.src(`${libdir}/${libname.toLowerCase()}-core.js`)
-    .pipe(uglify())
-    .pipe(header(license))
-    .pipe(replace('{{lib:name}}', `${libname}-core`))
-    .pipe(replace('{{lib:version}}', release))
-    .pipe(concat(`${libname.toLowerCase()}-core.min.js`))
-    .pipe(gulp.dest(dist));
+// Copy the core and object development version and create
+// a minified one:
+gulp.task('copyobjdev', function() {
+  return copydev('obj');
 });
+gulp.task('makeobjminified', function() {
+  return minify('obj');
+});
+
+// Copy the core, object and token development version and create
+// a minified one:
+gulp.task('copytokdev', function() {
+  return copydev('tok');
+});
+gulp.task('maketokminified', function() {
+  return minify('tok');
+});
+
+// Copy the core, object, token and csv development version
+// and create a minified one:
+gulp.task('copycsvdev', function() {
+  return copydev('csv');
+});
+gulp.task('makecsvminified', function() {
+  return minify('csv');
+});
+
+// Copy the full development version and create a minified one:
+gulp.task('copyfulldev', function() {
+  return copydev('full');
+});
+gulp.task('makefullminified', function() {
+  return minify('full');
+});
+
 
 // -- Gulp Main Task:
 gulp.task('makedist', function(callback) {
   runSequence('deldist',
-    ['skeleton', 'copyfulldev', 'makefullminified', 'copycoredev', 'makecoreminified'],
+    ['skeleton',
+      'copycoredev', 'copyobjdev', 'copytokdev', 'copycsvdev', 'copyfulldev',
+      'makecoreminified', 'makeobjminified', 'maketokminified', 'makecsvminified',
+      'makefullminified'],
     callback);
 });

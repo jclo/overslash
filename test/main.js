@@ -8,11 +8,13 @@
 
 // -- Local modules
 const core = require('./core.js')
-    , coreobjects = require('./coreobjects.js')
+    , primitives = require('./primitives.js')
     , objects = require('./objects.js')
-    , arrays = require('./arrays.js')
+    , objectsOps = require('./objectsOps.js')
+    , arraysOps = require('./arraysOps.js')
     , functions = require('./functions.js')
-    , miscellaneous = require('./miscellaneous.js')
+    , tokens = require('./tokens.js')
+    , csv = require('./csv.js')
     ;
 
 // -- Local constants
@@ -22,21 +24,28 @@ const core = require('./core.js')
 
 // -- Main
 describe('overslash:', () => {
-  // Test JS Primitive Types:
+  // Test Overslash core:
   core();
 
-  // Test JS Object Types:
-  coreobjects();
 
-  // Operations on Objects:
+  // Test JS Primitive Types:
+  primitives();
+
+  // Test JS Object Types:
   objects();
 
+  // Operations on Objects:
+  objectsOps();
+
   // Operations on Arrays:
-  arrays();
+  arraysOps();
 
   // Operations on functions:
   functions();
 
-  // Miscellaneous:
-  miscellaneous();
+  // Operations with tokens:
+  tokens();
+
+  // Operations on csv blocks:
+  csv();
 });

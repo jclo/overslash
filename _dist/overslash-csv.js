@@ -1,5 +1,5 @@
 /** ****************************************************************************
- * overslash-full v0.0.3
+ * overslash-csv v0.0.3
  *
  * A tiny modular Javascript utility library.
  * (you can download it from npm or github repositories)

@@ -1,6 +1,6 @@
 {
   "name": "overslash",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A tiny modular Javascript utility library",
   "main": "index.js",
   "scripts": {
