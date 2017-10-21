@@ -101,5 +101,44 @@
           callback(key);
         }
       });
+    },
+
+    /**
+     * Extends source with target(s) while preserving the assessors.
+     *
+     * Nota:
+     * Clones a literal object at the first level while preserving the
+     * assessors (get and set). This should be the prefered method to Clones
+     * a literal object or a prototype that includes get and set assessors.
+     *
+     * Example:
+     * To clone a function prototype:
+     * var a = _.assign({}, fn.prototype);  // clone the original prototype,
+     * _.assign(fn2.prototype, a);          // assign it to fn2.prototype,
+     *
+     * @function (...arg1)
+     * @public
+     * @param {Object}      the objects to 'fusion',
+     * @returns {Object}    returns the reassigned object,
+     * @since 0.0.0
+     */
+    /* eslint-disable no-param-reassign, no-loop-func */
+    assign: function() {
+      var target = arguments[0]
+        , source
+        , descriptors
+        , i
+        ;
+
+      for (i = 1; i < arguments.length; i++) {
+        source = arguments[i];
+        descriptors = Object.keys(source).reduce(function(props, key) {
+          props[key] = Object.getOwnPropertyDescriptor(source, key);
+          return props;
+        }, {});
+      }
+      Object.defineProperties(target, descriptors);
+      return target;
     }
+    /* eslint-enable no-param-reassign, no-loop-func */
   });

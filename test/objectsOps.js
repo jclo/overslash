@@ -284,5 +284,37 @@ module.exports = () => {
         expect(b[2]).to.be.equal('c');
       });
     });
+
+    describe('_.assign():', () => {
+      const a = {
+        get a() {
+          return 'a';
+        },
+        get b() {
+          return this.a;
+        },
+      };
+
+      const b = {
+        get a() {
+          return 'b';
+        },
+      };
+
+      const c = _.assign(a, b);
+
+      it('Expects _.assign(a, b) to return an object.', () => {
+        expect(c).to.be.an('object');
+      });
+      it('Expects this object to own the property "a".', () => {
+        expect(c).to.own.property('a');
+      });
+      it('Expects this object to own the property "b".', () => {
+        expect(c).to.own.property('b');
+      });
+      it('Expects c.a to return the string "b".', () => {
+        expect(c.a).to.be.a('string').that.is.equal('b');
+      });
+    });
   });
 };

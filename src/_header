@@ -15,6 +15,9 @@
     // only CommonJS-like environments that support module.exports,
     // like Node.
     module.exports = factory(root);
+    // This is a hack to attach the lib to the browser root when this lib is
+    // included inside another lib and the whole is browserifyied:
+    if (root.overslash === null) root.overslash = factory(root);
   } else {
     // Browser globals.
     root.overslash = factory(root);

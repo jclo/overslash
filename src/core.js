@@ -29,7 +29,8 @@
    *  . clone             clones a literal object or an array,
    *  . extend            extends a given object with all the properties in passed-in object(s),
    *  . keys              retrieves all the names of the object's own enumerable properties,
-   *  . forPropIn         Parses all the names of the object's own enumerable properties,
+   *  . forPropIn         parses all the names of the object's own enumerable properties,
+   *  . assign            extends source with target(s) while preserving the assessors,
    *
    * Operations on Arrays (optional):
    *  . contains          returns true if the array contains the passed-in value,

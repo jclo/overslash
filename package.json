@@ -1,6 +1,6 @@
 {
   "name": "overslash",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A tiny modular Javascript utility library",
   "main": "index.js",
   "scripts": {
@@ -36,13 +36,13 @@
   "homepage": "https://github.com/author/overslash",
   "dependencies": {},
   "devDependencies": {
-    "chai": "4.1.1",
-    "coveralls": "2.13.1",
-    "cross-env": "5.0.5",
+    "chai": "4.1.2",
+    "coveralls": "3.0.0",
+    "cross-env": "5.1.0",
     "del": "3.0.0",
     "eslint": "3.19.0",
     "eslint-config-airbnb-base": "11.2.0",
-    "eslint-plugin-import": "2.7.0",
+    "eslint-plugin-import": "2.8.0",
     "gulp": "3.9.1",
     "gulp-concat": "2.6.1",
     "gulp-footer": "1.0.5",
@@ -50,11 +50,11 @@
     "gulp-replace": "0.6.1",
     "gulp-uglify": "3.0.0",
     "husky": "0.14.3",
-    "mocha": "3.5.0",
+    "mocha": "4.0.1",
     "nyc": "10.3.0",
     "opener": "1.4.3",
     "require-dir": "0.3.2",
-    "run-sequence": "2.1.0"
+    "run-sequence": "2.2.0"
   },
   "engine": {
     "node": ">= 0.10"

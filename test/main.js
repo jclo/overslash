@@ -27,7 +27,6 @@ describe('overslash:', () => {
   // Test Overslash core:
   core();
 
-
   // Test JS Primitive Types:
   primitives();
 

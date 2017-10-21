@@ -1,5 +1,12 @@
 ### HEAD
 
+### 0.0.4 (October 21, 2017)
+
+  * Added the method 'assign' that extends literal objects with assessors (get & set),
+  * Added a 'hack' to 'compile' with 'Browerify',
+  * ...,
+
+
 ### 0.0.3 (September 16, 2017)
 
   * Reorganized the library to make it more modular (methods are added to the core dynamically),

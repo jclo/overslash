@@ -1,5 +1,5 @@
 /** ****************************************************************************
- * overslash-core v0.0.3
+ * overslash-core v0.0.4
  *
  * A tiny modular Javascript utility library.
  * (you can download it from npm or github repositories)
@@ -24,6 +24,9 @@
     // only CommonJS-like environments that support module.exports,
     // like Node.
     module.exports = factory(root);
+    // This is a hack to attach the lib to the browser root when this lib is
+    // included inside another lib and the whole is browserifyied:
+    if (root.overslash === null) root.overslash = factory(root);
   } else {
     // Browser globals.
     root.overslash = factory(root);
@@ -68,7 +71,8 @@
    *  . clone             clones a literal object or an array,
    *  . extend            extends a given object with all the properties in passed-in object(s),
    *  . keys              retrieves all the names of the object's own enumerable properties,
-   *  . forPropIn         Parses all the names of the object's own enumerable properties,
+   *  . forPropIn         parses all the names of the object's own enumerable properties,
+   *  . assign            extends source with target(s) while preserving the assessors,
    *
    * Operations on Arrays (optional):
    *  . contains          returns true if the array contains the passed-in value,
@@ -157,7 +161,7 @@
   /* eslint-enable no-param-reassign */
 
   // Current version of the library:
-  overslash.VERSION = '0.0.3';
+  overslash.VERSION = '0.0.4';
 
 
   // --- Primitives types ------------------------------------------------------
