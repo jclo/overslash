@@ -4,7 +4,7 @@
 
   * Added the method 'assign' that extends literal objects with assessors (get & set),
   * Added a 'hack' to 'compile' with 'Browerify',
-  * ...,
+  * Release.
 
 
 ### 0.0.3 (September 16, 2017)
