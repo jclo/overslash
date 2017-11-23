@@ -3,7 +3,7 @@
 ### 0.0.5 (November 23, 2017)
 
   * Fixed a link issue,
-  * ...,
+  * Release.
 
 
 ### 0.0.4 (October 21, 2017)
