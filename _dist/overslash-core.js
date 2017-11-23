@@ -1,5 +1,5 @@
 /** ****************************************************************************
- * overslash-core v0.0.4
+ * overslash-core v0.0.5
  *
  * A tiny modular Javascript utility library.
  * (you can download it from npm or github repositories)
@@ -161,7 +161,7 @@
   /* eslint-enable no-param-reassign */
 
   // Current version of the library:
-  overslash.VERSION = '0.0.4';
+  overslash.VERSION = '0.0.5';
 
 
   // --- Primitives types ------------------------------------------------------

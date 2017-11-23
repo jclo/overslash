@@ -1,6 +1,6 @@
 {
   "name": "overslash",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A tiny modular Javascript utility library",
   "main": "index.js",
   "scripts": {
@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/author/overslash.git"
+    "url": "https://github.com/jclo/overslash.git"
   },
   "keywords": [
     "Javascript",
@@ -31,14 +31,14 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/author/overslash/issues"
+    "url": "https://github.com/jclo/overslash/issues"
   },
-  "homepage": "https://github.com/author/overslash",
+  "homepage": "https://github.com/jclo/overslash",
   "dependencies": {},
   "devDependencies": {
     "chai": "4.1.2",
     "coveralls": "3.0.0",
-    "cross-env": "5.1.0",
+    "cross-env": "5.1.1",
     "del": "3.0.0",
     "eslint": "3.19.0",
     "eslint-config-airbnb-base": "11.2.0",

@@ -1,5 +1,11 @@
 ### HEAD
 
+### 0.0.5 (November 23, 2017)
+
+  * Fixed a link issue,
+  * ...,
+
+
 ### 0.0.4 (October 21, 2017)
 
   * Added the method 'assign' that extends literal objects with assessors (get & set),
