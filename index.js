@@ -1,1 +1,3 @@
-module.exports = require('./lib/overslash-full.js');
+'use strict';
+
+module.exports = require('./lib/overslash-full');

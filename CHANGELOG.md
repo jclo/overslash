@@ -1,5 +1,12 @@
 ### HEAD
 
+### 0.0.6 (January 22, 2018)
+
+  * Updated the project to comply with ESLint 4.x,
+  * Reworked the build ti improve the factorisation,
+  * ...,
+
+
 ### 0.0.5 (November 23, 2017)
 
   * Fixed a link issue,

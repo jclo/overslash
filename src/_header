@@ -1,7 +1,7 @@
-// Based on UMD Lib template v0.5.3alpha2
+// Based on UMD Lib template v0.6.0
 // ESLint declarations
 /* global define */
-/* eslint-disable one-var */
+/* eslint-disable one-var, semi-style */
 /* eslint-disable strict, no-param-reassign */
 (function(root, factory) {
   'use strict';
@@ -28,5 +28,4 @@
   var overslash
     , previousoverslash
     ;
-
   /* eslint-enable strict, no-param-reassign */

@@ -1,16 +1,16 @@
 /** ****************************************************************************
- * overslash-core v0.0.5
+ * overslash v0.0.6
  *
  * A tiny modular Javascript utility library.
  * (you can download it from npm or github repositories)
- * Copyright (c) 2017 Jclo <jclo@mobilabs.fr> (http://www.mobilabs.fr).
+ * Copyright (c) 2018 Jclo <jclo@mobilabs.fr> (http://www.mobilabs.fr).
  * Released under the MIT license. You may obtain a copy of the License
  * at: http://www.opensource.org/licenses/mit-license.php).
- * ****************************************************************************/
-// Based on UMD Lib template v0.5.3alpha2
+ * ************************************************************************** */
+// Based on UMD Lib template v0.6.0
 // ESLint declarations
 /* global define */
-/* eslint-disable one-var */
+/* eslint-disable one-var, semi-style */
 /* eslint-disable strict, no-param-reassign */
 (function(root, factory) {
   'use strict';
@@ -37,9 +37,7 @@
   var overslash
     , previousoverslash
     ;
-
   /* eslint-enable strict, no-param-reassign */
-
 
   /** **************************************************************************
    *
@@ -97,8 +95,8 @@
    * @author       -
    * @since        0.0.0
    * @version      -
-   * **************************************************************************/
-
+   * ************************************************************************ */
+  /* eslint-disable strict */
 
   // -- Private Functions ------------------------------------------------------
 
@@ -129,6 +127,7 @@
       source = arguments[i];
       props = Object.keys(source);
       for (j = 0; j < props.length; j++) {
+        /* istanbul ignore next */
         if (Object.prototype.hasOwnProperty.call(source, props[j])) {
           obj[props[j]] = source[props[j]];
         }
@@ -161,10 +160,12 @@
   /* eslint-enable no-param-reassign */
 
   // Current version of the library:
-  overslash.VERSION = '0.0.5';
+  overslash.VERSION = '0.0.6';
+  /* eslint-enable strict */
 
 
   // --- Primitives types ------------------------------------------------------
+  /* eslint-disable strict */
   extend(overslash, {
 
     /**
@@ -263,9 +264,11 @@
     }
     /* eslint-enable no-void */
   });
+  /* eslint-enable strict */
 
 
   // --- Object types ----------------------------------------------------------
+  /* eslint-disable strict */
   extend(overslash, {
 
     /**
@@ -372,8 +375,10 @@
     }
     /* eslint-enable no-restricted-syntax, no-prototype-builtins */
   });
+  /* eslint-enable strict */
+
 
   // Returns the library name:
   return overslash;
 }));
-/* eslint-enable one-var */
+/* eslint-enable one-var, semi-style */

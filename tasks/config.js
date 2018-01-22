@@ -67,9 +67,9 @@ module.exports = {
     ' *',
     ' * A tiny modular Javascript utility library.',
     ' * (you can download it from npm or github repositories)',
-    ' * Copyright (c) 2017 Jclo <jclo@mobilabs.fr> (http://www.mobilabs.fr).',
+    ' * Copyright (c) 2018 Jclo <jclo@mobilabs.fr> (http://www.mobilabs.fr).',
     ' * Released under the MIT license. You may obtain a copy of the License',
     ' * at: http://www.opensource.org/licenses/mit-license.php).',
-    ' * ****************************************************************************/',
+    ' * ************************************************************************** */',
     ''].join('\n'),
 };

@@ -1,5 +1,6 @@
-
-  // --- Operations on Functions (optional) ------------------------------------
-  extend(overslash, {
-    //
-  });
+// --- Operations on Functions (optional) ------------------------------------
+/* eslint-disable strict */
+extend(overslash, {
+  //
+});
+/* eslint-enable strict */

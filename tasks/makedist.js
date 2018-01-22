@@ -1,4 +1,5 @@
-/* eslint one-var: 0, prefer-arrow-callback: 0, import/no-extraneous-dependencies: 0 */
+/* eslint one-var: 0, prefer-arrow-callback: 0, import/no-extraneous-dependencies: 0,
+  semi-style: 0 */
 
 'use strict';
 
@@ -10,110 +11,106 @@ const del         = require('del')
     , replace     = require('gulp-replace')
     , runSequence = require('run-sequence')
     , uglify      = require('gulp-uglify')
+    , through2    = require('through2')
     ;
 
 // -- Local modules
 const config  = require('./config')
     ;
 
-// -- Release and copyright to include
+// -- Release version:
 const release   = require('../package.json').version
     ;
 
 // -- Local constants
-const dist      = config.dist
-    , libdir    = config.libdir
-    , libname   = config.libname
-    , name      = libname.replace(/\s+/g, '').toLowerCase()
-    , license   = config.license
+const { dist }    = config
+    , { src }    = config
+    , { libdir }  = config
+    , { libname } = config
+    , name        = libname.replace(/\s+/g, '').toLowerCase()
+    , { license } = config
+    , list        = Object.keys(src)
     ;
 
 // -- Local variables
 
 
+// -- Private Functions --------------------------------------------------------
+
+// Simple callback stream used to synchronize stuff
+// Source: http://unobfuscated.blogspot.co.at/2014/01/executing-asynchronous-gulp-tasks-in.html
+const synchro = function(done) {
+  return through2.obj(
+    function(data, enc, cb) {
+      cb();
+    },
+    function(cb) {
+      cb();
+      done();
+    },
+  );
+};
+
+
 // -- Gulp Tasks
 
-// Remove previous dist:
+// Removes the previous dist:
 gulp.task('deldist', function() {
   return del.sync(dist);
 });
 
-// Copy README and LICENSE:
+// Copies the README and LICENSE files:
 gulp.task('skeleton', function() {
   return gulp.src(['README.md', 'LICENSE.md'])
     .pipe(gulp.dest(dist));
 });
 
-// Copy the development version:
-function copydev(type) {
-  return gulp.src(`${libdir}/${name}-${type}.js`)
-    .pipe(header(license))
-    .pipe(replace('{{lib:name}}', `${libname}-${type}`))
-    .pipe(replace('{{lib:version}}', release))
-    .pipe(gulp.dest(dist));
-}
+// Copies multiple dev. libraries:
+gulp.task('copydev', function(done) {
+  let doneCounter = 0;
 
-// Make a minified version:
-function minify(type) {
-  return gulp.src(`${libdir}/${name}-${type}.js`)
-    .pipe(uglify())
-    .pipe(header(license))
-    .pipe(replace('{{lib:name}}', `${libname}-${type}`))
-    .pipe(replace('{{lib:version}}', release))
-    .pipe(concat(`${name}-${type}.min.js`))
-    .pipe(gulp.dest(dist));
-}
+  function incDoneCounter() {
+    doneCounter += 1;
+    if (doneCounter >= list.length) {
+      done();
+    }
+  }
 
-// Copy the core development version and create a minified one:
-gulp.task('copycoredev', function() {
-  return copydev('core');
-});
-gulp.task('makecoreminified', function() {
-  return minify('core');
+  list.forEach(function(item) {
+    gulp.src(`${libdir}/${name}-${item}.js`)
+      .pipe(header(license))
+      .pipe(replace('{{lib:name}}', `${libname}`))
+      .pipe(replace('{{lib:version}}', release))
+      .pipe(gulp.dest(dist))
+      .pipe(synchro(incDoneCounter));
+  });
 });
 
-// Copy the core and object development version and create
-// a minified one:
-gulp.task('copyobjdev', function() {
-  return copydev('obj');
-});
-gulp.task('makeobjminified', function() {
-  return minify('obj');
-});
+// Minifies multiple dev. libraries:
+gulp.task('minifydev', function(done) {
+  let doneCounter = 0;
 
-// Copy the core, object and token development version and create
-// a minified one:
-gulp.task('copytokdev', function() {
-  return copydev('tok');
-});
-gulp.task('maketokminified', function() {
-  return minify('tok');
-});
+  function incDoneCounter() {
+    doneCounter += 1;
+    if (doneCounter >= list.length) {
+      done();
+    }
+  }
 
-// Copy the core, object, token and csv development version
-// and create a minified one:
-gulp.task('copycsvdev', function() {
-  return copydev('csv');
-});
-gulp.task('makecsvminified', function() {
-  return minify('csv');
-});
-
-// Copy the full development version and create a minified one:
-gulp.task('copyfulldev', function() {
-  return copydev('full');
-});
-gulp.task('makefullminified', function() {
-  return minify('full');
+  list.forEach(function(item) {
+    gulp.src(`${libdir}/${name}-${item}.js`)
+      .pipe(uglify())
+      .pipe(header(license))
+      .pipe(replace('{{lib:name}}', `${libname}`))
+      .pipe(replace('{{lib:version}}', release))
+      .pipe(concat(`${name}-${item}.min.js`))
+      .pipe(gulp.dest(dist))
+      .pipe(synchro(incDoneCounter));
+  });
 });
 
 
 // -- Gulp Main Task:
 gulp.task('makedist', function(callback) {
-  runSequence('deldist',
-    ['skeleton',
-      'copycoredev', 'copyobjdev', 'copytokdev', 'copycsvdev', 'copyfulldev',
-      'makecoreminified', 'makeobjminified', 'maketokminified', 'makecsvminified',
-      'makefullminified'],
-    callback);
+  runSequence('deldist', 'skeleton', 'copydev', 'minifydev', callback);
 });
