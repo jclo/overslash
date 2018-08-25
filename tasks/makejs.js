@@ -23,11 +23,12 @@ const dest       = config.libdir
     , lib        = config.libname
     , name       = lib.replace(/\s+/g, '').toLowerCase()
     , { parent } = config
+    , { noparent } = config
     , list       = Object.keys(src)
     ;
 
-// -- Local variables
 
+// -- Local variables
 
 // -- Private Functions --------------------------------------------------------
 
@@ -58,7 +59,6 @@ gulp.task('delcore', function() {
   return del(`${dest}/core-*.js`);
 });
 
-
 // Creates multiple indented library's contents:
 gulp.task('docore', function(done) {
   let doneCounter = 0;
@@ -73,6 +73,8 @@ gulp.task('docore', function(done) {
   list.forEach(function(item) {
     const core = src[item].slice(1, -1);
     gulp.src(core)
+      // remove the extra 'use strict':
+      .pipe(replace(/\n'use strict';\n/, ''))
       // indent the first line with 2 spaces:
       .pipe(replace(/^/g, '  '))
       // indent each other lines with 2 spaces:
@@ -106,7 +108,7 @@ gulp.task('dolibnoparent', function(done) {
 
     gulp.src([head, `${dest}/core-${item}.js`, foot])
       .pipe(replace('{{lib:name}}', lib))
-      .pipe(concat(`${name}-${item}-noparent.js`))
+      .pipe(concat(`${name}-${item}${noparent}.js`))
       .pipe(gulp.dest(dest))
       .pipe(synchro(incDoneCounter));
   });
@@ -115,7 +117,7 @@ gulp.task('dolibnoparent', function(done) {
 // Creates multiple libraries without 'this':
 gulp.task('dolib', function() {
   list.forEach(function(item) {
-    return gulp.src(`${dest}/${name}-${item}-noparent.js`)
+    return gulp.src(`${dest}/${name}-${item}${noparent}.js`)
       .pipe(replace('{{lib:parent}}', parent))
       .pipe(concat(`${name}-${item}.js`))
       .pipe(gulp.dest(dest));

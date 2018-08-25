@@ -1,5 +1,8 @@
 // --- Object types ----------------------------------------------------------
-/* eslint-disable strict */
+/* - */
+
+'use strict';
+
 extend(overslash, {
 
   /**
@@ -106,4 +109,4 @@ extend(overslash, {
   }
   /* eslint-enable no-restricted-syntax, no-prototype-builtins */
 });
-/* eslint-enable strict */
+/* - */

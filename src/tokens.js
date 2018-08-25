@@ -1,5 +1,8 @@
 // --- Operations on Tokens (optional) ---------------------------------------
-/* eslint-disable strict */
+/* eslint-disable one-var, semi-style */
+
+'use strict';
+
 extend(overslash, {
 
   /**
@@ -37,4 +40,4 @@ extend(overslash, {
     return id;
   }
 });
-/* eslint-enable strict */
+/* eslint-enable one-var, semi-style */

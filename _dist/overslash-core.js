@@ -1,5 +1,5 @@
 /** ****************************************************************************
- * overslash v0.0.6
+ * overslash v0.0.7
  *
  * A tiny modular Javascript utility library.
  * (you can download it from npm or github repositories)
@@ -7,11 +7,11 @@
  * Released under the MIT license. You may obtain a copy of the License
  * at: http://www.opensource.org/licenses/mit-license.php).
  * ************************************************************************** */
-// Based on UMD Lib template v0.6.0
+// Based on UMD Lib template v0.7.0
 // ESLint declarations
 /* global define */
+/* eslint strict: ["error", "function"] */
 /* eslint-disable one-var, semi-style */
-/* eslint-disable strict, no-param-reassign */
 (function(root, factory) {
   'use strict';
 
@@ -26,10 +26,14 @@
     module.exports = factory(root);
     // This is a hack to attach the lib to the browser root when this lib is
     // included inside another lib and the whole is browserifyied:
+    /* eslint-disable no-param-reassign */
     if (root.overslash === null) root.overslash = factory(root);
+    /* eslint-enable no-param-reassign */
   } else {
     // Browser globals.
+    /* eslint-disable no-param-reassign */
     root.overslash = factory(root);
+    /* eslint-enable no-param-reassign */
   }
 }(this, function(root) {
   'use strict';
@@ -37,7 +41,6 @@
   var overslash
     , previousoverslash
     ;
-  /* eslint-enable strict, no-param-reassign */
 
   /** **************************************************************************
    *
@@ -96,7 +99,7 @@
    * @since        0.0.0
    * @version      -
    * ************************************************************************ */
-  /* eslint-disable strict */
+  /* eslint-disable one-var, semi-style, no-undef */
 
   // -- Private Functions ------------------------------------------------------
 
@@ -160,12 +163,14 @@
   /* eslint-enable no-param-reassign */
 
   // Current version of the library:
-  overslash.VERSION = '0.0.6';
-  /* eslint-enable strict */
+  overslash.VERSION = '0.0.7';
+
+  /* eslint-enable one-var, semi-style, no-undef */
 
 
   // --- Primitives types ------------------------------------------------------
-  /* eslint-disable strict */
+  /* - */
+
   extend(overslash, {
 
     /**
@@ -264,11 +269,12 @@
     }
     /* eslint-enable no-void */
   });
-  /* eslint-enable strict */
+  /* - */
 
 
   // --- Object types ----------------------------------------------------------
-  /* eslint-disable strict */
+  /* - */
+
   extend(overslash, {
 
     /**
@@ -375,7 +381,7 @@
     }
     /* eslint-enable no-restricted-syntax, no-prototype-builtins */
   });
-  /* eslint-enable strict */
+  /* - */
 
 
   // Returns the library name:

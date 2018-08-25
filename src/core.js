@@ -55,7 +55,9 @@
  * @since        0.0.0
  * @version      -
  * ************************************************************************ */
-/* eslint-disable strict */
+/* eslint-disable one-var, semi-style, no-undef */
+
+'use strict';
 
 // -- Private Functions ------------------------------------------------------
 
@@ -120,4 +122,5 @@ overslash.noConflict = function() {
 
 // Current version of the library:
 overslash.VERSION = '{{lib:version}}';
-/* eslint-enable strict */
+
+/* eslint-enable one-var, semi-style, no-undef */

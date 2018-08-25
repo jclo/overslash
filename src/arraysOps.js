@@ -1,5 +1,8 @@
 // --- Operations on Arrays (optional) ---------------------------------------
-/* eslint-disable strict */
+/* eslint-disable one-var, semi-style */
+
+'use strict';
+
 extend(overslash, {
 
   /**
@@ -148,4 +151,4 @@ extend(overslash, {
     return result;
   }
 });
-/* eslint-enable strict */
+/* eslint-enable one-var, semi-style */

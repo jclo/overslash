@@ -1,5 +1,8 @@
 // --- Primitives types ------------------------------------------------------
-/* eslint-disable strict */
+/* - */
+
+'use strict';
+
 extend(overslash, {
 
   /**
@@ -98,4 +101,4 @@ extend(overslash, {
   }
   /* eslint-enable no-void */
 });
-/* eslint-enable strict */
+/* - */

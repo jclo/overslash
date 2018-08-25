@@ -15,21 +15,22 @@ const del         = require('del')
     ;
 
 // -- Local modules
-const config  = require('./config')
+const config = require('./config')
     ;
 
 // -- Release version:
-const release   = require('../package.json').version
+const release = require('../package.json').version
     ;
 
 // -- Local constants
-const { dist }    = config
-    , { src }    = config
-    , { libdir }  = config
-    , { libname } = config
-    , name        = libname.replace(/\s+/g, '').toLowerCase()
-    , { license } = config
-    , list        = Object.keys(src)
+const { dist }     = config
+    , { src }      = config
+    , { libdir }   = config
+    , { libname }  = config
+    , { noparent } = config
+    , name         = libname.replace(/\s+/g, '').toLowerCase()
+    , { license }  = config
+    , list         = Object.keys(src)
     ;
 
 // -- Local variables
@@ -54,12 +55,12 @@ const synchro = function(done) {
 
 // -- Gulp Tasks
 
-// Removes the previous dist:
+// Remove previous dist:
 gulp.task('deldist', function() {
   return del.sync(dist);
 });
 
-// Copies the README and LICENSE files:
+// Copy README and LICENSE:
 gulp.task('skeleton', function() {
   return gulp.src(['README.md', 'LICENSE.md'])
     .pipe(gulp.dest(dist));
@@ -86,8 +87,30 @@ gulp.task('copydev', function(done) {
   });
 });
 
+// Copies multiple dev. libraries:
+gulp.task('copynoparentlib', function(done) {
+  let doneCounter = 0;
+
+  function incDoneCounter() {
+    doneCounter += 1;
+    if (doneCounter >= list.length) {
+      done();
+    }
+  }
+
+  list.forEach(function(item) {
+    gulp.src(`${libdir}/${name}-${item}${noparent}.js`)
+      .pipe(header(license))
+      .pipe(replace('{{lib:name}}', `${libname}`))
+      .pipe(replace('{{lib:version}}', release))
+      .pipe(replace(/ {2}'use strict';\n\n/g, ''))
+      .pipe(gulp.dest(dist))
+      .pipe(synchro(incDoneCounter));
+  });
+});
+
 // Minifies multiple dev. libraries:
-gulp.task('minifydev', function(done) {
+gulp.task('makeminified', function(done) {
   let doneCounter = 0;
 
   function incDoneCounter() {
@@ -112,5 +135,9 @@ gulp.task('minifydev', function(done) {
 
 // -- Gulp Main Task:
 gulp.task('makedist', function(callback) {
-  runSequence('deldist', 'skeleton', 'copydev', 'minifydev', callback);
+  runSequence(
+    'deldist',
+    ['skeleton', 'copydev', 'copynoparentlib', 'makeminified'],
+    callback,
+  );
 });

@@ -1,5 +1,11 @@
 ### HEAD
 
+### 0.0.7 (August 25, 2018)
+
+  * Updated the module to comply with UMDLib 0.7.0,
+  * ...,
+
+
 ### 0.0.6 (January 22, 2018)
 
   * Updated the project to comply with ESLint 4.x,

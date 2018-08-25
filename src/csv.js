@@ -1,5 +1,8 @@
 // --- Operations on csv blocks (optional) -----------------------------------
-/* eslint-disable strict */
+/* eslint-disable one-var, semi-style */
+
+'use strict';
+
 extend(overslash, {
 
   /**
@@ -132,4 +135,4 @@ extend(overslash, {
   }
   /* eslint-enable no-param-reassign, no-plusplus */
 });
-/* eslint-enable strict */
+/* eslint-enable one-var, semi-style */

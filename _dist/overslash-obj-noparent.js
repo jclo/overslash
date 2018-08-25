@@ -1,11 +1,18 @@
+/** ****************************************************************************
+ * overslash v0.0.7
+ *
+ * A tiny modular Javascript utility library.
+ * (you can download it from npm or github repositories)
+ * Copyright (c) 2018 Jclo <jclo@mobilabs.fr> (http://www.mobilabs.fr).
+ * Released under the MIT license. You may obtain a copy of the License
+ * at: http://www.opensource.org/licenses/mit-license.php).
+ * ************************************************************************** */
 // Based on UMD Lib template v0.7.0
 // ESLint declarations
 /* global define */
 /* eslint strict: ["error", "function"] */
 /* eslint-disable one-var, semi-style */
 (function(root, factory) {
-  'use strict';
-
   /* istanbul ignore next */
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
@@ -27,8 +34,6 @@
     /* eslint-enable no-param-reassign */
   }
 }({{lib:parent}}, function(root) {
-  'use strict';
-
   var overslash
     , previousoverslash
     ;
@@ -154,7 +159,7 @@
   /* eslint-enable no-param-reassign */
 
   // Current version of the library:
-  overslash.VERSION = '{{lib:version}}';
+  overslash.VERSION = '0.0.7';
 
   /* eslint-enable one-var, semi-style, no-undef */
 
@@ -684,49 +689,6 @@
     //
   });
   /* eslint-enable strict */
-
-
-  // --- Operations on Tokens (optional) ---------------------------------------
-  /* eslint-disable one-var, semi-style */
-
-  extend(overslash, {
-
-    /**
-     * Returns a unique string pattern in base 36 ([0-9a-z]).
-     *
-     * @function ()
-     * @public
-     * @param {}            -,
-     * @returns {String}    returns a random string,
-     * @since 0.0.0
-     */
-    token: function() {
-      return Math.random().toString(36).substr(2);
-    },
-
-    /**
-     * Returns a unique string pattern with a predefined length.
-     *
-     * @function ([arg1])
-     * @public
-     * @param {Number}      the length of the string. Default is 16 chars,
-     * @returns {String}    returns a random string from the charset defined in c,
-     * @since 0.0.0
-     */
-    makeid: function(l) {
-      var ll = this.isNumber(l) ? l : 16
-        , c  = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz'
-        , id = ''
-        , i
-        ;
-
-      for (i = 0; i < ll; i++) {
-        id += c.charAt(Math.floor(Math.random() * c.length));
-      }
-      return id;
-    }
-  });
-  /* eslint-enable one-var, semi-style */
 
 
   // Returns the library name:

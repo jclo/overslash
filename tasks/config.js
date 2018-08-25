@@ -7,6 +7,7 @@ module.exports = {
   libdir: './lib',
   libname: 'overslash',
   parent: 'this',
+  noparent: '-noparent',
   // These are the Javascript files required to build the library.
   src: {
     core: [
