@@ -1,23 +1,4 @@
-# overslash
-
-[![NPM version][npm-image]][npm-url]
-[![Travis CI][travis-image]][travis-url]
-[![Test coverage][coveralls-image]][coveralls-url]
-[![Dependencies status][dependencies-image]][dependencies-url]
-[![Dev Dependencies status][devdependencies-image]][devdependencies-url]
-[![License][license-image]](LICENSE.md)
-<!--- [![node version][node-image]][node-url] -->
-[![NPM install][npm-install-image]][npm-install-url]
-
-
-## A tiny modular Javascript utility library
-
-`Overslash` is an utility library as `Underscore` and `Lodash`. However, `Overslash` doesn't pretend to compete with these honorable libraries. `Overslash` implements only a small subset of the functions that can be found in these library.
-
-`Overslash` ambition is quite different. `Overslash` is modular. You can build a version with only the subset of the functions you need.
-
-Then, you can embed it in your own library. So, you can ship your library without any external dependencies.
-
+# Guide
 
 ## API
 
@@ -112,29 +93,4 @@ var myLibraryName = {};
 var _ = myLibraryName.overslash;
 ```
 
-
-## License
-
-[MIT](LICENSE.md).
-
-<!--- URls -->
-
-[npm-image]: https://img.shields.io/npm/v/overslash.svg?style=flat-square
-[npm-install-image]: https://nodei.co/npm/overslash.png?compact=true
-[node-image]: https://img.shields.io/badge/node.js-%3E=_0.10-green.svg?style=flat-square
-[download-image]: https://img.shields.io/npm/dm/overslash.svg?style=flat-square
-[travis-image]: https://img.shields.io/travis/jclo/overslash.svg?style=flat-square
-[coveralls-image]: https://img.shields.io/coveralls/jclo/overslash/master.svg?style=flat-square
-[dependencies-image]: https://david-dm.org/jclo/overslash/status.svg?theme=shields.io
-[devdependencies-image]: https://david-dm.org/jclo/overslash/dev-status.svg?theme=shields.io
-[license-image]: https://img.shields.io/npm/l/overslash.svg?style=flat-square
-
-[npm-url]: https://www.npmjs.com/package/overslash
-[npm-install-url]: https://nodei.co/npm/overslash
-[node-url]: http://nodejs.org/download
-[download-url]: https://www.npmjs.com/package/overslash
-[travis-url]: https://travis-ci.org/jclo/overslash
-[coveralls-url]: https://coveralls.io/github/jclo/overslash?branch=master
-[dependencies-url]: https://david-dm.org/jclo/overslash
-[devdependencies-url]: https://david-dm.org/jclo/overslash?type=dev
-[license-url]: http://opensource.org/licenses/MIT
+Enjoy!

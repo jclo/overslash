@@ -1,13 +1,13 @@
 /** ****************************************************************************
- * overslash v0.0.7
+ * overslash v0.0.8
  *
  * A tiny modular Javascript utility library.
  * (you can download it from npm or github repositories)
- * Copyright (c) 2018 Jclo <jclo@mobilabs.fr> (http://www.mobilabs.fr).
+ * Copyright (c) 2019 jclo <jclo@mobilabs.fr> (http://www.mobilabs.fr/).
  * Released under the MIT license. You may obtain a copy of the License
  * at: http://www.opensource.org/licenses/mit-license.php).
  * ************************************************************************** */
-// Based on UMD Lib template v0.7.0
+// Based on UMD Lib template v0.8.1
 // ESLint declarations
 /* global define */
 /* eslint strict: ["error", "function"] */
@@ -159,7 +159,7 @@
   /* eslint-enable no-param-reassign */
 
   // Current version of the library:
-  overslash.VERSION = '0.0.7';
+  overslash.VERSION = '0.0.8';
 
   /* eslint-enable one-var, semi-style, no-undef */
 

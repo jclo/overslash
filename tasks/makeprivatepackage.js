@@ -1,28 +1,33 @@
-/* eslint one-var: 0, prefer-arrow-callback: 0, import/no-extraneous-dependencies: 0,
-  semi-style: 0 */
+/* eslint one-var: 0, import/no-extraneous-dependencies: 0, semi-style: 0 */
 
 'use strict';
 
 // -- Node modules
-const fs   = require('fs')
-    , gulp = require('gulp')
+const { series } = require('gulp')
+    , fs         = require('fs')
     ;
+
 
 // -- Local modules
 const config  = require('./config')
     ;
 
+
 // -- Release version:
+
 
 // -- Local constants
 const { dist } = config
     ;
 
+
 // -- Local variables
 
-// -- Gulp Tasks
-gulp.task('makeprivatepackage', function() {
-  fs.readFile('./package.json', 'utf8', function(error, data) {
+
+// -- Gulp Private Tasks
+
+function makeprivatepackage(cb) {
+  fs.readFile('./package.json', 'utf8', (error, data) => {
     if (error) { throw error; }
     const obj = JSON.parse(data);
     obj.main = {};
@@ -36,6 +41,12 @@ gulp.task('makeprivatepackage', function() {
       if (err) {
         throw err;
       }
+      cb();
     });
   });
-});
+}
+
+
+// -- Gulp Public Task(s)
+
+module.exports = series(makeprivatepackage);

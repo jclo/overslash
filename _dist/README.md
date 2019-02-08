@@ -135,6 +135,6 @@ var _ = myLibraryName.overslash;
 [download-url]: https://www.npmjs.com/package/overslash
 [travis-url]: https://travis-ci.org/jclo/overslash
 [coveralls-url]: https://coveralls.io/github/jclo/overslash?branch=master
-[dependencies-url]: https://david-dm.org/jclo/overslash#info=dependencies
-[devdependencies-url]: https://david-dm.org/jclo/overslash#info=devDependencies
+[dependencies-url]: https://david-dm.org/jclo/overslash
+[devdependencies-url]: https://david-dm.org/jclo/overslash?type=dev
 [license-url]: http://opensource.org/licenses/MIT
