@@ -4,11 +4,11 @@
 
 // -- Node modules
 const { src, dest, series } = require('gulp')
-    , del     = require('del')
-    , concat  = require('gulp-concat')
-    , footer  = require('gulp-footer')
-    , replace = require('gulp-replace')
-    , through2    = require('through2')
+    , del      = require('del')
+    , concat   = require('gulp-concat')
+    , footer   = require('gulp-footer')
+    , replace  = require('gulp-replace')
+    , through2 = require('through2')
     ;
 
 
@@ -24,13 +24,14 @@ const destination  = config.libdir
     , name         = lib.replace(/\s+/g, '').toLowerCase()
     , { parent }   = config
     , { noparent } = config
-    , list       = Object.keys(source)
+    , list         = Object.keys(source)
     ;
 
 
 // -- Local variables
 
-// -- Private Functions --------------------------------------------------------
+
+// -- Private Functions
 
 // Simple callback stream used to synchronize stuff
 // Source: http://unobfuscated.blogspot.co.at/2014/01/executing-asynchronous-gulp-tasks-in.html
@@ -50,9 +51,9 @@ const synchro = function(done) {
 // -- Gulp Private Tasks
 
 // Removes the previous version.
-function clean(cb) {
+function clean(done) {
   del.sync(destination);
-  cb();
+  done();
 }
 
 // Creates the indented content.
@@ -82,9 +83,11 @@ function docore(done) {
       .pipe(replace(/\s\s\n/g, '\n'))
       .pipe(concat(`core-${item}.js`))
       .pipe(dest(destination))
-      .pipe(synchro(incDoneCounter));
+      .pipe(synchro(incDoneCounter))
+    ;
   });
 }
+
 
 // Creates the library without 'this'.
 function dolibnoparent(done) {
@@ -106,9 +109,11 @@ function dolibnoparent(done) {
       .pipe(replace('{{lib:name}}', lib))
       .pipe(concat(`${name}-${item}${noparent}.js`))
       .pipe(dest(destination))
-      .pipe(synchro(incDoneCounter));
+      .pipe(synchro(incDoneCounter))
+    ;
   });
 }
+
 
 // Creates the library.
 /* eslint-disable arrow-body-style */
@@ -117,16 +122,18 @@ function dolib(done) {
     return src(`${destination}/${name}-${item}${noparent}.js`)
       .pipe(replace('{{lib:parent}}', parent))
       .pipe(concat(`${name}-${item}.js`))
-      .pipe(dest(destination));
+      .pipe(dest(destination))
+    ;
   });
   done();
 }
 /* eslint-enable arrow-body-style */
 
+
 // Removes the temp file(s).
-function delcore(cb) {
+function delcore(done) {
   del.sync(`${destination}/core-*.js`);
-  cb();
+  done();
 }
 
 

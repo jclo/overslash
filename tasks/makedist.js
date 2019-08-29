@@ -5,12 +5,12 @@
 
 // -- Node modules
 const { src, dest, series, parallel } = require('gulp')
-    , del         = require('del')
-    , concat      = require('gulp-concat')
-    , header      = require('gulp-header')
-    , replace     = require('gulp-replace')
-    , uglify      = require('gulp-uglify')
-    , through2    = require('through2')
+    , del      = require('del')
+    , concat   = require('gulp-concat')
+    , header   = require('gulp-header')
+    , replace  = require('gulp-replace')
+    , uglify   = require('gulp-uglify-es').default
+    , through2 = require('through2')
     ;
 
 
@@ -34,8 +34,7 @@ const { dist }     = config
 
 // -- Local variables
 
-
-// -- Private Functions --------------------------------------------------------
+// -- Private Functions
 
 // Simple callback stream used to synchronize stuff
 // Source: http://unobfuscated.blogspot.co.at/2014/01/executing-asynchronous-gulp-tasks-in.html
@@ -55,9 +54,9 @@ const synchro = function(done) {
 // -- Gulp Private Tasks
 
 // Removes the previous dist.
-function deldist(cb) {
+function deldist(done) {
   del.sync(dist);
-  cb();
+  done();
 }
 
 // Copies README and LICENSE.
@@ -66,6 +65,7 @@ function doskeleton() {
     .pipe(dest(dist));
 }
 
+// Copies the development version.
 function copydev(done) {
   let doneCounter = 0;
 
@@ -85,10 +85,12 @@ function copydev(done) {
       .pipe(replace('{{lib:author}}', pack.author.name))
       .pipe(replace('{{lib:email}}', pack.author.email))
       .pipe(replace('{{lib:url}}', pack.author.url))
-      .pipe(dest(dist))
-      .pipe(synchro(incDoneCounter));
+      .pipe(dest(`${dist}/lib`))
+      .pipe(synchro(incDoneCounter))
+    ;
   });
 }
+
 
 // Copies the development version without parent.
 function makenoparentlib(done) {
@@ -111,10 +113,12 @@ function makenoparentlib(done) {
       .pipe(replace('{{lib:email}}', pack.author.email))
       .pipe(replace('{{lib:url}}', pack.author.url))
       .pipe(replace(/ {2}'use strict';\n\n/g, ''))
-      .pipe(dest(dist))
-      .pipe(synchro(incDoneCounter));
+      .pipe(dest(`${dist}/lib`))
+      .pipe(synchro(incDoneCounter))
+    ;
   });
 }
+
 
 // Creates the minified version.
 function makeminified(done) {
@@ -138,8 +142,9 @@ function makeminified(done) {
       .pipe(replace('{{lib:email}}', pack.author.email))
       .pipe(replace('{{lib:url}}', pack.author.url))
       .pipe(concat(`${name}-${item}.min.js`))
-      .pipe(dest(dist))
-      .pipe(synchro(incDoneCounter));
+      .pipe(dest(`${dist}/lib`))
+      .pipe(synchro(incDoneCounter))
+    ;
   });
 }
 

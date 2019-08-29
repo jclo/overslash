@@ -1,5 +1,11 @@
 ### HEAD
 
+### 1.0.0 (August 29, 2019)
+
+  * Updated the library to comply with ES6 standard,
+  * ...,
+
+
 ### 0.0.8 (February 8, 2019)
 
   * Updated the project to comply with UMDLib 0.8.2,

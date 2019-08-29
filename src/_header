@@ -1,8 +1,7 @@
-// Based on UMD Lib template v0.8.1
+// Based on ES6.lib template v0.0.3
 // ESLint declarations
 /* global define */
 /* eslint strict: ["error", "function"] */
-/* eslint-disable one-var, semi-style */
 (function(root, factory) {
   'use strict';
 
@@ -17,18 +16,21 @@
     module.exports = factory(root);
     // This is a hack to attach the lib to the browser root when this lib is
     // included inside another lib and the whole is browserifyied:
-    /* eslint-disable no-param-reassign */
+    /* eslint-disable-next-line no-param-reassign */
     if (root.overslash === null) root.overslash = factory(root);
-    /* eslint-enable no-param-reassign */
   } else {
     // Browser globals.
-    /* eslint-disable no-param-reassign */
+    /* eslint-disable-next-line no-param-reassign */
     root.overslash = factory(root);
-    /* eslint-enable no-param-reassign */
   }
-}({{lib:parent}}, function(root) {
+}({{lib:parent}}, (root) => {
   'use strict';
 
-  var overslash
-    , previousoverslash
+  // This is the list of the constants that are defined at the global level of
+  // this module and are accessible to all. So, they are considered as reserved
+  // words for this library.
+  /* eslint-disable one-var, semi-style */
+  let overslash
+    , extend
     ;
+  /* eslint-enable one-var, semi-style */

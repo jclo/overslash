@@ -1,10 +1,17 @@
+/*! ****************************************************************************
+ * overslash v1.0.0
+ *
+ * A tiny modular Javascript utility library.
+ * (you can download it from npm or github repositories)
+ * Copyright (c) 2019 Mobilabs <contact@mobilabs.fr> (http://www.mobilabs.fr).
+ * Released under the MIT license. You may obtain a copy of the License
+ * at: http://www.opensource.org/licenses/mit-license.php).
+ * ************************************************************************** */
 // Based on ES6.lib template v0.0.3
 // ESLint declarations
 /* global define */
 /* eslint strict: ["error", "function"] */
 (function(root, factory) {
-  'use strict';
-
   /* istanbul ignore next */
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
@@ -24,8 +31,6 @@
     root.overslash = factory(root);
   }
 }({{lib:parent}}, (root) => {
-  'use strict';
-
   // This is the list of the constants that are defined at the global level of
   // this module and are accessible to all. So, they are considered as reserved
   // words for this library.
@@ -214,7 +219,7 @@
     };
 
     // Attaches a constant to ESLib that provides the version of the lib.
-    overslash.VERSION = '{{lib:version}}';
+    overslash.VERSION = '1.0.0';
   }());
 
 

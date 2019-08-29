@@ -1,10 +1,17 @@
+/*! ****************************************************************************
+ * overslash v1.0.0
+ *
+ * A tiny modular Javascript utility library.
+ * (you can download it from npm or github repositories)
+ * Copyright (c) 2019 Mobilabs <contact@mobilabs.fr> (http://www.mobilabs.fr).
+ * Released under the MIT license. You may obtain a copy of the License
+ * at: http://www.opensource.org/licenses/mit-license.php).
+ * ************************************************************************** */
 // Based on ES6.lib template v0.0.3
 // ESLint declarations
 /* global define */
 /* eslint strict: ["error", "function"] */
 (function(root, factory) {
-  'use strict';
-
   /* istanbul ignore next */
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
@@ -24,8 +31,6 @@
     root.overslash = factory(root);
   }
 }({{lib:parent}}, (root) => {
-  'use strict';
-
   // This is the list of the constants that are defined at the global level of
   // this module and are accessible to all. So, they are considered as reserved
   // words for this library.
@@ -214,7 +219,7 @@
     };
 
     // Attaches a constant to ESLib that provides the version of the lib.
-    overslash.VERSION = '{{lib:version}}';
+    overslash.VERSION = '1.0.0';
   }());
 
 
@@ -963,6 +968,89 @@
     });
   }());
   /* eslint-enable no-underscore-dangle */
+
+
+  /* ***************************************************************************
+   *
+   * Extends overslash with operations on Tokens (optional).
+   *
+   * tokens.js is just a literal object that contains a set of functions. It
+   * can't be intantiated.
+   *
+   * Private Functions:
+   *  . none,
+   *
+   *
+   * Public Static Methods:
+   *  . token                       returns a unique string pattern in base 36,
+   *  . makeid                      returns a unique string pattern,
+   *
+   *
+   *
+   * @namespace    overslash
+   * @dependencies none
+   * @exports      -
+   * @author       -
+   * @since        0.0.0
+   * @version      -
+   * ************************************************************************ */
+  /* eslint-disable one-var, semi-style, no-underscore-dangle */
+
+  (function() {
+    // IIFE
+
+    // -- Module path
+
+
+    // -- Local modules
+
+
+    // -- Local constants
+
+
+    // -- Local variables
+
+
+    // -- Public Static Methods ------------------------------------------------
+
+    extend(overslash, {
+
+      /**
+       * Returns a unique string pattern in base 36 ([0-9a-z]).
+       *
+       * @method ()
+       * @public
+       * @param {}            -,
+       * @returns {String}    returns a random string,
+       * @since 0.0.0
+       */
+      token() {
+        return Math.random().toString(36).substr(2);
+      },
+
+      /**
+       * Returns a unique string pattern with a predefined length.
+       *
+       * @method ([arg1])
+       * @public
+       * @param {Number}      the length of the string. Default is 16 chars,
+       * @returns {String}    returns a random string from the charset defined in c,
+       * @since 0.0.0
+       */
+      makeid(l) {
+        const ll = this.isNumber(l) ? l : 16
+            , c  = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz'
+            ;
+
+        let id = '';
+        for (let i = 0; i < ll; i++) {
+          id += c.charAt(Math.floor(Math.random() * c.length));
+        }
+        return id;
+      },
+    });
+  }());
+  /* eslint-enable one-var, semi-style, no-underscore-dangle */
 
 
   // Returns the library name:

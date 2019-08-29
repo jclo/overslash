@@ -7,14 +7,15 @@
 // -- Node modules
 
 // -- Local modules
-const core = require('./core.js')
-    , primitives = require('./primitives.js')
-    , objects = require('./objects.js')
-    , objectsOps = require('./objectsOps.js')
-    , arraysOps = require('./arraysOps.js')
-    , functions = require('./functions.js')
-    , tokens = require('./tokens.js')
-    , csv = require('./csv.js')
+const core = require('./int/core.js')
+    , primitives = require('./int/primitives.js')
+    , objects = require('./int/objects.js')
+    , objectsOps = require('./int/objectsOps.js')
+    , arraysOps = require('./int/arraysOps.js')
+    , functions = require('./int/functions.js')
+    , tokens = require('./int/tokens.js')
+    , csv = require('./int/csv.js')
+    , _ = require('../index.js')
     ;
 
 // -- Local constants
@@ -25,26 +26,26 @@ const core = require('./core.js')
 // -- Main
 describe('overslash:', () => {
   // Test Overslash core:
-  core();
+  core(_);
 
   // Test JS Primitive Types:
-  primitives();
+  primitives(_);
 
   // Test JS Object Types:
-  objects();
+  objects(_);
 
   // Operations on Objects:
-  objectsOps();
+  objectsOps(_);
 
   // Operations on Arrays:
-  arraysOps();
+  arraysOps(_);
 
   // Operations on functions:
-  functions();
+  functions(_);
 
   // Operations with tokens:
-  tokens();
+  tokens(_);
 
   // Operations on csv blocks:
-  csv();
+  csv(_);
 });
