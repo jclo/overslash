@@ -3,7 +3,7 @@
 ### 1.0.0 (August 29, 2019)
 
   * Updated the library to comply with ES6 standard,
-  * ...,
+  * Release.
 
 
 ### 0.0.8 (February 8, 2019)
