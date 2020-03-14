@@ -3,6 +3,7 @@
 ### 1.0.1 (March 14, 2020)
 
   * Updated the dependency packages,
+  * Removed the package gulp-footer as it has major vulnerabilities not fixed,  
   * ...,
 
 

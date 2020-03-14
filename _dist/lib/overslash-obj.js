@@ -111,7 +111,6 @@
   }());
   /* - */
 
-
   /* ***************************************************************************
    *
    * A tiny modular Javascript utility library.
@@ -225,7 +224,6 @@
     // Attaches a constant to ESLib that provides the version of the lib.
     overslash.VERSION = '1.0.1';
   }());
-
 
   /* ***************************************************************************
    *
@@ -375,7 +373,6 @@
     });
   }());
   /* eslint-enable no-underscore-dangle */
-
 
   /* ***************************************************************************
    *
@@ -535,7 +532,6 @@
     });
   }());
   /* eslint-enable no-underscore-dangle */
-
 
   /* ***************************************************************************
    *
@@ -726,7 +722,6 @@
     });
   }());
   /* eslint-enable one-var, semi-style, no-underscore-dangle */
-
 
   /* ***************************************************************************
    *
@@ -924,7 +919,6 @@
   }());
   /* eslint-enable one-var, semi-style, no-underscore-dangle */
 
-
   /* ***************************************************************************
    *
    * Extends overslash with function types (optional).
@@ -972,7 +966,6 @@
     });
   }());
   /* eslint-enable no-underscore-dangle */
-
 
   // Returns the library name:
   return overslash;
