@@ -1,5 +1,5 @@
 /*! ****************************************************************************
- * overslash v1.0.0
+ * overslash v1.0.1
  *
  * A tiny modular Javascript utility library.
  * (you can download it from npm or github repositories)
@@ -223,7 +223,7 @@
     };
 
     // Attaches a constant to ESLib that provides the version of the lib.
-    overslash.VERSION = '1.0.0';
+    overslash.VERSION = '1.0.1';
   }());
 
 

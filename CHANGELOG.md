@@ -1,5 +1,11 @@
 ### HEAD
 
+### 1.0.1 (March 14, 2020)
+
+  * Updated the dependency packages,
+  * ...,
+
+
 ### 1.0.0 (August 29, 2019)
 
   * Updated the library to comply with ES6 standard,
