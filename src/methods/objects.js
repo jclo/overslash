@@ -1,4 +1,4 @@
-/* ***************************************************************************
+/** **************************************************************************
  *
  * Extends overslash with object types.
  *
@@ -20,19 +20,20 @@
  *
  *
  *
- * @namespace    overslash
+ * @namespace    Overslash
  * @dependencies none
  * @exports      -
  * @author       -
  * @since        0.0.0
  * @version      -
  * ************************************************************************ */
+/* global extend */
 /* eslint-disable no-underscore-dangle */
 
 'use strict';
 
 (function() {
-  // IIFE
+  // IIFE_START
 
   // -- Module path
 
@@ -46,9 +47,9 @@
   // -- Local variables
 
 
-  // -- Public Static Methods ------------------------------------------------
+  // -- Public function ------------------------------------------------------
 
-  extend(overslash, {
+  extend(Overslash, {
 
     /**
      * Is a given variable an object?
@@ -156,5 +157,7 @@
     },
     /* eslint-enable no-restricted-syntax, no-prototype-builtins */
   });
+
+  // IIFE_END
 }());
-/* eslint-enable no-underscore-dangle */
+/* - */

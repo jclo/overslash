@@ -1,4 +1,4 @@
-/* ***************************************************************************
+/** **************************************************************************
  *
  * A tiny modular Javascript utility library.
  *
@@ -56,19 +56,20 @@
  *
  *
  *
- * @namespace    overslash
+ * @namespace    Overslash
  * @dependencies none
  * @exports      -
  * @author       -
  * @since        0.0.0
  * @version      -
  * ************************************************************************ */
+/* global root */
 /* eslint-disable one-var, semi-style */
 
 'use strict';
 
 (function() {
-  // IIFE
+  // IIFE_START
 
   // -- Module path
 
@@ -79,7 +80,7 @@
   // -- Local constants
   // Saves the previous value of the library variable, so that it can be
   // restored later on, if noConflict is used.
-  const previousoverslash = root.overslash;
+  const previousOverslash = root.Overslash;
 
 
   // -- Local variables
@@ -87,29 +88,36 @@
 
   // -- Public Static Methods ------------------------------------------------
 
-  overslash = {
+  Overslash = {
 
     /**
-     * Returns a reference to this overslash object.
+     * Returns a reference to this Overslash object.
      *
      * Nota:
-     * Running overslash in noConflic mode, returns the overslash variable to its
-     _ previous owner.
+     * Running Overslash in noConflict mode, returns the Overslash variable to its
+     * _ previous owner.
      *
      * @function ()
      * @public
      * @param {}            -,
-     * @returns {String}    returns the overslash object,
+     * @returns {String}    returns the Overslash object,
      * @since 0.0.0
      */
     /* istanbul ignore next */
     noConflict() {
       /* eslint-disable-next-line no-param-reassign */
-      root.overslash = previousoverslash;
+      root.Overslash = previousOverslash;
       return this;
     },
   };
 
-  // Attaches a constant to ESLib that provides the version of the lib.
-  overslash.VERSION = '{{lib:version}}';
+  // Attaches a constant to Overslash that provides the version of the lib.
+  Overslash.VERSION = '{{lib:version}}';
+
+
+  // Extends Overslash with new static methods.
+  // (see folder methods)
+
+  // IIFE_END
 }());
+/* eslint-enable one-var, semi-style */

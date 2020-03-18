@@ -1,4 +1,4 @@
-/* ***************************************************************************
+/** **************************************************************************
  *
  * Extends overslash with Operations on csv blocks (optional).
  *
@@ -14,19 +14,20 @@
  *
  *
  *
- * @namespace    overslash
+ * @namespace    Overslash
  * @dependencies none
  * @exports      -
  * @author       -
  * @since        0.0.0
  * @version      -
  * ************************************************************************ */
+/* global extend */
 /* eslint-disable one-var, semi-style, no-underscore-dangle */
 
 'use strict';
 
 (function() {
-  // IIFE
+  // IIFE_START
 
   // -- Module path
 
@@ -40,9 +41,9 @@
   // -- Local variables
 
 
-  // -- Public Static Methods ------------------------------------------------
+  // -- Public function ------------------------------------------------------
 
-  extend(overslash, {
+  extend(Overslash, {
 
     /**
      * Converts an csv block to an array or arrays.
@@ -175,5 +176,8 @@
     },
     /* eslint-enable no-param-reassign, no-plusplus */
   });
+
+
+  // IIFE_END
 }());
 /* eslint-enable one-var, semi-style, no-underscore-dangle */

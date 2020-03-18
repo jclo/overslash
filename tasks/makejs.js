@@ -12,7 +12,8 @@ const { src, dest, series } = require('gulp')
 
 
 // -- Local modules
-const config = require('./config')
+const pack   = require('../package.json')
+    , config = require('./config')
    ;
 
 
@@ -24,6 +25,7 @@ const destination  = config.libdir
     , { parent }   = config
     , { noparent } = config
     , list         = Object.keys(source)
+    , { version }  = pack
     ;
 
 
@@ -68,8 +70,11 @@ function docore(done) {
 
   list.forEach((item) => {
     const core = source[item].slice(1, -1);
+
     src(core)
-      // remove the extra 'use strict':
+      .pipe(replace('{{lib:version}}', version))
+      // remove the extra global and 'use strict':
+      .pipe(replace(/\/\* global[\w$_\s,]+\*\//g, '/* - */'))
       .pipe(replace(/\n'use strict';\n/, ''))
       // indent the first line with 2 spaces:
       .pipe(replace(/^/g, '  '))
@@ -81,7 +86,6 @@ function docore(done) {
     ;
   });
 }
-
 
 // Creates the library without 'this'.
 function dolibnoparent(done) {
@@ -100,7 +104,6 @@ function dolibnoparent(done) {
         ;
 
     src([head, `${destination}/core-${item}.js`, foot])
-      .pipe(replace('{{lib:name}}', lib))
       .pipe(concat(`${name}-${item}${noparent}.js`))
       // fix the blanck lines we indented too:
       .pipe(replace(/\s{2}\n/g, '\n'))
@@ -109,7 +112,6 @@ function dolibnoparent(done) {
     ;
   });
 }
-
 
 // Creates the library.
 /* eslint-disable arrow-body-style */
@@ -124,7 +126,6 @@ function dolib(done) {
   done();
 }
 /* eslint-enable arrow-body-style */
-
 
 // Removes the temp file(s).
 function delcore(done) {

@@ -1,13 +1,13 @@
 /*! ****************************************************************************
- * overslash v1.0.1
+ * Overslash v1.0.2
  *
  * A tiny modular Javascript utility library.
  * (you can download it from npm or github repositories)
- * Copyright (c) 2019 Mobilabs <contact@mobilabs.fr> (http://www.mobilabs.fr).
+ * Copyright (c) 2020 Mobilabs <contact@mobilabs.fr> (http://www.mobilabs.fr).
  * Released under the MIT license. You may obtain a copy of the License
  * at: http://www.opensource.org/licenses/mit-license.php).
+ * Built from ES6lib v0.0.11-beta.1.
  * ************************************************************************** */
-// Based on ES6.lib template v0.0.3
 // ESLint declarations
 /* global define */
 /* eslint strict: ["error", "function"] */
@@ -22,6 +22,7 @@
     // Node. Does not work with strict CommonJS, but
     // only CommonJS-like environments that support module.exports,
     // like Node.
+    /* eslint-disable-next-line no-param-reassign */
     module.exports = factory(root);
     // This is a hack to attach the lib to the browser root when this lib is
     // included inside another lib and the whole is browserifyied:
@@ -30,7 +31,7 @@
   } else {
     // Browser globals.
     /* eslint-disable-next-line no-param-reassign */
-    root.overslash = factory(root);
+    root.Overslash = factory(root);
   }
 }(this, (root) => {
   'use strict';
@@ -39,12 +40,12 @@
   // this module and are accessible to all. So, they are considered as reserved
   // words for this library.
   /* eslint-disable one-var, semi-style */
-  let overslash
+  let Overslash
     , extend
     ;
   /* eslint-enable one-var, semi-style */
 
-  /* ***************************************************************************
+  /** **************************************************************************
    *
    * Provides the function 'extend' that is used to fill the object tree with
    * the public static or object methods when the Javascript VM browses the
@@ -70,9 +71,10 @@
    * @version      -
    * ************************************************************************ */
   /* - */
+  /* - */
 
   (function() {
-    // IIFE
+    // IIFE_START
 
     // -- Module path
 
@@ -108,10 +110,12 @@
         object[keys[i]] = methods[keys[i]];
       }
     };
+
+    // IIFE_END
   }());
   /* - */
 
-  /* ***************************************************************************
+  /** **************************************************************************
    *
    * A tiny modular Javascript utility library.
    *
@@ -169,17 +173,18 @@
    *
    *
    *
-   * @namespace    overslash
+   * @namespace    Overslash
    * @dependencies none
    * @exports      -
    * @author       -
    * @since        0.0.0
    * @version      -
    * ************************************************************************ */
+  /* - */
   /* eslint-disable one-var, semi-style */
 
   (function() {
-    // IIFE
+    // IIFE_START
 
     // -- Module path
 
@@ -190,7 +195,7 @@
     // -- Local constants
     // Saves the previous value of the library variable, so that it can be
     // restored later on, if noConflict is used.
-    const previousoverslash = root.overslash;
+    const previousOverslash = root.Overslash;
 
 
     // -- Local variables
@@ -198,34 +203,41 @@
 
     // -- Public Static Methods ------------------------------------------------
 
-    overslash = {
+    Overslash = {
 
       /**
-       * Returns a reference to this overslash object.
+       * Returns a reference to this Overslash object.
        *
        * Nota:
-       * Running overslash in noConflic mode, returns the overslash variable to its
-       _ previous owner.
+       * Running Overslash in noConflict mode, returns the Overslash variable to its
+       * _ previous owner.
        *
        * @function ()
        * @public
        * @param {}            -,
-       * @returns {String}    returns the overslash object,
+       * @returns {String}    returns the Overslash object,
        * @since 0.0.0
        */
       /* istanbul ignore next */
       noConflict() {
         /* eslint-disable-next-line no-param-reassign */
-        root.overslash = previousoverslash;
+        root.Overslash = previousOverslash;
         return this;
       },
     };
 
-    // Attaches a constant to ESLib that provides the version of the lib.
-    overslash.VERSION = '1.0.1';
-  }());
+    // Attaches a constant to Overslash that provides the version of the lib.
+    Overslash.VERSION = '1.0.2';
 
-  /* ***************************************************************************
+
+    // Extends Overslash with new static methods.
+    // (see folder methods)
+
+    // IIFE_END
+  }());
+  /* eslint-enable one-var, semi-style */
+
+  /** **************************************************************************
    *
    * Extends overslash with primitives types.
    *
@@ -247,17 +259,18 @@
    *
    *
    *
-   * @namespace    overslash
+   * @namespace    Overslash
    * @dependencies none
    * @exports      -
    * @author       -
    * @since        0.0.0
    * @version      -
    * ************************************************************************ */
-  /* eslint-disable no-underscore-dangle */
+  /* - */
+  /* - */
 
   (function() {
-    // IIFE
+    // IIFE_START
 
     // -- Module path
 
@@ -271,9 +284,9 @@
     // -- Local variables
 
 
-    // -- Public Static Methods ------------------------------------------------
+    // -- Public function ------------------------------------------------------
 
-    extend(overslash, {
+    extend(Overslash, {
 
       /**
        * Is a given variable undefined?
@@ -371,10 +384,12 @@
       },
       /* eslint-enable no-void */
     });
-  }());
-  /* eslint-enable no-underscore-dangle */
 
-  /* ***************************************************************************
+    // IIFE_END
+  }());
+  /* - */
+
+  /** **************************************************************************
    *
    * Extends overslash with object types.
    *
@@ -396,17 +411,18 @@
    *
    *
    *
-   * @namespace    overslash
+   * @namespace    Overslash
    * @dependencies none
    * @exports      -
    * @author       -
    * @since        0.0.0
    * @version      -
    * ************************************************************************ */
+  /* - */
   /* eslint-disable no-underscore-dangle */
 
   (function() {
-    // IIFE
+    // IIFE_START
 
     // -- Module path
 
@@ -420,9 +436,9 @@
     // -- Local variables
 
 
-    // -- Public Static Methods ------------------------------------------------
+    // -- Public function ------------------------------------------------------
 
-    extend(overslash, {
+    extend(Overslash, {
 
       /**
        * Is a given variable an object?
@@ -530,10 +546,12 @@
       },
       /* eslint-enable no-restricted-syntax, no-prototype-builtins */
     });
-  }());
-  /* eslint-enable no-underscore-dangle */
 
-  /* ***************************************************************************
+    // IIFE_END
+  }());
+  /* - */
+
+  /** **************************************************************************
    *
    * Extends overslash with operations on Objects (optional).
    *
@@ -553,17 +571,18 @@
    *
    *
    *
-   * @namespace    overslash
+   * @namespace    Overslash
    * @dependencies none
    * @exports      -
    * @author       -
    * @since        0.0.0
    * @version      -
    * ************************************************************************ */
+  /* - */
   /* eslint-disable one-var, semi-style, no-underscore-dangle */
 
   (function() {
-    // IIFE
+    // IIFE_START
 
     // -- Module path
 
@@ -577,9 +596,9 @@
     // -- Local variables
 
 
-    // -- Public Static Methods ------------------------------------------------
+    // -- Public function ------------------------------------------------------
 
-    extend(overslash, {
+    extend(Overslash, {
 
       /**
        * Clones a literal object or an array.
@@ -720,10 +739,12 @@
       },
       /* eslint-enable no-param-reassign, no-loop-func, prefer-rest-params */
     });
-  }());
-  /* eslint-enable one-var, semi-style, no-underscore-dangle */
 
-  /* ***************************************************************************
+    // IIFE_END
+  }());
+  /* eslint-disable one-var, semi-style, no-underscore-dangle */
+
+  /** **************************************************************************
    *
    * Extends overslash with operations on Arrays (optional).
    *
@@ -743,17 +764,18 @@
    *
    *
    *
-   * @namespace    overslash
+   * @namespace    Overslash
    * @dependencies none
    * @exports      -
    * @author       -
    * @since        0.0.0
    * @version      -
    * ************************************************************************ */
+  /* - */
   /* eslint-disable one-var, semi-style, no-underscore-dangle */
 
   (function() {
-    // IIFE
+    // IIFE_START
 
     // -- Module path
 
@@ -767,9 +789,9 @@
     // -- Local variables
 
 
-    // -- Public Static Methods ------------------------------------------------
+    // -- Public function ------------------------------------------------------
 
-    extend(overslash, {
+    extend(Overslash, {
 
       /**
        * Returns true if the array contains the passed-in value.
@@ -916,10 +938,12 @@
         return result;
       },
     });
+
+    // IIFE_END
   }());
   /* eslint-enable one-var, semi-style, no-underscore-dangle */
 
-  /* ***************************************************************************
+  /** **************************************************************************
    *
    * Extends overslash with function types (optional).
    *
@@ -931,21 +955,22 @@
    *
    *
    * Public Static Methods:
-
+   *  . ...,
    *
    *
    *
-   * @namespace    overslash
+   * @namespace    Overslash
    * @dependencies none
    * @exports      -
    * @author       -
    * @since        0.0.0
    * @version      -
    * ************************************************************************ */
-  /* eslint-disable no-underscore-dangle */
+  /* - */
+  /* - */
 
   (function() {
-    // IIFE
+    // IIFE_START
 
     // -- Module path
 
@@ -959,15 +984,17 @@
     // -- Local variables
 
 
-    // -- Public Static Methods ------------------------------------------------
+    // -- Public function ------------------------------------------------------
 
-    extend(overslash, {
+    extend(Overslash, {
       //
     });
-  }());
-  /* eslint-enable no-underscore-dangle */
 
-  /* ***************************************************************************
+    // IIFE_END
+  }());
+  /* - */
+
+  /** **************************************************************************
    *
    * Extends overslash with operations on Tokens (optional).
    *
@@ -984,17 +1011,18 @@
    *
    *
    *
-   * @namespace    overslash
+   * @namespace    Overslash
    * @dependencies none
    * @exports      -
    * @author       -
    * @since        0.0.0
    * @version      -
    * ************************************************************************ */
+  /* - */
   /* eslint-disable one-var, semi-style, no-underscore-dangle */
 
   (function() {
-    // IIFE
+    // IIFE_START
 
     // -- Module path
 
@@ -1008,9 +1036,9 @@
     // -- Local variables
 
 
-    // -- Public Static Methods ------------------------------------------------
+    // -- Public function ------------------------------------------------------
 
-    extend(overslash, {
+    extend(Overslash, {
 
       /**
        * Returns a unique string pattern in base 36 ([0-9a-z]).
@@ -1046,9 +1074,11 @@
         return id;
       },
     });
+
+    // IIFE_END
   }());
-  /* eslint-enable one-var, semi-style, no-underscore-dangle */
+  /* - */
 
   // Returns the library name:
-  return overslash;
+  return Overslash;
 }));

@@ -16,7 +16,6 @@ const { src, dest, series, parallel } = require('gulp')
 
 // -- Local modules
 const config = require('./config')
-    , pack   = require('../package.json')
     ;
 
 
@@ -33,6 +32,7 @@ const { dist }     = config
 
 
 // -- Local variables
+
 
 // -- Private Functions
 
@@ -79,18 +79,11 @@ function copydev(done) {
   list.forEach((item) => {
     src(`${libdir}/${name}-${item}.js`)
       .pipe(header(license))
-      .pipe(replace('{{lib:name}}', `${libname}`))
-      .pipe(replace('{{lib:version}}', pack.version))
-      .pipe(replace('{{lib:description}}', pack.description))
-      .pipe(replace('{{lib:author}}', pack.author.name))
-      .pipe(replace('{{lib:email}}', pack.author.email))
-      .pipe(replace('{{lib:url}}', pack.author.url))
       .pipe(dest(`${dist}/lib`))
       .pipe(synchro(incDoneCounter))
     ;
   });
 }
-
 
 // Copies the development version without parent.
 function makenoparentlib(done) {
@@ -106,19 +99,14 @@ function makenoparentlib(done) {
   list.forEach((item) => {
     src(`${libdir}/${name}-${item}${noparent}.js`)
       .pipe(header(license))
-      .pipe(replace('{{lib:name}}', `${libname}`))
-      .pipe(replace('{{lib:version}}', pack.version))
-      .pipe(replace('{{lib:description}}', pack.description))
-      .pipe(replace('{{lib:author}}', pack.author.name))
-      .pipe(replace('{{lib:email}}', pack.author.email))
-      .pipe(replace('{{lib:url}}', pack.author.url))
+      .pipe(replace('/*! *', '/** *'))
+      .pipe(replace('/* global define */', '/* global */'))
       .pipe(replace(/ {2}'use strict';\n\n/g, ''))
       .pipe(dest(`${dist}/lib`))
       .pipe(synchro(incDoneCounter))
     ;
   });
 }
-
 
 // Creates the minified version.
 function makeminified(done) {
@@ -135,12 +123,6 @@ function makeminified(done) {
     src(`${libdir}/${name}-${item}.js`)
       .pipe(uglify())
       .pipe(header(license))
-      .pipe(replace('{{lib:name}}', `${libname}`))
-      .pipe(replace('{{lib:version}}', pack.version))
-      .pipe(replace('{{lib:description}}', pack.description))
-      .pipe(replace('{{lib:author}}', pack.author.name))
-      .pipe(replace('{{lib:email}}', pack.author.email))
-      .pipe(replace('{{lib:url}}', pack.author.url))
       .pipe(concat(`${name}-${item}.min.js`))
       .pipe(dest(`${dist}/lib`))
       .pipe(synchro(incDoneCounter))

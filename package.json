@@ -1,24 +1,29 @@
 {
   "name": "@mobilabs/overslash",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A tiny modular Javascript utility library",
-  "main": "index.js",
+  "main": "_dist/lib/overslash-full.js",
   "bin": {},
   "scripts": {
     "build": "gulp build",
     "watch": "gulp watch",
-    "makedist": "gulp makedist",
+    "dev": "gulp rundev",
     "test": "cross-env NODE_ENV=test nyc --reporter=lcov mocha ./test/main.js",
     "display-coverage": "opener ./coverage/lcov-report/index.html",
     "check-coverage": "nyc check-coverage --statements 100 --branches 100 --functions 100 --lines 100",
     "report-coverage": "nyc report --reporter=text-lcov | coveralls",
-    "report": "nyc report"
+    "report": "nyc report",
+    "makedist": "gulp makedist",
+    "app": "gulp runapp",
+    "doc": ""
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/jclo/overslash.git"
   },
-  "keywords": [],
+  "keywords": [
+    "ES6"
+  ],
   "author": {
     "name": "Mobilabs",
     "email": "contact@mobilabs.fr",
@@ -31,23 +36,25 @@
   "homepage": "https://github.com/jclo/overslash",
   "dependencies": {},
   "devDependencies": {
-    "chai": "4.2.0",
-    "coveralls": "3.0.9",
-    "cross-env": "7.0.2",
-    "del": "5.1.0",
-    "eslint": "6.8.0",
-    "eslint-config-airbnb-base": "14.1.0",
-    "eslint-plugin-import": "2.20.1",
-    "gulp": "4.0.2",
-    "gulp-concat": "2.6.1",
-    "gulp-header": "2.0.9",
-    "gulp-replace": "1.0.0",
-    "gulp-uglify-es": "2.0.0",
-    "husky": "4.2.3",
-    "mocha": "7.1.0",
-    "nyc": "15.0.0",
-    "opener": "1.5.1",
-    "through2": "3.0.1"
+    "chai": "^4.2.0",
+    "coveralls": "^3.0.9",
+    "cross-env": "^7.0.2",
+    "del": "^5.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.1",
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-connect": "^5.7.0",
+    "gulp-header": "^2.0.9",
+    "gulp-replace": "^1.0.0",
+    "gulp-uglify-es": "^2.0.0",
+    "husky": "^4.2.3",
+    "mocha": "^7.1.0",
+    "nyc": "^15.0.0",
+    "open": "^7.0.3",
+    "opener": "^1.5.1",
+    "through2": "^3.0.1"
   },
   "publishConfig": {
     "access": "public"

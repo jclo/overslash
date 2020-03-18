@@ -1,4 +1,4 @@
-/* ***************************************************************************
+/** **************************************************************************
  *
  * Extends overslash with operations on Arrays (optional).
  *
@@ -18,19 +18,20 @@
  *
  *
  *
- * @namespace    overslash
+ * @namespace    Overslash
  * @dependencies none
  * @exports      -
  * @author       -
  * @since        0.0.0
  * @version      -
  * ************************************************************************ */
+/* global extend */
 /* eslint-disable one-var, semi-style, no-underscore-dangle */
 
 'use strict';
 
 (function() {
-  // IIFE
+  // IIFE_START
 
   // -- Module path
 
@@ -44,9 +45,9 @@
   // -- Local variables
 
 
-  // -- Public Static Methods ------------------------------------------------
+  // -- Public function ------------------------------------------------------
 
-  extend(overslash, {
+  extend(Overslash, {
 
     /**
      * Returns true if the array contains the passed-in value.
@@ -193,5 +194,7 @@
       return result;
     },
   });
+
+  // IIFE_END
 }());
 /* eslint-enable one-var, semi-style, no-underscore-dangle */

@@ -1,4 +1,4 @@
-/* ***************************************************************************
+/** **************************************************************************
  *
  * Extends overslash with operations on Objects (optional).
  *
@@ -18,19 +18,20 @@
  *
  *
  *
- * @namespace    overslash
+ * @namespace    Overslash
  * @dependencies none
  * @exports      -
  * @author       -
  * @since        0.0.0
  * @version      -
  * ************************************************************************ */
+/* global extend */
 /* eslint-disable one-var, semi-style, no-underscore-dangle */
 
 'use strict';
 
 (function() {
-  // IIFE
+  // IIFE_START
 
   // -- Module path
 
@@ -44,9 +45,9 @@
   // -- Local variables
 
 
-  // -- Public Static Methods ------------------------------------------------
+  // -- Public function ------------------------------------------------------
 
-  extend(overslash, {
+  extend(Overslash, {
 
     /**
      * Clones a literal object or an array.
@@ -187,5 +188,7 @@
     },
     /* eslint-enable no-param-reassign, no-loop-func, prefer-rest-params */
   });
+
+  // IIFE_END
 }());
-/* eslint-enable one-var, semi-style, no-underscore-dangle */
+/* eslint-disable one-var, semi-style, no-underscore-dangle */

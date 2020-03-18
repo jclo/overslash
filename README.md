@@ -1,4 +1,4 @@
-# overslash
+# Overslash
 
 [![NPM version][npm-image]][npm-url]
 [![Travis CI][travis-image]][travis-url]
@@ -60,12 +60,12 @@ _.csv2array(csv)        | Converts an csv block to an array or arrays,
 ```
 
 ***Nota***:
-We assume here that `_` is a reference to `overslash`.
+We assume here that `_` is a reference to `Overslash`.
 
 
 ## How to embed Overslash in your library
 
-`Overslash` is included in a Javascript module pattern. It exports only the variable `overslash` outside this module. Thus, you can safely embed `Overslash` in your library without any risk to pollute your namespace.
+`Overslash` is included in a Javascript module pattern. It exports only the variable `Overslash` outside this module. Thus, you can safely embed `Overslash` in your library without any risk to pollute your namespace.
 
 `Overslash` module pattern looks like this:
 ```js
@@ -78,16 +78,16 @@ We assume here that `_` is a reference to `overslash`.
     module.exports = factory();
   } else {
     // Browser globals.
-    root.overslash = factory();
+    root.Overslash = factory();
   }
 }(this, function() {
   'use strict';
 
-  var overslash = {
+  var Overslash = {
     // ...
   };
 
-  return overslash;
+  return Overslash;
 }));
 ```
 
@@ -96,7 +96,7 @@ You just need to replace `this` by the namespace of your library:
 (function(root, factory) {
   // ...
     // Browser globals.
-    root.overslash = factory();
+    root.Overslash = factory();
   }
 }(this, function() { // <--- replace this by your library namespace
   // ...
@@ -105,13 +105,13 @@ You just need to replace `this` by the namespace of your library:
 You can now add a reference to `Overslash` inside your library:
 ```js
 
-var myLibraryName = {};
+const myLibraryName = {};
 
 // Embed Overslash and replace 'this' by 'myLibraryName':
 (function());
 
 // You can now access to Overslash:
-var _ = myLibraryName.overslash;
+const _ = myLibraryName.Overslash;
 ```
 
 
