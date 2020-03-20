@@ -5,11 +5,11 @@
 
 // -- Vendor Modules
 const { src, dest, series, parallel } = require('gulp')
-    , del     = require('del')
-    , concat  = require('gulp-concat')
-    , header  = require('gulp-header')
-    , replace = require('gulp-replace')
-    , uglify  = require('gulp-uglify-es').default
+    , del      = require('del')
+    , concat   = require('gulp-concat')
+    , header   = require('gulp-header')
+    , replace  = require('gulp-replace')
+    , uglify   = require('gulp-uglify-es').default
     , through2 = require('through2')
     ;
 

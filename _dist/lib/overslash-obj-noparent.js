@@ -1,12 +1,12 @@
 /*! ****************************************************************************
- * Overslash v1.0.3-beta.1
+ * Overslash v1.0.3
  *
  * A tiny modular Javascript utility library.
  * (you can download it from npm or github repositories)
  * Copyright (c) 2020 Mobilabs <contact@mobilabs.fr> (http://www.mobilabs.fr).
  * Released under the MIT license. You may obtain a copy of the License
  * at: http://www.opensource.org/licenses/mit-license.php).
- * Built from ES6lib v0.0.12-beta.1.
+ * Built from ES6lib v0.0.12.
  * ************************************************************************** */
 // ESLint declarations
 /* global define */
@@ -224,7 +224,7 @@
     };
 
     // Attaches a constant to Overslash that provides the version of the lib.
-    Overslash.VERSION = '1.0.3-beta.1';
+    Overslash.VERSION = '1.0.3';
 
 
     // Extends Overslash with new static methods.
