@@ -33,7 +33,8 @@
 'use strict';
 
 (function() {
-  // IIFE_START
+  // START OF IIFE
+
 
   // -- Module path
 
@@ -148,6 +149,6 @@
     /* eslint-enable no-void */
   });
 
-  // IIFE_END
+  // END OF IIFE
 }());
 /* - */

@@ -3,23 +3,23 @@
 
 'use strict';
 
-// -- Node modules
+// -- Vendor Modules
 const { src, dest, series, parallel } = require('gulp')
-    , del      = require('del')
-    , concat   = require('gulp-concat')
-    , header   = require('gulp-header')
-    , replace  = require('gulp-replace')
-    , uglify   = require('gulp-uglify-es').default
+    , del     = require('del')
+    , concat  = require('gulp-concat')
+    , header  = require('gulp-header')
+    , replace = require('gulp-replace')
+    , uglify  = require('gulp-uglify-es').default
     , through2 = require('through2')
     ;
 
 
-// -- Local modules
+// -- Local Modules
 const config = require('./config')
     ;
 
 
-// -- Local constants
+// -- Local Constants
 const { dist }     = config
     , source       = config.src
     , { libdir }   = config
@@ -31,7 +31,7 @@ const { dist }     = config
     ;
 
 
-// -- Local variables
+// -- Local Variables
 
 
 // -- Private Functions
@@ -99,8 +99,6 @@ function makenoparentlib(done) {
   list.forEach((item) => {
     src(`${libdir}/${name}-${item}${noparent}.js`)
       .pipe(header(license))
-      .pipe(replace('/*! *', '/** *'))
-      .pipe(replace('/* global define */', '/* global */'))
       .pipe(replace(/ {2}'use strict';\n\n/g, ''))
       .pipe(dest(`${dist}/lib`))
       .pipe(synchro(incDoneCounter))
@@ -121,6 +119,7 @@ function makeminified(done) {
 
   list.forEach((item) => {
     src(`${libdir}/${name}-${item}.js`)
+      .pipe(replace('/*! ***', '/** ***'))
       .pipe(uglify())
       .pipe(header(license))
       .pipe(concat(`${name}-${item}.min.js`))

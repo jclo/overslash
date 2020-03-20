@@ -28,7 +28,8 @@
 'use strict';
 
 (function() {
-  // IIFE_START
+  // START OF IIFE
+
 
   // -- Module path
 
@@ -81,6 +82,6 @@
     },
   });
 
-  // IIFE_END
+  // END OF IIFE
 }());
 /* - */

@@ -1,15 +1,15 @@
-/** ****************************************************************************
- * Overslash v1.0.2
+/*! ****************************************************************************
+ * Overslash v1.0.3-beta.1
  *
  * A tiny modular Javascript utility library.
  * (you can download it from npm or github repositories)
  * Copyright (c) 2020 Mobilabs <contact@mobilabs.fr> (http://www.mobilabs.fr).
  * Released under the MIT license. You may obtain a copy of the License
  * at: http://www.opensource.org/licenses/mit-license.php).
- * Built from ES6lib v0.0.11-beta.1.
+ * Built from ES6lib v0.0.12-beta.1.
  * ************************************************************************** */
 // ESLint declarations
-/* global */
+/* global define */
 /* eslint strict: ["error", "function"] */
 (function(root, factory) {
   /* istanbul ignore next */
@@ -25,7 +25,7 @@
     // This is a hack to attach the lib to the browser root when this lib is
     // included inside another lib and the whole is browserifyied:
     /* eslint-disable-next-line no-param-reassign */
-    if (root.overslash === null) root.overslash = factory(root);
+    if (root.Overslash === null) root.Overslash = factory(root);
   } else {
     // Browser globals.
     /* eslint-disable-next-line no-param-reassign */
@@ -70,7 +70,8 @@
   /* - */
 
   (function() {
-    // IIFE_START
+    // START OF IIFE
+
 
     // -- Module path
 
@@ -107,7 +108,7 @@
       }
     };
 
-    // IIFE_END
+    // END OF IIFE
   }());
   /* - */
 
@@ -180,7 +181,7 @@
   /* eslint-disable one-var, semi-style */
 
   (function() {
-    // IIFE_START
+    // START OF IIFE
 
     // -- Module path
 
@@ -223,13 +224,13 @@
     };
 
     // Attaches a constant to Overslash that provides the version of the lib.
-    Overslash.VERSION = '1.0.2';
+    Overslash.VERSION = '1.0.3-beta.1';
 
 
     // Extends Overslash with new static methods.
     // (see folder methods)
 
-    // IIFE_END
+    // END OF IIFE
   }());
   /* eslint-enable one-var, semi-style */
 
@@ -266,7 +267,8 @@
   /* - */
 
   (function() {
-    // IIFE_START
+    // START OF IIFE
+
 
     // -- Module path
 
@@ -381,7 +383,7 @@
       /* eslint-enable no-void */
     });
 
-    // IIFE_END
+    // END OF IIFE
   }());
   /* - */
 
@@ -418,7 +420,8 @@
   /* eslint-disable no-underscore-dangle */
 
   (function() {
-    // IIFE_START
+    // START OF IIFE
+
 
     // -- Module path
 
@@ -543,7 +546,7 @@
       /* eslint-enable no-restricted-syntax, no-prototype-builtins */
     });
 
-    // IIFE_END
+    // END OF IIFE
   }());
   /* - */
 
@@ -578,7 +581,8 @@
   /* eslint-disable one-var, semi-style, no-underscore-dangle */
 
   (function() {
-    // IIFE_START
+    // START OF IIFE
+
 
     // -- Module path
 
@@ -736,7 +740,7 @@
       /* eslint-enable no-param-reassign, no-loop-func, prefer-rest-params */
     });
 
-    // IIFE_END
+    // END OF IIFE
   }());
   /* eslint-disable one-var, semi-style, no-underscore-dangle */
 
@@ -771,7 +775,8 @@
   /* eslint-disable one-var, semi-style, no-underscore-dangle */
 
   (function() {
-    // IIFE_START
+    // START OF IIFE
+
 
     // -- Module path
 
@@ -935,7 +940,7 @@
       },
     });
 
-    // IIFE_END
+    // END OF IIFE
   }());
   /* eslint-enable one-var, semi-style, no-underscore-dangle */
 
@@ -966,7 +971,8 @@
   /* - */
 
   (function() {
-    // IIFE_START
+    // START OF IIFE
+
 
     // -- Module path
 
@@ -986,7 +992,7 @@
       //
     });
 
-    // IIFE_END
+    // END OF IIFE
   }());
   /* - */
 

@@ -69,7 +69,7 @@
 'use strict';
 
 (function() {
-  // IIFE_START
+  // START OF IIFE
 
   // -- Module path
 
@@ -118,6 +118,6 @@
   // Extends Overslash with new static methods.
   // (see folder methods)
 
-  // IIFE_END
+  // END OF IIFE
 }());
 /* eslint-enable one-var, semi-style */

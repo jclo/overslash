@@ -31,7 +31,8 @@
 'use strict';
 
 (function() {
-  // IIFE_START
+  // START OF IIFE
+
 
   // -- Module path
 
@@ -189,6 +190,6 @@
     /* eslint-enable no-param-reassign, no-loop-func, prefer-rest-params */
   });
 
-  // IIFE_END
+  // END OF IIFE
 }());
 /* eslint-disable one-var, semi-style, no-underscore-dangle */
