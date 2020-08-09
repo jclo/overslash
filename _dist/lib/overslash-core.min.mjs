@@ -1,0 +1,11 @@
+/*! ****************************************************************************
+ * Overslash v1.0.4
+ *
+ * A tiny modular Javascript utility library.
+ * (you can download it from npm or github repositories)
+ * Copyright (c) 2020 Mobilabs <contact@mobilabs.fr> (http://www.mobilabs.fr).
+ * Released under the MIT license. You may obtain a copy of the License
+ * at: http://www.opensource.org/licenses/mit-license.php).
+ * Built from ES6lib v1.0.0-beta.7.
+ * ************************************************************************** */
+const $__ES6GLOB={};!function(t,e){"use strict";"function"==typeof define&&define.amd?define([""],e):"object"==typeof exports?module.exports=e(t):t.Overslash=e(t)}($__ES6GLOB,t=>{"use strict";let e,o;return o=function(t,e){const o=Object.keys(e);for(let r=0;r<o.length;r++)t[o[r]]=e[o[r]]},function(){const o=t.Overslash;e={library:{name:"Overslash",version:"1.0.4"},_setTestMode:()=>[],noConflict(){return t.Overslash=o,this}},e.VERSION="1.0.4"}(),o(e,{isUndefined:t=>void 0===t,isNull:t=>null===t,isBoolean:t=>!0===t||!1===t||"[object Boolean]"===Object.prototype.toString.call(t),isString:t=>"[object String]"===Object.prototype.toString.call(t),isNumber:t=>"[object Number]"===Object.prototype.toString.call(t),isNaN(t){return this.isNumber(t)&&t!==+t},isOdd(t){const e=t%2;return t===parseFloat(t)?!!e:void 0}}),o(e,{isObject(t){const e=typeof t;return("function"===e||"object"===e)&&!!t},isLiteralObject:t=>"[object Object]"===Object.prototype.toString.call(t),isFunction:t=>"[object Function]"===Object.prototype.toString.call(t),isArray:t=>"[object Array]"===Object.prototype.toString.call(t),isMath:t=>"[object Math]"===Object.prototype.toString.call(t),isDate:t=>"[object Date]"===Object.prototype.toString.call(t),isEmpty(t){let e;if(null===t)return!0;if(this.isArray(t)||this.isString(t))return 0===t.length;for(e in t)if(t.hasOwnProperty(e))return!1;return!0}}),e});export default $__ES6GLOB.Overslash;

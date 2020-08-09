@@ -119,7 +119,7 @@ function makeminified(done) {
       .pipe(replace('/*! ***', '/** ***'))
       .pipe(uglify())
       .pipe(header(license))
-      .pipe(concat(`${name}.min.js`))
+      .pipe(concat(`${name}-${item}.min.js`))
       .pipe(dest(`${dist}/lib`))
       .pipe(synchro(incDoneCounter))
     ;
@@ -142,7 +142,7 @@ function makeminifiedm(done) {
       .pipe(replace('/*! ***', '/** ***'))
       .pipe(uglify())
       .pipe(header(license))
-      .pipe(concat(`${name}.min.mjs`))
+      .pipe(concat(`${name}-${item}.min.mjs`))
       .pipe(dest(`${dist}/lib`))
       .pipe(synchro(incDoneCounter))
     ;

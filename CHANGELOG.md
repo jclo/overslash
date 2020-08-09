@@ -6,6 +6,7 @@
   * Removed the files that were renamed as it confuses git,
   * Readded those files,
   * Tried to fix a Travis.CI strange behaviour,
+  * Fixed an issue in the makedist task,
   * ...,
 
 
