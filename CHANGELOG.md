@@ -3,6 +3,7 @@
 ### 1.0.4 (August 9, 2020)
 
   * Updated the project template,
+  * Removed the files that were renamed as it confuses git,
   * ...,
 
 

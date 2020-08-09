@@ -1,6 +1,17 @@
+/*! ****************************************************************************
+ * Overslash v1.0.4
+ *
+ * A tiny modular Javascript utility library.
+ * (you can download it from npm or github repositories)
+ * Copyright (c) 2020 Mobilabs <contact@mobilabs.fr> (http://www.mobilabs.fr).
+ * Released under the MIT license. You may obtain a copy of the License
+ * at: http://www.opensource.org/licenses/mit-license.php).
+ * Built from ES6lib v1.0.0-beta.7.
+ * ************************************************************************** */
 // ESLint declarations
 /* global define */
 /* eslint strict: ["error", "function"] */
+const $__ES6GLOB = {};
 (function(root, factory) {
   'use strict';
 
@@ -19,7 +30,7 @@
     /* eslint-disable-next-line no-param-reassign */
     root.Overslash = factory(root);
   }
-}(this, (root) => {
+}($__ES6GLOB, (root) => {
   'use strict';
 
   /** **************************************************************************
@@ -1002,3 +1013,6 @@
   // Returns the library name:
   return Overslash;
 }));
+
+// -- Export
+export default $__ES6GLOB.Overslash;
