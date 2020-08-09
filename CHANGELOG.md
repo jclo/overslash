@@ -5,6 +5,7 @@
   * Updated the project template,
   * Removed the files that were renamed as it confuses git,
   * Readded those files,
+  * Tried to fix a Travis.CI strange behaviour,
   * ...,
 
 

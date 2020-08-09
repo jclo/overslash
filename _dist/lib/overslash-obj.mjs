@@ -596,6 +596,463 @@ const $__ES6GLOB = {};
 
   /** **************************************************************************
    *
+   *  Extends overslash with operations on Objects (optional).
+   *
+   * objectsops.js is just a literal object that contains a set of functions. It
+   * can't be intantiated.
+   *
+   * Private Functions:
+   *  . none,
+   *
+   *
+   * Public Static Methods:
+   *  . clone                       clones a literal object or an array,
+   *  . extend                      extends a given object with all the properties,
+   *  . keys                        retrieves all the names of the object's,
+   *  . forPropIn                   parses all the names of the object's,
+   *  . assign                      extends source with target(s),
+   *
+   *
+   *
+   * @namespace    -
+   * @dependencies none
+   * @exports      -,
+   * @author       -
+   * @since        0.0.0
+   * @version      -
+   * ************************************************************************ */
+  /* - */
+  /* eslint-disable one-var, semi-style, no-underscore-dangle */
+
+  (function() {
+    // START OF IIFE
+
+
+    // -- Module Path
+
+
+    // -- Local Modules
+
+
+    // -- Local Constants
+
+
+    // -- Local Variables
+
+
+    // -- Public Static Methods ------------------------------------------------
+
+    extend(Overslash, {
+      /**
+       * Clones a literal object or an array.
+       *
+       * @method (arg1)
+       * @public
+       * @param {Object}      the object to clone,
+       * @returns {Object}    returns the cloned object,
+       * @since 0.0.0
+       */
+      /* eslint-disable no-void, no-restricted-syntax */
+      clone(obj) {
+        const clone = this.isArray(obj) ? [] : {};
+        let prop;
+
+        if (!this.isObject(obj)) return void 0;
+
+        for (prop in obj) {
+          if (this.isArray(obj[prop])) {
+            clone[prop] = this.clone(obj[prop]);
+          } else if (this.isObject(obj[prop])) {
+            clone[prop] = this.extend(obj[prop]);
+          } else {
+            clone[prop] = obj[prop];
+          }
+        }
+        return clone;
+      },
+      /* eslint-enable no-void, no-restricted-syntax */
+
+      /**
+       * Extends a given object with all the properties in passed-in object(s).
+       * (copied from: http://underscorejs.org and added recursivity)
+       *
+       * @method (arg1)
+       * @public
+       * @param {Object}      the objects to merge,
+       * @returns {Object}    the resulting object,
+       * @since 0.0.0
+       */
+      /* eslint-disable no-restricted-syntax, no-param-reassign, prefer-rest-params */
+      extend(obj) {
+        let source
+          , prop
+          ;
+
+        if (!this.isObject(obj)) return obj;
+
+        for (let i = 1; i < arguments.length; i++) {
+          source = arguments[i];
+          for (prop in source) {
+            // if (!this.isArray(arguments[i][prop]) && this.isObject(arguments[i][prop])) {
+            if (this.isLiteralObject(arguments[i][prop])) {
+              obj[prop] = obj[prop] !== undefined ? obj[prop] : {};
+              this.extend(obj[prop], arguments[i][prop]);
+            } /* istanbul ignore next */ else if (hasOwnProperty.call(source, prop)) {
+              obj[prop] = this.isArray(source[prop])
+                ? this.clone(source[prop])
+                : source[prop];
+            }
+          }
+        }
+        return obj;
+      },
+      /* eslint-enable no-restricted-syntax, no-param-reassign, prefer-rest-params */
+
+      /**
+       * Retrieves all the names of the object's own enumerable properties.
+       * (ECMAScript 5 only).
+       *
+       * @method (arg1)
+       * @public
+       * @param {Object}      the input object,
+       * @returns {Array}     returns the names of the keys,
+       * @since 0.0.0
+       */
+      keys(obj) {
+        return Object.keys(obj);
+      },
+
+      /**
+       * Parses all the names of the object's own enumerable properties.
+       * (replace for...in statement).
+       * (ECMAScript 5 only).
+       *
+       * @method (arg1, arg2)
+       * @public
+       * @param {Object}      the input object,
+       * @returns {Array}     returns the names of the keys,
+       * @since 0.0.0
+       */
+      forPropIn(obj, callback) {
+        // var keys = overslash.keys(obj);
+        this.keys(obj).forEach((key) => {
+          /* istanbul ignore next */
+          if ({}.hasOwnProperty.call(obj, key)) {
+            callback(key);
+          }
+        });
+      },
+
+      /**
+       * Extends source with target(s) while preserving the assessors.
+       *
+       * Nota:
+       * Clones a literal object at the first level while preserving the
+       * assessors (get and set). This should be the prefered method to Clones
+       * a literal object or a prototype that includes get and set assessors.
+       *
+       * Example:
+       * To clone a function prototype:
+       * var a = _.assign({}, fn.prototype);  // clone the original prototype,
+       * _.assign(fn2.prototype, a);          // assign it to fn2.prototype,
+       *
+       * @method (...arg1)
+       * @public
+       * @param {Object}      the objects to 'fusion',
+       * @returns {Object}    returns the reassigned object,
+       * @since 0.0.0
+       */
+      /* eslint-disable no-param-reassign, no-loop-func, prefer-rest-params */
+      assign() {
+        const target = arguments[0];
+        let source
+          , descriptors
+          , i
+          ;
+
+        for (i = 1; i < arguments.length; i++) {
+          source = arguments[i];
+          descriptors = Object.keys(source).reduce((props, key) => {
+            props[key] = Object.getOwnPropertyDescriptor(source, key);
+            return props;
+          }, {});
+        }
+        Object.defineProperties(target, descriptors);
+        return target;
+      },
+      /* eslint-enable no-param-reassign, no-loop-func, prefer-rest-params */
+    });
+
+
+    // END OF IIFE
+  }());
+  /* eslint-enable one-var, semi-style, no-underscore-dangle */
+
+  /** **************************************************************************
+   *
+   * Extends overslash with operations on Arrays (optional).
+   *
+   * arrayops.js is just a literal object that contains a set of functions. It
+   * can't be intantiated.
+   *
+   * Private Functions:
+   *  . none,
+   *
+   *
+   * Public Static Methods:
+   *  . contains                    returns true if the array contains the passed-in value,
+   *  . flatten                     flattens a nested array,
+   *  . max                         returns the maximum value in the array,
+   *  . min                         returns the minimum value in the array,
+   *  . share                       returns the list of the elements in common,
+   *  . pull                        removes the matching items from the passed-in array,
+   *  . include                     returns the list of items included in the passed-in array,
+   *  . partition                   returns matching and non matching criteria,
+   *
+   *
+   *
+   * @namespace    -
+   * @dependencies none
+   * @exports      -,
+   * @author       -
+   * @since        0.0.0
+   * @version      -
+   * ************************************************************************ */
+  /* - */
+  /* eslint-disable one-var, semi-style, no-underscore-dangle */
+
+  (function() {
+    // START OF IIFE
+
+
+    // -- Module Path
+
+
+    // -- Local Modules
+
+
+    // -- Local Constants
+
+
+    // -- Local Variables
+
+
+    // -- Public Static Methods ------------------------------------------------
+
+    extend(Overslash, {
+
+      /**
+       * Returns true if the array contains the passed-in value.
+       *
+       * Note:
+       * The array must be a first-level only array.
+       *
+       * @method(arg1, arg2)
+       * @public
+       * @param {Object}      the array,
+       * @param {Number/string} the passed-in value,
+       * @returns {Boolean}   returns true if the array contains the value,
+       * @since 0.0.0
+       */
+      contains(list, value) {
+        // jreturn list.indexOf(value) === -1 ? false : true;
+        return list.indexOf(value) !== -1;
+      },
+
+      /**
+       * Flattens a nested array (the nesting can be to any depth).
+       *
+       * @method (arg1, [arg2])
+       * @public
+       * @param {Array}       the input object,
+       * @param {Boolean}     the flattened level, false deep, true only first level,
+       * @returns {Array}     returns the flattened array or void(0),
+       * @since 0.0.0
+       */
+      /* eslint-disable no-void, no-plusplus, prefer-spread */
+      flatten(obj, shallow) {
+        let o = []
+          , idx = 0
+          , i
+          ;
+
+        if (!this.isArray(obj)) return void 0;
+        if (shallow) return [].concat.apply([], obj);
+
+        for (i = 0; i < obj.length; i++) {
+          if (this.isArray(obj[i])) {
+            o = o.concat(this.flatten(obj[i]));
+            idx = o.length;
+          } else {
+            o[idx++] = obj[i];
+          }
+        }
+        return o;
+      },
+      /* eslint-enable no-void, no-plusplus, prefer-spread */
+
+      /**
+       * Returns the maximum value in the array.
+       *
+       * @method (arg1)
+       * @public
+       * @param {Array}       the input object,
+       * @returns {Number}    returns the max value or void(0),
+       * @since 0.0.0
+       */
+      /* eslint-disable no-void */
+      max(obj) {
+        let max = null
+          , i
+          ;
+
+        if (!this.isArray(obj)) return void 0;
+
+        const o = this.flatten(obj);
+        for (i = 0; i < o.length; i++) {
+          if (max === null || max < o[i]) {
+            max = typeof o[i] === 'number' ? o[i] : max;
+          }
+        }
+        return max !== null ? max : void 0;
+      },
+      /* eslint-enable no-void */
+
+      /**
+       * Returns the minimum value in the array.
+       *
+       * @method (arg1)
+       * @public
+       * @param {Array}       the input object,
+       * @returns {Number}    returns the min value or void(0),
+       * @since 0.0.0
+       */
+      /* eslint-disable no-void */
+      min(obj) {
+        let min = null
+          , i
+          ;
+
+        if (!this.isArray(obj)) return void 0;
+
+        const o = this.flatten(obj);
+        for (i = 0; i < o.length; i++) {
+          if (min === null || min > o[i]) {
+            min = typeof o[i] === 'number' ? o[i] : min;
+          }
+        }
+        return min !== null ? min : void 0;
+      },
+      /* eslint-enable no-void */
+
+      /**
+       * Returns the list of the elements the passed-in arrays have in common.
+       *
+       * @method (arg)
+       * @public
+       * @param {Array}       n arrays to compare,
+       * @returns {Array}     returns the list of elements in common or empty,
+       * @since 0.0.0
+       */
+      share(array) {
+        const result = [];
+        let item
+          , i
+          , j
+          ;
+
+        // for (i = 0; i < array.length; i++) {
+        //   item = array[i];
+        //   if (overslash.contains(result, item)) continue;
+        //   for (j = 1; j < arguments.length; j++) {
+        //     if (!overslash.contains(arguments[j], item)) break;
+        //   }
+        //   if (j === arguments.length) result.push(item);
+        // }
+        for (i = 0; i < array.length; i++) {
+          item = array[i];
+          if (!this.contains(result, item)) {
+            for (j = 1; j < arguments.length; j++) {
+              /* eslint-disable-next-line prefer-rest-params */
+              if (!this.contains(arguments[j], item)) {
+                break;
+              }
+            }
+            if (j === arguments.length) {
+              result.push(item);
+            }
+          }
+        }
+        return result;
+      },
+
+      /**
+       * Removes the matching items from the passed-in array.
+       *
+       * @method (arg1, ...args)
+       * @public
+       * @param {Array}       the passed-in array,
+       * @param {...}         the items to remove (list of items or array),
+       * @returns {Array}     returns an array with the items removed,
+       * @since 0.0.0
+       */
+      pull(arr, ...args) {
+        const values = Array.isArray(args[0]) ? args[0] : args;
+        const removed = [];
+
+        let index;
+        values.forEach((val) => {
+          index = arr.indexOf(val);
+          if (index > -1) {
+            removed.push(arr.splice(index, 1)[0]);
+          }
+        });
+        return removed;
+      },
+
+      /**
+       * Returns the list of items included in the passed-in array.
+       *
+       * @method (arg1, ...args)
+       * @public
+       * @param {Array}       the passed-in array,
+       * @param {...}         the items to test (list of items or array),
+       * @returns {Array}     returns an array with the matching items,
+       * @since 0.0.0
+       */
+      include(arr, ...args) {
+        const values = Array.isArray(args[0]) ? args[0] : args;
+        return values.filter((val) => arr.indexOf(val) > -1);
+      },
+
+      /**
+       * Returns matching and non matching criteria.
+       *
+       * The first item in the returned array is an array of items that match
+       * the criteria, and the second is items that don’t.
+       *
+       * @method (arg1, criteria)
+       * @public
+       * @param {Array}       the passed-in array,
+       * @param {Function}    the matching criteria functions,
+       * @returns {Array}     returns an array of matching and non matching items,
+       * @since 0.0.0
+       */
+      partition(arr, criteria) {
+        return [
+          arr.filter((item) => criteria(item)),
+          arr.filter((item) => !criteria(item)),
+        ];
+      },
+    });
+
+
+    // END OF IIFE
+  }());
+  /* eslint-enable one-var, semi-style, no-underscore-dangle */
+
+  /** **************************************************************************
+   *
    * Extends overslash with function types (optional).
    *
    * functions.js is just a literal object that contains a set of functions. It

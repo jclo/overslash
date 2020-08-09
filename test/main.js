@@ -8,7 +8,7 @@
 
 
 // -- Local Modules
-const _          = require('../index.js')
+const _          = require('../lib/overslash-full.js')
     , core       = require('./int/core.js')
     , primitives = require('./int/primitives.js')
     , objects    = require('./int/objects.js')
