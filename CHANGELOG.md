@@ -7,7 +7,7 @@
   * Readded those files,
   * Tried to fix a Travis.CI strange behaviour,
   * Fixed an issue in the makedist task,
-  * ...,
+  * Released.
 
 
 ### 1.0.3 (March 20, 2020)
