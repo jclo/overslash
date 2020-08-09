@@ -4,6 +4,7 @@
 
   * Updated the project template,
   * Removed the files that were renamed as it confuses git,
+  * Readded those files,
   * ...,
 
 
