@@ -1,51 +1,56 @@
 // ESLint declarations:
 /* global describe, it */
-/* eslint one-var: 0, no-unused-vars: 0, import/no-extraneous-dependencies: 0, semi-style: 0 */
+/* eslint one-var: 0, no-unused-vars: 0, semi-style: 0, no-underscore-dangle: 0 */
 
 'use strict';
 
-// -- Node modules
+// -- Vendor Modules
 
-// -- Local modules
-const core = require('./int/core.js')
+
+// -- Local Modules
+const _          = require('../index.js')
+    , core       = require('./int/core.js')
     , primitives = require('./int/primitives.js')
-    , objects = require('./int/objects.js')
-    , objectsOps = require('./int/objectsOps.js')
-    , arraysOps = require('./int/arraysOps.js')
-    , functions = require('./int/functions.js')
-    , tokens = require('./int/tokens.js')
-    , csv = require('./int/csv.js')
-    , _ = require('../index.js')
+    , objects    = require('./int/objects.js')
+    , objectsOps = require('./int/objectsops.js')
+    , arraysops  = require('./int/arraysops.js')
+    , functions  = require('./int/functions.js')
+    , tokens     = require('./int/tokens.js')
+    , csv        = require('./int/csv.js')
     ;
 
-// -- Local constants
 
-// -- Local variables
+// -- Local Constants
+
+
+// -- Local Variables
 
 
 // -- Main
-describe('overslash:', () => {
-  // Test Overslash core:
-  core(_);
+describe('Test Overslash:', () => {
+  describe('overslash:', () => {
+    // Test Overslash core:
+    core(_);
 
-  // Test JS Primitive Types:
-  primitives(_);
+    // Test JS Primitive Types:
+    primitives(_);
 
-  // Test JS Object Types:
-  objects(_);
+    // Test JS Object Types:
+    objects(_);
 
-  // Operations on Objects:
-  objectsOps(_);
+    // Operations on Objects:
+    objectsOps(_);
 
-  // Operations on Arrays:
-  arraysOps(_);
+    // Operations on Arrays:
+    arraysops(_);
 
-  // Operations on functions:
-  functions(_);
+    // Operations on functions:
+    functions(_);
 
-  // Operations with tokens:
-  tokens(_);
+    // Operations with tokens:
+    tokens(_);
 
-  // Operations on csv blocks:
-  csv(_);
+    // Operations on csv blocks:
+    csv(_);
+  });
 });

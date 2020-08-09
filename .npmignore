@@ -1,5 +1,2 @@
-src/methods/alien.js
-src/methods/hack.js
-src/methods/lo.js
-z_pull.html
-z.html
+*
+!_dist/**/*

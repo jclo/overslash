@@ -1,17 +1,22 @@
+// ESLint declarations:
 /* global describe, it */
-/* eslint one-var: 0, no-unused-expressions: 0, import/no-extraneous-dependencies: 0,
-  semi-style: 0 */
+/* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0,
+  no-unused-expressions: 0 */
 
 'use strict';
 
-// -- Node modules
-const { expect } = require('chai')
-    ;
-
-// -- Local modules
+// -- Vendor Modules
+const { expect } = require('chai');
 
 
-// -- Local constants
+// -- Local Modules
+
+
+// -- Local Constants
+
+
+// -- Local Variables
+
 
 // -- Main
 module.exports = (_) => {
@@ -72,12 +77,33 @@ module.exports = (_) => {
       });
     });
 
-    describe('_.isDate():', () => {
-      it('Expects "var g = {}; _.isDate(g)" to return false.', () => {
-        expect(_.isDate(g)).to.be.false;
+    describe('_.isLiteralObject():', () => {
+      it('Expects "var g = {}; _.isLiteralObject(g)" to return true.', () => {
+        expect(_.isLiteralObject(g)).to.be.true;
       });
-      it('Expects "var j = new Date(); _.isDate(j)" to return true.', () => {
-        expect(_.isDate(j)).to.be.true;
+      it('Expects "var h = { a: 1 }; _.isLiteralObject(h)" to return true.', () => {
+        expect(_.isLiteralObject(h)).to.be.true;
+      });
+      it('Expects "var k = []; _.isLiteralObject(k)" to return false.', () => {
+        expect(_.isLiteralObject(k)).to.be.false;
+      });
+      it('Expects "var l = [ 1, 2 ]; _.isLiteralObject(l)" to return false.', () => {
+        expect(_.isLiteralObject(l)).to.be.false;
+      });
+      it('Expects "var m = function() {}; _.isLiteralObject(m)" to return false.', () => {
+        expect(_.isLiteralObject(m)).to.be.false;
+      });
+    });
+
+    describe('_.isFunction():', () => {
+      it('Expects "var g = {}; _.isFunction(g)" to return false.', () => {
+        expect(_.isFunction(g)).to.be.false;
+      });
+      it('Expects "var k = []; _.isFunction(k)" to return false.', () => {
+        expect(_.isFunction(k)).to.be.false;
+      });
+      it('Expects "var m = function() {}; _.isFunction(m)" to return true.', () => {
+        expect(_.isFunction(m)).to.be.true;
       });
     });
 
@@ -93,15 +119,14 @@ module.exports = (_) => {
       });
     });
 
-    describe('_.isFunction():', () => {
-      it('Expects "var g = {}; _.isFunction(g)" to return false.', () => {
-        expect(_.isFunction(g)).to.be.false;
+    // _.isMath
+
+    describe('_.isDate():', () => {
+      it('Expects "var g = {}; _.isDate(g)" to return false.', () => {
+        expect(_.isDate(g)).to.be.false;
       });
-      it('Expects "var k = []; _.isFunction(k)" to return false.', () => {
-        expect(_.isFunction(k)).to.be.false;
-      });
-      it('Expects "var m = function() {}; _.isFunction(m)" to return true.', () => {
-        expect(_.isFunction(m)).to.be.true;
+      it('Expects "var j = new Date(); _.isDate(j)" to return true.', () => {
+        expect(_.isDate(j)).to.be.true;
       });
     });
 

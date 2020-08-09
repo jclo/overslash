@@ -20,14 +20,12 @@ const config = require('./config')
 
 
 // -- Local Constants
-const { dist }     = config
-    , source       = config.src
-    , { libdir }   = config
-    , { libname }  = config
-    , { noparent } = config
-    , name         = libname.replace(/\s+/g, '').toLowerCase()
-    , { license }  = config
-    , list         = Object.keys(source)
+const { dist }    = config
+    , source      = config.src
+    , { libdir }  = config
+    , { name }    = config
+    , { license } = config
+    , list        = Object.keys(source)
     ;
 
 
@@ -85,8 +83,8 @@ function copydev(done) {
   });
 }
 
-// Copies the development version without parent.
-function makenoparentlib(done) {
+// Copies the module development version.
+function copydevm(done) {
   let doneCounter = 0;
 
   function incDoneCounter() {
@@ -97,9 +95,8 @@ function makenoparentlib(done) {
   }
 
   list.forEach((item) => {
-    src(`${libdir}/${name}-${item}${noparent}.js`)
+    src(`${libdir}/${name}-${item}.mjs`)
       .pipe(header(license))
-      .pipe(replace(/ {2}'use strict';\n\n/g, ''))
       .pipe(dest(`${dist}/lib`))
       .pipe(synchro(incDoneCounter))
     ;
@@ -122,7 +119,30 @@ function makeminified(done) {
       .pipe(replace('/*! ***', '/** ***'))
       .pipe(uglify())
       .pipe(header(license))
-      .pipe(concat(`${name}-${item}.min.js`))
+      .pipe(concat(`${name}.min.js`))
+      .pipe(dest(`${dist}/lib`))
+      .pipe(synchro(incDoneCounter))
+    ;
+  });
+}
+
+// Creates the module minified version.
+function makeminifiedm(done) {
+  let doneCounter = 0;
+
+  function incDoneCounter() {
+    doneCounter += 1;
+    if (doneCounter >= list.length) {
+      done();
+    }
+  }
+
+  list.forEach((item) => {
+    src(`${libdir}/${name}-${item}.mjs`)
+      .pipe(replace('/*! ***', '/** ***'))
+      .pipe(uglify())
+      .pipe(header(license))
+      .pipe(concat(`${name}.min.mjs`))
       .pipe(dest(`${dist}/lib`))
       .pipe(synchro(incDoneCounter))
     ;
@@ -134,5 +154,5 @@ function makeminified(done) {
 
 module.exports = series(
   deldist,
-  parallel(doskeleton, copydev, makenoparentlib, makeminified),
+  parallel(doskeleton, copydev, copydevm, makeminified, makeminifiedm),
 );

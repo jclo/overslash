@@ -1,8 +1,8 @@
 /** **************************************************************************
  *
- * Extends overslash with operations on Objects (optional).
+ *  Extends overslash with operations on Objects (optional).
  *
- * objectOps.js is just a literal object that contains a set of functions. It
+ * objectsops.js is just a literal object that contains a set of functions. It
  * can't be intantiated.
  *
  * Private Functions:
@@ -18,14 +18,14 @@
  *
  *
  *
- * @namespace    Overslash
+ * @namespace    -
  * @dependencies none
- * @exports      -
+ * @exports      -,
  * @author       -
  * @since        0.0.0
  * @version      -
  * ************************************************************************ */
-/* global extend */
+/* global extend, Overslash */
 /* eslint-disable one-var, semi-style, no-underscore-dangle */
 
 'use strict';
@@ -34,22 +34,21 @@
   // START OF IIFE
 
 
-  // -- Module path
+  // -- Module Path
 
 
-  // -- Local modules
+  // -- Local Modules
 
 
-  // -- Local constants
+  // -- Local Constants
 
 
-  // -- Local variables
+  // -- Local Variables
 
 
-  // -- Public function ------------------------------------------------------
+  // -- Public Static Methods ------------------------------------------------
 
   extend(Overslash, {
-
     /**
      * Clones a literal object or an array.
      *
@@ -190,6 +189,7 @@
     /* eslint-enable no-param-reassign, no-loop-func, prefer-rest-params */
   });
 
+
   // END OF IIFE
 }());
-/* eslint-disable one-var, semi-style, no-underscore-dangle */
+/* eslint-enable one-var, semi-style, no-underscore-dangle */

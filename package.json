@@ -1,8 +1,11 @@
 {
   "name": "@mobilabs/overslash",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A tiny modular Javascript utility library",
-  "main": "_dist/lib/overslash-full.js",
+  "main": "_dist/lib/overslash-obj.js",
+  "minified": "_dist/lib/overslash-obj.min.js",
+  "unpkg": "_dist/lib/overslash-obj.mjs",
+  "module": "_dist/lib/overslash-obj.min.mjs",
   "bin": {},
   "scripts": {
     "build": "gulp build",
@@ -15,6 +18,8 @@
     "report": "nyc report",
     "makedist": "gulp makedist",
     "app": "gulp runapp",
+    "makeprivate": "gulp makeprivate && sh tasks/compress.sh ${npm_package_name} ${npm_package_version} @mobilabs",
+    "makelib": "gulp build && gulp makedist && gulp makeprivate && sh tasks/compress.sh ${npm_package_name} ${npm_package_version}",
     "doc": ""
   },
   "repository": {
@@ -37,24 +42,24 @@
   "dependencies": {},
   "devDependencies": {
     "chai": "^4.2.0",
-    "coveralls": "^3.0.9",
+    "coveralls": "^3.1.0",
     "cross-env": "^7.0.2",
     "del": "^5.1.0",
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb-base": "^14.1.0",
-    "eslint-plugin-import": "^2.20.1",
+    "eslint": "^7.6.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0",
     "gulp": "^4.0.2",
     "gulp-concat": "^2.6.1",
     "gulp-connect": "^5.7.0",
     "gulp-header": "^2.0.9",
     "gulp-replace": "^1.0.0",
     "gulp-uglify-es": "^2.0.0",
-    "husky": "^4.2.3",
-    "mocha": "^7.1.0",
-    "nyc": "^15.0.0",
-    "open": "^7.0.3",
+    "husky": "^4.2.5",
+    "mocha": "^8.1.1",
+    "nyc": "^15.1.0",
+    "open": "^7.1.0",
     "opener": "^1.5.1",
-    "through2": "^3.0.1"
+    "through2": "^4.0.2"
   },
   "publishConfig": {
     "access": "public"

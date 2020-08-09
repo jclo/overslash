@@ -19,11 +19,10 @@ const pack   = require('../package.json')
 
 // -- Local Constants
 const destination  = config.libdir
+    , { ES6GLOB }  = config
     , source       = config.src
-    , lib          = config.libname
-    , name         = lib.replace(/\s+/g, '').toLowerCase()
-    , { parent }   = config
-    , { noparent } = config
+    , { libname }  = config
+    , { name }     = config
     , list         = Object.keys(source)
     , { version }  = pack
     ;
@@ -72,6 +71,7 @@ function docore(done) {
     const core = source[item].slice(1, -1);
 
     src(core)
+      .pipe(replace('{{lib:name}}', libname))
       .pipe(replace('{{lib:version}}', version))
       // remove the extra global and 'use strict':
       .pipe(replace(/\/\* global[\w$_\s,]+\*\//g, '/* - */'))
@@ -87,8 +87,8 @@ function docore(done) {
   });
 }
 
-// Creates the library without 'this'.
-function dolibnoparent(done) {
+// Creates the library.
+function dolib(done) {
   let doneCounter = 0;
 
   function incDoneCounter() {
@@ -104,7 +104,10 @@ function dolibnoparent(done) {
         ;
 
     src([head, `${destination}/core-${item}.js`, foot])
-      .pipe(concat(`${name}-${item}${noparent}.js`))
+      .pipe(replace('{{lib:es6:define}}\n', ''))
+      .pipe(replace('{{lib:es6:link}}', 'this'))
+      .pipe(replace('{{lib:es6:export}}\n', ''))
+      .pipe(concat(`${name}-${item}.js`))
       // fix the blanck lines we indented too:
       .pipe(replace(/\s{2}\n/g, '\n'))
       .pipe(dest(destination))
@@ -113,19 +116,36 @@ function dolibnoparent(done) {
   });
 }
 
-// Creates the library.
-/* eslint-disable arrow-body-style */
-function dolib(done) {
+// Creates the es6 module.
+function domodule(done) {
+  let exportm = '\n// -- Export\n';
+  exportm += `export default ${ES6GLOB}.${libname};`;
+
+  let doneCounter = 0;
+  function incDoneCounter() {
+    doneCounter += 1;
+    if (doneCounter >= list.length) {
+      done();
+    }
+  }
+
   list.forEach((item) => {
-    return src(`${destination}/${name}-${item}${noparent}.js`)
-      .pipe(replace('{{lib:parent}}', parent))
-      .pipe(concat(`${name}-${item}.js`))
+    const head = source[item][0]
+        , foot = source[item][source[item].length - 1]
+        ;
+
+    src([head, `${destination}/core-${item}.js`, foot])
+      .pipe(replace('{{lib:es6:define}}', `const ${ES6GLOB} = {};`))
+      .pipe(replace('{{lib:es6:link}}', ES6GLOB))
+      .pipe(replace('{{lib:es6:export}}', exportm))
+      .pipe(concat(`${name}-${item}.mjs`))
+      // fix the blanck lines we indented too:
+      .pipe(replace(/\s{2}\n/g, '\n'))
       .pipe(dest(destination))
+      .pipe(synchro(incDoneCounter))
     ;
   });
-  done();
 }
-/* eslint-enable arrow-body-style */
 
 // Removes the temp file(s).
 function delcore(done) {
@@ -135,4 +155,4 @@ function delcore(done) {
 
 
 // -- Gulp Public Task(s)
-module.exports = series(clean, docore, dolibnoparent, dolib, delcore);
+module.exports = series(clean, docore, dolib, domodule, delcore);

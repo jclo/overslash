@@ -10,19 +10,19 @@
  *
  *
  * Public Static Methods:
- *  . ...,
+ *  . none
  *
  *
  *
- * @namespace    Overslash
+ * @namespace    -
  * @dependencies none
- * @exports      -
+ * @exports      -,
  * @author       -
  * @since        0.0.0
  * @version      -
  * ************************************************************************ */
-/* global extend */
-/* - */
+/* global extend, Overslash */
+/* eslint-disable no-underscore-dangle */
 
 'use strict';
 
@@ -30,24 +30,25 @@
   // START OF IIFE
 
 
-  // -- Module path
+  // -- Module Path
 
 
-  // -- Local modules
+  // -- Local Modules
 
 
-  // -- Local constants
+  // -- Local Constants
 
 
-  // -- Local variables
+  // -- Local Variables
 
 
-  // -- Public function ------------------------------------------------------
+  // -- Public Static Methods ------------------------------------------------
 
   extend(Overslash, {
     //
   });
 
+
   // END OF IIFE
 }());
-/* - */
+/* eslint-enable no-underscore-dangle */

@@ -21,11 +21,11 @@ const libname = 'Overslash'
 // -- Main
 
 module.exports = {
+  ES6GLOB: '$__ES6GLOB',
   dist: './_dist',
   libdir: './lib',
   libname,
-  parent: 'this',
-  noparent: '-noparent',
+  name,
   index: './index.js',
   distlink: `./_dist/lib/${name}.js`,
 
@@ -33,78 +33,62 @@ module.exports = {
   /* eslint-disable no-multi-spaces */
   src: {
     core: [
-      // These three files (_header, and extend.js) must be declared in
-      // this order as they create the umd module and define the function that
-      // extends the method object.
+      // These three files (_header, _head.js and extend.js) must be declared
+      // in this order as they create the umd module, define the global
+      // constants/variables, the object tree and the function to fill
+      // the tree!
       './src/_header',
+      './src/_head.js',
       './src/lib/extend.js',
 
       './src/overslash.js',
       './src/methods/primitives.js',
       './src/methods/objects.js',
 
-      // This file must always be the last one as it closes the umd module.
+      // This file must always be the last one as it  closes the umd module.
       './src/_footer',
     ],
+
     obj: [
       './src/_header',
+      './src/_head.js',
       './src/lib/extend.js',
 
       './src/overslash.js',
       './src/methods/primitives.js',
       './src/methods/objects.js',
-      './src/methods/objectsOps.js',
-      './src/methods/arraysOps.js',
+
+      './src/methods/objectsops.js',
+      './src/methods/arraysops.js',
       './src/methods/functions.js',
 
+      // This file must always be the last one as it  closes the umd module.
       './src/_footer',
     ],
-    tok: [
-      './src/_header',
-      './src/lib/extend.js',
 
-      './src/overslash.js',
-      './src/methods/primitives.js',
-      './src/methods/objects.js',
-      './src/methods/objectsOps.js',
-      './src/methods/arraysOps.js',
-      './src/methods/functions.js',
-      './src/methods/tokens.js',
-
-      './src/_footer',
-    ],
-    csv: [
-      './src/_header',
-      './src/lib/extend.js',
-
-      './src/overslash.js',
-      './src/methods/primitives.js',
-      './src/methods/objects.js',
-      './src/methods/objectsOps.js',
-      './src/methods/arraysOps.js',
-      './src/methods/functions.js',
-      './src/methods/tokens.js',
-      './src/methods/csv.js',
-
-      './src/_footer',
-    ],
     full: [
       './src/_header',
+      './src/_head.js',
       './src/lib/extend.js',
 
       './src/overslash.js',
       './src/methods/primitives.js',
       './src/methods/objects.js',
-      './src/methods/objectsOps.js',
-      './src/methods/arraysOps.js',
+
+      './src/methods/objectsops.js',
+      './src/methods/arraysops.js',
       './src/methods/functions.js',
+
       './src/methods/tokens.js',
       './src/methods/csv.js',
+      './src/methods/others.js',
 
+      // This file must always be the last one as it  closes the umd module.
       './src/_footer',
     ],
   },
   /* eslint-enable no-multi-spaces */
+
 
   get license() {
     return ['/*! ****************************************************************************',
@@ -115,7 +99,7 @@ module.exports = {
       ` * Copyright (c) ${(new Date()).getFullYear()} ${pack.author.name} <${pack.author.email}> (${pack.author.url}).`,
       ' * Released under the MIT license. You may obtain a copy of the License',
       ' * at: http://www.opensource.org/licenses/mit-license.php).',
-      ' * Built from ES6lib v0.0.12.',
+      ' * Built from ES6lib v1.0.0-beta.7.',
       ' * ************************************************************************** */',
       ''].join('\n');
   },

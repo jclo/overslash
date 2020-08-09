@@ -2,7 +2,7 @@
  *
  * Extends overslash with operations on Arrays (optional).
  *
- * arraysOps.js is just a literal object that contains a set of functions. It
+ * arrayops.js is just a literal object that contains a set of functions. It
  * can't be intantiated.
  *
  * Private Functions:
@@ -15,17 +15,20 @@
  *  . max                         returns the maximum value in the array,
  *  . min                         returns the minimum value in the array,
  *  . share                       returns the list of the elements in common,
+ *  . pull                        removes the matching items from the passed-in array,
+ *  . include                     returns the list of items included in the passed-in array,
+ *  . partition                   returns matching and non matching criteria,
  *
  *
  *
- * @namespace    Overslash
+ * @namespace    -
  * @dependencies none
- * @exports      -
+ * @exports      -,
  * @author       -
  * @since        0.0.0
  * @version      -
  * ************************************************************************ */
-/* global extend */
+/* global extend, Overslash */
 /* eslint-disable one-var, semi-style, no-underscore-dangle */
 
 'use strict';
@@ -34,19 +37,19 @@
   // START OF IIFE
 
 
-  // -- Module path
+  // -- Module Path
 
 
-  // -- Local modules
+  // -- Local Modules
 
 
-  // -- Local constants
+  // -- Local Constants
 
 
-  // -- Local variables
+  // -- Local Variables
 
 
-  // -- Public function ------------------------------------------------------
+  // -- Public Static Methods ------------------------------------------------
 
   extend(Overslash, {
 
@@ -194,7 +197,67 @@
       }
       return result;
     },
+
+    /**
+     * Removes the matching items from the passed-in array.
+     *
+     * @method (arg1, ...args)
+     * @public
+     * @param {Array}       the passed-in array,
+     * @param {...}         the items to remove (list of items or array),
+     * @returns {Array}     returns an array with the items removed,
+     * @since 0.0.0
+     */
+    pull(arr, ...args) {
+      const values = Array.isArray(args[0]) ? args[0] : args;
+      const removed = [];
+
+      let index;
+      values.forEach((val) => {
+        index = arr.indexOf(val);
+        if (index > -1) {
+          removed.push(arr.splice(index, 1)[0]);
+        }
+      });
+      return removed;
+    },
+
+    /**
+     * Returns the list of items included in the passed-in array.
+     *
+     * @method (arg1, ...args)
+     * @public
+     * @param {Array}       the passed-in array,
+     * @param {...}         the items to test (list of items or array),
+     * @returns {Array}     returns an array with the matching items,
+     * @since 0.0.0
+     */
+    include(arr, ...args) {
+      const values = Array.isArray(args[0]) ? args[0] : args;
+      return values.filter((val) => arr.indexOf(val) > -1);
+    },
+
+    /**
+     * Returns matching and non matching criteria.
+     *
+     * The first item in the returned array is an array of items that match
+     * the criteria, and the second is items that don’t.
+     *
+     * @method (arg1, criteria)
+     * @public
+     * @param {Array}       the passed-in array,
+     * @param {Function}    the matching criteria functions,
+     * @returns {Array}     returns an array of matching and non matching items,
+     * @since 0.0.0
+     */
+    partition(arr, criteria) {
+      return [
+        arr.filter((item) => criteria(item)),
+        arr.filter((item) => !criteria(item)),
+      ];
+    },
   });
+
 
   // END OF IIFE
 }());

@@ -20,14 +20,14 @@
  *
  *
  *
- * @namespace    Overslash
+ * @namespace    -
  * @dependencies none
  * @exports      -
  * @author       -
  * @since        0.0.0
  * @version      -
  * ************************************************************************ */
-/* global extend */
+/* global extend, Overslash */
 /* - */
 
 'use strict';
@@ -36,22 +36,21 @@
   // START OF IIFE
 
 
-  // -- Module path
+  // -- Module Path
 
 
-  // -- Local modules
+  // -- Local Modules
 
 
-  // -- Local constants
+  // -- Local Constants
 
 
-  // -- Local variables
+  // -- Local Variables
 
 
-  // -- Public function ------------------------------------------------------
+  // -- Public Static Methods ------------------------------------------------
 
   extend(Overslash, {
-
     /**
      * Is a given variable undefined?
      *
@@ -148,6 +147,7 @@
     },
     /* eslint-enable no-void */
   });
+
 
   // END OF IIFE
 }());

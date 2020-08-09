@@ -1,17 +1,21 @@
+// ESLint declarations:
 /* global describe, it */
-/* eslint one-var: 0, no-unused-expressions: 0, import/no-extraneous-dependencies: 0,
-  semi-style: 0 */
+/* eslint semi-style: 0, no-underscore-dangle: 0 */
 
 'use strict';
 
-// -- Node modules
-const { expect } = require('chai')
-    ;
-
-// -- Local modules
+// -- Vendor Modules
+const { expect } = require('chai');
 
 
-// -- Local constants
+// -- Local Modules
+
+
+// -- Local Constants
+
+
+// -- Local Variables
+
 
 // -- Main
 module.exports = (_) => {

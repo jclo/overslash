@@ -1,17 +1,22 @@
+// ESLint declarations:
 /* global describe, it */
-/* eslint one-var: 0, no-unused-expressions: 0, import/no-extraneous-dependencies: 0,
-  semi-style: 0 */
+/* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0,
+  no-unused-expressions: 0, dot-notation: 0 */
 
 'use strict';
 
-// -- Node modules
-const { expect } = require('chai')
-    ;
-
-// -- Local modules
+// -- Vendor Modules
+const { expect } = require('chai');
 
 
-// -- Local constants
+// -- Local Modules
+
+
+// -- Local Constants
+
+
+// -- Local Variables
+
 
 // -- Main
 module.exports = (_) => {
@@ -231,6 +236,115 @@ module.exports = (_) => {
       });
       it('Expects _.share(["a", "bc", "de"], ["bc","de"], ["fg"]) to return an empty array.', () => {
         expect(_.share(['a', 'bc', 'de'], ['bc', 'de'], ['fg'])).to.be.an('Array').that.is.empty;
+      });
+    });
+
+    describe('_.pull():', () => {
+      const a = ['orange', 'banana', 'apple', 'apricots', 'peaches', 'strawberries'];
+      const b = _.pull(a, 'banana', 'raspberries');
+
+      const a2 = ['orange', 'banana', 'apple', 'apricots', 'peaches', 'strawberries'];
+      const b2 = _.pull(a2, ['banana', 'apricots']);
+
+      it('Expects _.pull(a, "banana", "raspberries") to return an array with 1 item.', () => {
+        expect(b).to.be.an('array').that.has.lengthOf(1);
+      });
+
+      it('Expects this array to contain "banana".', () => {
+        expect(b.indexOf('banana')).to.be.a('number').that.is.equal(0);
+      });
+
+      it('Expects the array "a" to have 5 items.', () => {
+        expect(a).to.be.an('array').that.has.lengthOf(5);
+      });
+
+      it('Expects the array "a" not to have the item "banana".', () => {
+        expect(a.indexOf('banana')).to.be.a('number').that.is.equal(-1);
+      });
+
+
+      it('Expects _.pull(a2, "banana", "apricots") to return an array with 2 items.', () => {
+        expect(b2).to.be.an('array').that.has.lengthOf(2);
+      });
+
+      it('Expects this array to contain "banana".', () => {
+        expect(b2.indexOf('banana')).to.be.a('number').that.is.equal(0);
+      });
+
+      it('Expects this array to contain "apricots".', () => {
+        expect(b2.indexOf('apricots')).to.be.a('number').that.is.equal(1);
+      });
+
+      it('Expects the array "a2" to have 4 items.', () => {
+        expect(a2).to.be.an('array').that.has.lengthOf(4);
+      });
+
+      it('Expects the array "a2" not to have the item "banana".', () => {
+        expect(a2.indexOf('banana')).to.be.a('number').that.is.equal(-1);
+      });
+
+      it('Expects the array "a2" not to have the item "apricots".', () => {
+        expect(a2.indexOf('apricots')).to.be.a('number').that.is.equal(-1);
+      });
+    });
+
+    describe('_.include():', () => {
+      const a = ['orange', 'banana', 'apple', 'apricots', 'peaches', 'strawberries'];
+      const b = _.include(a, 'banana', 'raspberries');
+      const c = _.include(a, ['banana', 'raspberries', 'apricots']);
+
+      it('Expects _include(a, "banana", "raspberries") to return an array with 1 item.', () => {
+        expect(b).to.be.an('array').that.has.lengthOf(1);
+      });
+
+      it('Expects this array to contain "banana".', () => {
+        expect(b.indexOf('banana')).to.be.a('number').that.is.equal(0);
+      });
+
+      it('Expects _include(a, ["banana", "raspberries", "apricots"]) to return an array with 2 items.', () => {
+        expect(c).to.be.an('array').that.has.lengthOf(2);
+      });
+
+      it('Expects this array to contain "banana".', () => {
+        expect(c.indexOf('banana')).to.be.a('number').that.is.equal(0);
+      });
+
+      it('Expects this array to contain "apricots".', () => {
+        expect(c.indexOf('apricots')).to.be.a('number').that.is.equal(1);
+      });
+    });
+
+    describe('_.partition():', () => {
+      const users = [
+        { user: 'barney', age: 36, active: false },
+        { user: 'fred', age: 40, active: true },
+        { user: 'pebbles', age: 1, active: false },
+      ];
+
+      const resp = _.partition(users, (user) => user.age > 35);
+
+      it('Expects "_.partition(users, (user) => user.age > 35)" to return an array.', () => {
+        expect(resp).to.be.an('array').that.has.lengthOf(2);
+      });
+
+      it('Expects the first item to be an array with two items.', () => {
+        expect(resp[0]).to.be.an('array').that.has.lengthOf(2);
+      });
+
+      it('Expects the second item to be an array with one item.', () => {
+        expect(resp[1]).to.be.an('array').that.has.lengthOf(1);
+      });
+
+      it('Expects the first array to have the user "barney".', () => {
+        expect(resp[0][0].user).to.be.a('string').that.is.equal('barney');
+      });
+
+      it('Expects the first array to have the user "fred".', () => {
+        expect(resp[0][1].user).to.be.a('string').that.is.equal('fred');
+      });
+
+      it('Expects the second array to have the user "pebbles".', () => {
+        expect(resp[1][0].user).to.be.a('string').that.is.equal('pebbles');
       });
     });
   });

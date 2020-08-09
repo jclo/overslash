@@ -1,6 +1,6 @@
 /** **************************************************************************
  *
- * Extends overslash with Operations on csv blocks (optional).
+ * Extends overslash with operations on csv blocks (optional).
  *
  * csv.js is just a literal object that contains a set of functions. It
  * can't be intantiated.
@@ -14,14 +14,14 @@
  *
  *
  *
- * @namespace    Overslash
+ * @namespace    -
  * @dependencies none
- * @exports      -
+ * @exports      -,
  * @author       -
  * @since        0.0.0
  * @version      -
  * ************************************************************************ */
-/* global extend */
+/* global extend, Overslash */
 /* eslint-disable one-var, semi-style, no-underscore-dangle */
 
 'use strict';
@@ -30,22 +30,21 @@
   // START OF IIFE
 
 
-  // -- Module path
+  // -- Module Path
 
 
-  // -- Local modules
+  // -- Local Modules
 
 
-  // -- Local constants
+  // -- Local Constants
 
 
-  // -- Local variables
+  // -- Local Variables
 
 
-  // -- Public function ------------------------------------------------------
+  // -- Public Static Methods ------------------------------------------------
 
   extend(Overslash, {
-
     /**
      * Converts an csv block to an array or arrays.
      *
