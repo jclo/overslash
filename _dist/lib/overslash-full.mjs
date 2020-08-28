@@ -1,12 +1,12 @@
 /*! ****************************************************************************
- * Overslash v1.0.4
+ * Overslash v1.0.5
  *
  * A tiny modular Javascript utility library.
  * (you can download it from npm or github repositories)
  * Copyright (c) 2020 Mobilabs <contact@mobilabs.fr> (http://www.mobilabs.fr).
  * Released under the MIT license. You may obtain a copy of the License
  * at: http://www.opensource.org/licenses/mit-license.php).
- * Built from ES6lib v1.0.0-beta.7.
+ * Built from ES6lib v1.0.1.
  * ************************************************************************** */
 // ESLint declarations
 /* global define */
@@ -136,6 +136,8 @@ const $__ES6GLOB = {};
    *
    * Public Static Methods:
    *  . noConflict                  returns a reference to this Overslash object,
+   *  . whoami                      returns the library name and version,
+   *
    *
    *  Primitives types (mandatory):
    *  . isUndefined                 is a given variable undefined?
@@ -223,13 +225,14 @@ const $__ES6GLOB = {};
 
       // Useful to retrieve the library name and version when it is
       // embedded in another library as an object:
-      library: { name: 'Overslash', version: '1.0.4' },
+      _library: { name: 'Overslash', version: '1.0.5' },
 
 
       // -- Private Static Methods ---------------------------------------------
 
       /**
        * Returns the internal objects for testing purpose.
+       * (must not be deleted)
        *
        * @method ()
        * @private
@@ -246,6 +249,7 @@ const $__ES6GLOB = {};
 
       /**
        * Returns a reference to this Overslash object.
+       * (must not be deleted)
        *
        * Nota:
        * Running Overslash in noConflict mode, returns the Overslash variable to its
@@ -262,10 +266,25 @@ const $__ES6GLOB = {};
         root.Overslash = previousOverslash;
         return this;
       },
+
+      /**
+       * Returns the library name and version.
+       * (must not be deleted)
+       *
+       * @method ()
+       * @public
+       * @param {}            -,
+       * @returns {Object}    returns the library name and version,
+       * @since 0.0.0
+       */
+      whoami() {
+        return this._library;
+      },
     };
 
-    // Attaches a constant to Overslash that provides the version of the lib.
-    Overslash.VERSION = '1.0.4';
+    // Attaches constants to Overslash that provide name and version of the lib.
+    Overslash.NAME = 'Overslash';
+    Overslash.VERSION = '1.0.5';
 
 
     // Extends Overslash with new static methods.

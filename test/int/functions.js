@@ -1,7 +1,6 @@
 // ESLint declarations:
 /* global describe, it */
-/* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0,
-  no-unused-expressions: 0 */
+/* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0 */
 
 'use strict';
 
@@ -19,10 +18,10 @@ const { expect } = require('chai');
 
 
 // -- Main
-module.exports = (_) => {
+module.exports = () => {
   describe('Test functions ...:', () => {
     it('Expects ...', () => {
-      expect(true).to.be.true;
+      expect(true).to.be.equal(true);
     });
   });
 };

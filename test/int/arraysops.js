@@ -24,22 +24,22 @@ module.exports = (_) => {
     //
     describe('_.contains():', () => {
       it('Expects _.contains([1, 2, 3], 2) to return true.', () => {
-        expect(_.contains([1, 2, 3], 2)).to.be.true;
+        expect(_.contains([1, 2, 3], 2)).to.be.equal(true);
       });
       it('Expects _.contains([1, 2, 3], "s") to return false.', () => {
-        expect(_.contains([1, 2, 3], 's')).to.be.false;
+        expect(_.contains([1, 2, 3], 's')).to.be.equal(false);
       });
       it('Expects _.contains(["a", "b", "c"], "c") to return true.', () => {
-        expect(_.contains(['a', 'b', 'c'], 'c')).to.be.true;
+        expect(_.contains(['a', 'b', 'c'], 'c')).to.be.equal(true);
       });
       it('Expects _.contains(["a", "b", "c"], "d") to return false.', () => {
-        expect(_.contains(['a', 'b', 'c'], 'd')).to.be.false;
+        expect(_.contains(['a', 'b', 'c'], 'd')).to.be.equal(false);
       });
     });
 
     describe('_.flatten():', () => {
       it('Expects _.flatten("string") to return undefined.', () => {
-        expect(_.flatten('string')).to.be.undefined;
+        expect(_.flatten('string')).to.be.equal(undefined);
       });
 
       it('Expects _.flatten([1, 2, 3, 4, 5, 6]) to return an array with 6 elements.', () => {
@@ -183,11 +183,11 @@ module.exports = (_) => {
 
     describe('_.max():', () => {
       it('Expects _.max("string") to return void(0))', () => {
-        expect(_.max('string')).to.be.undefined;
+        expect(_.max('string')).to.be.equal(undefined);
       });
 
       it('Expects _.max(["a", "b", "c"]) to return void(0))', () => {
-        expect(_.max(['a', 'b', 'c'])).to.be.undefined;
+        expect(_.max(['a', 'b', 'c'])).to.be.equal(undefined);
       });
 
       it('Expects _.max([1, 7, 5, -10]) to return 7', () => {
@@ -201,11 +201,11 @@ module.exports = (_) => {
 
     describe('_.min():', () => {
       it('Expects _.min("string") to return void(0))', () => {
-        expect(_.min('string')).to.be.undefined;
+        expect(_.min('string')).to.be.equal(undefined);
       });
 
       it('Expects _.min(["a", "b", "c"]) to return void(0))', () => {
-        expect(_.min(['a', 'b', 'c'])).to.be.undefined;
+        expect(_.min(['a', 'b', 'c'])).to.be.equal(undefined);
       });
 
       it('Expects _.min([1, 7, 5, -10]) to return -10', () => {

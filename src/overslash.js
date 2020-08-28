@@ -17,6 +17,8 @@
  *
  * Public Static Methods:
  *  . noConflict                  returns a reference to this Overslash object,
+ *  . whoami                      returns the library name and version,
+ *
  *
  *  Primitives types (mandatory):
  *  . isUndefined                 is a given variable undefined?
@@ -106,13 +108,14 @@
 
     // Useful to retrieve the library name and version when it is
     // embedded in another library as an object:
-    library: { name: '{{lib:name}}', version: '{{lib:version}}' },
+    _library: { name: '{{lib:name}}', version: '{{lib:version}}' },
 
 
     // -- Private Static Methods ---------------------------------------------
 
     /**
      * Returns the internal objects for testing purpose.
+     * (must not be deleted)
      *
      * @method ()
      * @private
@@ -129,6 +132,7 @@
 
     /**
      * Returns a reference to this Overslash object.
+     * (must not be deleted)
      *
      * Nota:
      * Running Overslash in noConflict mode, returns the Overslash variable to its
@@ -145,9 +149,24 @@
       root.Overslash = previousOverslash;
       return this;
     },
+
+    /**
+     * Returns the library name and version.
+     * (must not be deleted)
+     *
+     * @method ()
+     * @public
+     * @param {}            -,
+     * @returns {Object}    returns the library name and version,
+     * @since 0.0.0
+     */
+    whoami() {
+      return this._library;
+    },
   };
 
-  // Attaches a constant to Overslash that provides the version of the lib.
+  // Attaches constants to Overslash that provide name and version of the lib.
+  Overslash.NAME = '{{lib:name}}';
   Overslash.VERSION = '{{lib:version}}';
 
 

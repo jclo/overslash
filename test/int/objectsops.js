@@ -1,7 +1,7 @@
 // ESLint declarations:
 /* global describe, it */
-/* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0,
-  no-unused-expressions: 0, dot-notation: 0 */
+/* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0, dot-notation: 0,
+  no-unused-expressions: 0 */
 
 'use strict';
 
@@ -42,10 +42,10 @@ module.exports = (_) => {
         g.length = 0;
 
         it('Expects _.clone("string") to return undefined.', () => {
-          expect(_.clone('string')).to.be.undefined;
+          expect(_.clone('string')).to.be.equal(undefined);
         });
         it('Expects _.clone(1) to return undefined.', () => {
-          expect(_.clone(1)).to.be.undefined;
+          expect(_.clone(1)).to.be.equal(undefined);
         });
 
         it('Expects "var a = { a: 1, b: {c: {d: {e: 1}}}}; delete a.a; delete a.b;" to return an empty object.', () => {

@@ -1,6 +1,6 @@
 // ESLint declarations:
 /* global describe, it */
-/* eslint semi-style: 0, no-underscore-dangle: 0, no-unused-expressions: 0 */
+/* eslint semi-style: 0, no-underscore-dangle: 0 */
 
 'use strict';
 
@@ -25,13 +25,13 @@ module.exports = (_) => {
       it('Expects _.csv2array() to throw an error.', () => {
         let err = false;
         try { _.csv2array(); } catch (e) { err = true; }
-        expect(err).to.be.true;
+        expect(err).to.be.equal(true);
       });
 
       it('Expects _.csv2array(1) to throw an error.', () => {
         let err = false;
         try { _.csv2array(1); } catch (e) { err = true; }
-        expect(err).to.be.true;
+        expect(err).to.be.equal(true);
       });
 
       it('Expects _.csv2array("1,2,3") to return an array with 1 element.', () => {

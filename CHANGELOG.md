@@ -1,5 +1,11 @@
 ### HEAD
 
+### 1.0.5 (August 28, 2020)
+
+  * Updated the project dependencies,
+  * ...,
+
+
 ### 1.0.4 (August 9, 2020)
 
   * Updated the project template,

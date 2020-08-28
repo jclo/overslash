@@ -60,7 +60,8 @@ function deldist(done) {
 // Copies README and LICENSE.
 function doskeleton() {
   return src(['README.md', 'LICENSE.md'])
-    .pipe(dest(dist));
+    .pipe(dest(dist))
+  ;
 }
 
 // Copies the development version.

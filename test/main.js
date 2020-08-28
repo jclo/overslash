@@ -1,6 +1,6 @@
 // ESLint declarations:
-/* global describe, it */
-/* eslint one-var: 0, no-unused-vars: 0, semi-style: 0, no-underscore-dangle: 0 */
+/* global describe */
+/* eslint one-var: 0, semi-style: 0 */
 
 'use strict';
 
@@ -8,8 +8,10 @@
 
 
 // -- Local Modules
-const _          = require('../lib/overslash-full.js')
-    , core       = require('./int/core.js')
+const _       = require('../lib/overslash-full')
+    , pack    = require('../package.json')
+    , testlib = require('./int/lib')
+
     , primitives = require('./int/primitives.js')
     , objects    = require('./int/objects.js')
     , objectsOps = require('./int/objectsops.js')
@@ -21,6 +23,7 @@ const _          = require('../lib/overslash-full.js')
 
 
 // -- Local Constants
+const libname = 'Overslash';
 
 
 // -- Local Variables
@@ -28,29 +31,26 @@ const _          = require('../lib/overslash-full.js')
 
 // -- Main
 describe('Test Overslash:', () => {
-  describe('overslash:', () => {
-    // Test Overslash core:
-    core(_);
+  testlib(_, libname, pack.version);
 
-    // Test JS Primitive Types:
-    primitives(_);
+  // Test JS Primitive Types:
+  primitives(_);
 
-    // Test JS Object Types:
-    objects(_);
+  // Test JS Object Types:
+  objects(_);
 
-    // Operations on Objects:
-    objectsOps(_);
+  // Operations on Objects:
+  objectsOps(_);
 
-    // Operations on Arrays:
-    arraysops(_);
+  // Operations on Arrays:
+  arraysops(_);
 
-    // Operations on functions:
-    functions(_);
+  // Operations on functions:
+  functions(_);
 
-    // Operations with tokens:
-    tokens(_);
+  // Operations with tokens:
+  tokens(_);
 
-    // Operations on csv blocks:
-    csv(_);
-  });
+  // Operations on csv blocks:
+  csv(_);
 });
