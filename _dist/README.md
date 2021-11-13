@@ -4,10 +4,10 @@
 [![GitHub last commit][commit-image]][commit-url]
 [![Travis CI][travis-image]][travis-url]
 [![Test coverage][coveralls-image]][coveralls-url]
-[![Dependencies status][dependencies-image]][dependencies-url]
-[![Dev Dependencies status][devdependencies-image]][devdependencies-url]
 [![npm bundle size][npm-bundle-size-image]][npm-bundle-size-url]
 [![License][license-image]](LICENSE.md)
+<!-- [![Dependencies status][dependencies-image]][dependencies-url]
+[![Dev Dependencies status][devdependencies-image]][devdependencies-url] -->
 
 
 ## A tiny modular Javascript utility library
@@ -135,20 +135,20 @@ import _ from '@mobilabs/overslash';
 
 <!--- URls -->
 
-[npm-image]: https://img.shields.io/npm/v/@mobilabs/overslash.svg?style=flat-square
-[release-image]: https://img.shields.io/github/release/jclo/overslash.svg?include_prereleases&style=flat-square
-[commit-image]: https://img.shields.io/github/last-commit/jclo/overslash.svg?style=flat-square
-[travis-image]: https://img.shields.io/travis/jclo/overslash.svg?style=flat-square
-[coveralls-image]: https://img.shields.io/coveralls/jclo/overslash/master.svg?style=flat-square
+[npm-image]: https://img.shields.io/npm/v/@mobilabs/overslash.svg?logo=npm&logoColor=fff&label=NPM+package
+[release-image]: https://img.shields.io/github/release/jclo/overslash.svg?include_prereleases
+[commit-image]: https://img.shields.io/github/last-commit/jclo/overslash.svg?logo=github
+[travis-image]: https://img.shields.io/travis/com/jclo/overslash.svg?logo=travis-ci&logoColor=fff
+[coveralls-image]: https://img.shields.io/coveralls/jclo/overslash/master.svg?&logo=coveralls
 [dependencies-image]: https://david-dm.org/jclo/overslash/status.svg?theme=shields.io
 [devdependencies-image]: https://david-dm.org/jclo/overslash/dev-status.svg?theme=shields.io
-[npm-bundle-size-image]: https://img.shields.io/bundlephobia/minzip/@mobilabs/overslash.svg?style=flat-square
-[license-image]: https://img.shields.io/npm/l/@mobilabs/overslash.svg?style=flat-square
+[npm-bundle-size-image]: https://img.shields.io/bundlephobia/minzip/@mobilabs/overslash.svg
+[license-image]: https://img.shields.io/npm/l/@mobilabs/overslash.svg
 
 [npm-url]: https://www.npmjs.com/package/@mobilabs/overslash
 [release-url]: https://github.com/jclo/overslash/tags
 [commit-url]: https://github.com/jclo/overslash/commits/master
-[travis-url]: https://travis-ci.org/jclo/overslash
+[travis-url]: https://app.travis-ci.com/jclo/overslash?branch=main
 [coveralls-url]: https://coveralls.io/github/jclo/overslash?branch=master
 [dependencies-url]: https://david-dm.org/jclo/overslash
 [devdependencies-url]: https://david-dm.org/jclo/overslash?type=dev

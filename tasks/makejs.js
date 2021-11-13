@@ -1,4 +1,4 @@
-/* eslint  one-var: 0, import/no-extraneous-dependencies: 0, semi-style: 0 */
+/* eslint one-var: 0, import/no-extraneous-dependencies: 0, semi-style: 0 */
 
 'use strict';
 
@@ -14,17 +14,17 @@ const { src, dest, series } = require('gulp')
 // -- Local Modules
 const pack   = require('../package.json')
     , config = require('./config')
-   ;
+    ;
 
 
 // -- Local Constants
-const destination  = config.libdir
-    , { ES6GLOB }  = config
-    , source       = config.src
-    , { libname }  = config
-    , { name }     = config
-    , list         = Object.keys(source)
-    , { version }  = pack
+const destination = config.libdir
+    , { ES6GLOB } = config
+    , source      = config.src
+    , { libname } = config
+    , { name }    = config
+    , list        = Object.keys(source)
+    , { version } = pack
     ;
 
 
@@ -56,7 +56,7 @@ function clean(done) {
   done();
 }
 
-// Creates the indented content.
+// Creates the content.
 function docore(done) {
   let doneCounter = 0;
 
@@ -87,7 +87,7 @@ function docore(done) {
   });
 }
 
-// Creates the library.
+// Create the UMD Module.
 function dolib(done) {
   let doneCounter = 0;
 
@@ -116,7 +116,7 @@ function dolib(done) {
   });
 }
 
-// Creates the es6 module.
+// Creates the ES6 module.
 function domodule(done) {
   let exportm = '\n// -- Export\n';
   exportm += `export default ${ES6GLOB}.${libname};`;

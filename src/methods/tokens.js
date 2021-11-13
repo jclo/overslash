@@ -70,7 +70,7 @@
      */
     makeid(l) {
       const ll = this.isNumber(l) ? l : 16
-          , c  = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz'
+          , c  = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghijklmnopqrstuvwxyz'
           ;
 
       let id = '';

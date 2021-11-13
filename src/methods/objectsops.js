@@ -103,7 +103,7 @@
           if (this.isLiteralObject(arguments[i][prop])) {
             obj[prop] = obj[prop] !== undefined ? obj[prop] : {};
             this.extend(obj[prop], arguments[i][prop]);
-          } /* istanbul ignore next */ else if (hasOwnProperty.call(source, prop)) {
+          } else if (hasOwnProperty.call(source, prop)) {
             obj[prop] = this.isArray(source[prop])
               ? this.clone(source[prop])
               : source[prop];

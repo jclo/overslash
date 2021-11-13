@@ -163,7 +163,7 @@
         } else if (c === newline) {
           // col = 0;
           row += 1;
-        } /* istanbul ignore next */ else if (c !== EOF) {
+        } else if (c !== EOF) {
           // Unexpected character:
           throw new Error(`Delimeter expected after character ${i}`);
         }

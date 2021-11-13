@@ -1,12 +1,12 @@
 /*! ****************************************************************************
- * Overslash v1.0.5
+ * Overslash v1.0.6
  *
  * A tiny modular Javascript utility library.
  * (you can download it from npm or github repositories)
- * Copyright (c) 2020 Mobilabs <contact@mobilabs.fr> (http://www.mobilabs.fr).
+ * Copyright (c) 2021 Mobilabs <contact@mobilabs.fr> (http://www.mobilabs.fr).
  * Released under the MIT license. You may obtain a copy of the License
  * at: http://www.opensource.org/licenses/mit-license.php).
- * Built from ES6lib v1.0.1.
+ * Built from ES6lib v1.0.12.
  * ************************************************************************** */
 // ESLint declarations
 /* global define */
@@ -225,7 +225,7 @@ const $__ES6GLOB = {};
 
       // Useful to retrieve the library name and version when it is
       // embedded in another library as an object:
-      _library: { name: 'Overslash', version: '1.0.5' },
+      _library: { name: 'Overslash', version: '1.0.6' },
 
 
       // -- Private Static Methods ---------------------------------------------
@@ -284,7 +284,7 @@ const $__ES6GLOB = {};
 
     // Attaches constants to Overslash that provide name and version of the lib.
     Overslash.NAME = 'Overslash';
-    Overslash.VERSION = '1.0.5';
+    Overslash.VERSION = '1.0.6';
 
 
     // Extends Overslash with new static methods.
@@ -716,7 +716,7 @@ const $__ES6GLOB = {};
             if (this.isLiteralObject(arguments[i][prop])) {
               obj[prop] = obj[prop] !== undefined ? obj[prop] : {};
               this.extend(obj[prop], arguments[i][prop]);
-            } /* istanbul ignore next */ else if (hasOwnProperty.call(source, prop)) {
+            } else if (hasOwnProperty.call(source, prop)) {
               obj[prop] = this.isArray(source[prop])
                 ? this.clone(source[prop])
                 : source[prop];
@@ -1193,7 +1193,7 @@ const $__ES6GLOB = {};
        */
       makeid(l) {
         const ll = this.isNumber(l) ? l : 16
-            , c  = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz'
+            , c  = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghijklmnopqrstuvwxyz'
             ;
 
         let id = '';
@@ -1372,7 +1372,7 @@ const $__ES6GLOB = {};
           } else if (c === newline) {
             // col = 0;
             row += 1;
-          } /* istanbul ignore next */ else if (c !== EOF) {
+          } else if (c !== EOF) {
             // Unexpected character:
             throw new Error(`Delimeter expected after character ${i}`);
           }
