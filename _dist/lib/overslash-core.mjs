@@ -1,12 +1,12 @@
 /*! ****************************************************************************
- * Overslash v1.0.6
+ * Overslash v1.0.7
  *
  * A tiny modular Javascript utility library.
  * (you can download it from npm or github repositories)
- * Copyright (c) 2021 Mobilabs <contact@mobilabs.fr> (http://www.mobilabs.fr).
+ * Copyright (c) 2022 Mobilabs <contact@mobilabs.fr> (http://www.mobilabs.fr).
  * Released under the MIT license. You may obtain a copy of the License
  * at: http://www.opensource.org/licenses/mit-license.php).
- * Built from ES6lib v1.0.12.
+ * Built from ES6lib v1.0.13.
  * ************************************************************************** */
 // ESLint declarations
 /* global define */
@@ -225,7 +225,7 @@ const $__ES6GLOB = {};
 
       // Useful to retrieve the library name and version when it is
       // embedded in another library as an object:
-      _library: { name: 'Overslash', version: '1.0.6' },
+      _library: { name: 'Overslash', version: '1.0.7' },
 
 
       // -- Private Static Methods ---------------------------------------------
@@ -284,7 +284,7 @@ const $__ES6GLOB = {};
 
     // Attaches constants to Overslash that provide name and version of the lib.
     Overslash.NAME = 'Overslash';
-    Overslash.VERSION = '1.0.6';
+    Overslash.VERSION = '1.0.7';
 
 
     // Extends Overslash with new static methods.

@@ -88,7 +88,7 @@ function docore(done) {
 }
 
 // Create the UMD Module.
-function dolib(done) {
+function doumdlib(done) {
   let doneCounter = 0;
 
   function incDoneCounter() {
@@ -155,4 +155,10 @@ function delcore(done) {
 
 
 // -- Gulp Public Task(s)
-module.exports = series(clean, docore, dolib, domodule, delcore);
+module.exports = series(
+  clean,
+  docore,
+  doumdlib,
+  domodule,
+  delcore,
+);
