@@ -8,17 +8,17 @@
 
 
 // -- Local Modules
-const _       = require('../lib/overslash-full')
-    , pack    = require('../package.json')
-    , testlib = require('./int/lib')
+const _          = require('../index')
+    , pack       = require('../package.json')
+    , testlib    = require('./int/lib')
 
-    , primitives = require('./int/primitives.js')
-    , objects    = require('./int/objects.js')
-    , objectsOps = require('./int/objectsops.js')
-    , arraysops  = require('./int/arraysops.js')
-    , functions  = require('./int/functions.js')
-    , tokens     = require('./int/tokens.js')
-    , csv        = require('./int/csv.js')
+    , primitives = require('./int/primitives')
+    , objects    = require('./int/objects')
+    , objectsOps = require('./int/objectsops')
+    , arraysops  = require('./int/arraysops')
+    , functions  = require('./int/functions')
+    , tokens     = require('./int/tokens')
+    , csv        = require('./int/csv')
     ;
 
 
