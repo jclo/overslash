@@ -1,5 +1,5 @@
 /*! ****************************************************************************
- * Overslash v1.0.8
+ * Overslash v1.0.9
  *
  * A tiny modular Javascript utility library.
  * (you can download it from npm or github repositories)
@@ -226,7 +226,7 @@ const $__ES6GLOB = {};
 
       // Useful to retrieve the library name and version when it is
       // embedded in another library as an object:
-      _library: { name: 'Overslash', version: '1.0.8' },
+      _library: { name: 'Overslash', version: '1.0.9' },
 
 
       // -- Private Static Methods ---------------------------------------------
@@ -285,7 +285,7 @@ const $__ES6GLOB = {};
 
     // Attaches constants to Overslash that provide name and version of the lib.
     Overslash.NAME = 'Overslash';
-    Overslash.VERSION = '1.0.8';
+    Overslash.VERSION = '1.0.9';
 
 
     // Extends Overslash with new static methods.

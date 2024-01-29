@@ -1,6 +1,6 @@
 {
   "name": "@mobilabs/overslash",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "A tiny modular Javascript utility library",
   "main": "_dist/lib/overslashobj.js",
   "minified": "_dist/lib/overslashobj.min.js",
