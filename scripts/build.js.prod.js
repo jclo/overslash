@@ -125,17 +125,18 @@ function _clean(done) {
 /**
  * Builds and minifies the ES6 module production file.
  *
- * @function (arg1)
+ * @function (arg1, arg2)
  * @private
+ * @param {String}          the suffix to apply to the library name,
  * @param {Function}        the function to call at the completion,
  * @returns {}              -,
  * @since 0.0.0
  */
 function _makeminifiedm(suffix, done) {
   const d1 = new Date();
-  process.stdout.write('Starting \'\x1b[36mmake:minified:es6\x1b[89m\x1b[0m\'...\n');
+  process.stdout.write(`Starting '\x1b[36mmake:minified:es6:${suffix}\x1b[89m\x1b[0m'...\n`);
 
-  fs.readFile(`${libdir}/${name}-${suffix}.mjs`, 'utf8', (err1, data) => {
+  fs.readFile(`${libdir}/${name}${suffix}.mjs`, 'utf8', (err1, data) => {
     if (err1) throw new Error(err1);
 
     let content = license;
@@ -143,11 +144,11 @@ function _makeminifiedm(suffix, done) {
 
     minify(content, {})
       .then((result) => {
-        fs.writeFile(`${dist}/lib/${name}-${suffix}.min.mjs`, result.code, { encoding: 'utf8' }, (err2) => {
+        fs.writeFile(`${dist}/lib/${name}${suffix}.min.mjs`, result.code, { encoding: 'utf8' }, (err2) => {
           if (err2) throw new Error(err2);
 
           const d2 = new Date() - d1;
-          process.stdout.write(`Finished '\x1b[36mmake:minified:es6\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
+          process.stdout.write(`Finished '\x1b[36mmake:minified:es6:${suffix}\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
           done();
         });
       });
@@ -157,17 +158,18 @@ function _makeminifiedm(suffix, done) {
 /**
  * Builds and minifies the js production file.
  *
- * @function (arg1)
+ * @function (arg1, arg2)
  * @private
+ * @param {String}          the suffix to apply to the library name,
  * @param {Function}        the function to call at the completion,
  * @returns {}              -,
  * @since 0.0.0
  */
 function _makeminified(suffix, done) {
   const d1 = new Date();
-  process.stdout.write('Starting \'\x1b[36mmake:minified:umd\x1b[89m\x1b[0m\'...\n');
+  process.stdout.write(`Starting '\x1b[36mmake:minified:umd:${suffix}\x1b[89m\x1b[0m'...\n`);
 
-  fs.readFile(`${libdir}/${name}-${suffix}.js`, 'utf8', (err1, data) => {
+  fs.readFile(`${libdir}/${name}${suffix}.js`, 'utf8', (err1, data) => {
     if (err1) throw new Error(err1);
 
     let content = license;
@@ -175,11 +177,11 @@ function _makeminified(suffix, done) {
 
     minify(content, {})
       .then((result) => {
-        fs.writeFile(`${dist}/lib/${name}-${suffix}.min.js`, result.code, { encoding: 'utf8' }, (err2) => {
+        fs.writeFile(`${dist}/lib/${name}${suffix}.min.js`, result.code, { encoding: 'utf8' }, (err2) => {
           if (err2) throw new Error(err2);
 
           const d2 = new Date() - d1;
-          process.stdout.write(`Finished '\x1b[36mmake:minified:umd\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
+          process.stdout.write(`Finished '\x1b[36mmake:minified:umd:${suffix}\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
           done();
         });
       });
@@ -189,22 +191,23 @@ function _makeminified(suffix, done) {
 /**
  * Builds the ES6 module production file.
  *
- * @function (arg1)
+ * @function (arg1, arg2)
  * @private
+ * @param {String}          the suffix to apply to the library name,
  * @param {Function}        the function to call at the completion,
  * @returns {}              -,
  * @since 0.0.0
  */
 function _copydevm(suffix, done) {
   const d1 = new Date();
-  process.stdout.write(`Starting '\x1b[36mcopy:es6:${suffix}\x1b[89m\x1b[0m'...\n'`);
+  process.stdout.write(`Starting '\x1b[36mcopy:es6:${suffix}\x1b[89m\x1b[0m'...\n`);
 
-  fs.readFile(`${libdir}/${name}-${suffix}.mjs`, 'utf8', (err1, data) => {
+  fs.readFile(`${libdir}/${name}${suffix}.mjs`, 'utf8', (err1, data) => {
     if (err1) throw new Error(err1);
 
     let content = license;
     content += data;
-    fs.writeFile(`${dist}/lib/${name}-${suffix}.mjs`, content, { encoding: 'utf8' }, (err2) => {
+    fs.writeFile(`${dist}/lib/${name}${suffix}.mjs`, content, { encoding: 'utf8' }, (err2) => {
       if (err2) throw new Error(err2);
 
       const d2 = new Date() - d1;
@@ -217,22 +220,23 @@ function _copydevm(suffix, done) {
 /**
  * Builds the js production file.
  *
- * @function (arg1)
+ * @function (arg1, arg2)
  * @private
+ * @param {String}          the suffix to apply to the library name,
  * @param {Function}        the function to call at the completion,
  * @returns {}              -,
  * @since 0.0.0
  */
 function _copydev(suffix, done) {
   const d1 = new Date();
-  process.stdout.write(`'Starting '\x1b[36mcopy:umd:${suffix}\x1b[89m\x1b[0m'...\n'`);
+  process.stdout.write(`Starting '\x1b[36mcopy:umd:${suffix}\x1b[89m\x1b[0m'...\n`);
 
-  fs.readFile(`${libdir}/${name}-${suffix}.js`, 'utf8', (err1, data) => {
+  fs.readFile(`${libdir}/${name}${suffix}.js`, 'utf8', (err1, data) => {
     if (err1) throw new Error(err1);
 
     let content = license;
     content += data;
-    fs.writeFile(`${dist}/lib/${name}-${suffix}.js`, content, { encoding: 'utf8' }, (err2) => {
+    fs.writeFile(`${dist}/lib/${name}${suffix}.js`, content, { encoding: 'utf8' }, (err2) => {
       if (err2) throw new Error(err2);
 
       const d2 = new Date() - d1;

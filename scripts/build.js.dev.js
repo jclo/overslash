@@ -124,7 +124,7 @@ function _clean(done) {
 /**
  * Creates the ES6 module.
  *
- * @function (arg1, arg2, arg3, arg4)
+ * @function (arg1, arg2, arg3, arg4, arg5)
  * @private
  * @param {String}          the header of the library,
  * @param {String}          the content of the library,
@@ -136,7 +136,7 @@ function _clean(done) {
  */
 function _doES6(head, core, foot, suffix, done) {
   const d1 = new Date();
-  process.stdout.write(`Starting '\x1b[36mdo:module:${suffix}\x1b[89m\x1b[0m'...\n'`);
+  process.stdout.write(`Starting '\x1b[36mdo:module:${suffix}\x1b[89m\x1b[0m'...\n`);
 
   let exportM = '\n// -- Export\n';
   exportM += `export default ${ES6GLOB}.${libname};`;
@@ -155,7 +155,7 @@ function _doES6(head, core, foot, suffix, done) {
     .replace(/\s{2}\n/g, '\n')
   ;
 
-  fs.writeFile(`${destination}/${name}-${suffix}.mjs`, src, { encoding: 'utf8' }, (err) => {
+  fs.writeFile(`${destination}/${name}${suffix}.mjs`, src, { encoding: 'utf8' }, (err) => {
     if (err) throw new Error(err);
     const d2 = new Date() - d1;
     process.stdout.write(`Finished '\x1b[36mdo:module:${suffix}\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
@@ -163,11 +163,10 @@ function _doES6(head, core, foot, suffix, done) {
   });
 }
 
-
 /**
  * Creates the UMD library.
  *
- * @function (arg1, arg2, arg3, arg4)
+ * @function (arg1, arg2, arg3, arg4, arg5)
  * @private
  * @param {String}          the header of the library,
  * @param {String}          the content of the library,
@@ -195,7 +194,7 @@ function _doUMD(head, core, foot, suffix, done) {
     .replace(/\s{2}\n/g, '\n')
   ;
 
-  fs.writeFile(`${destination}/${name}-${suffix}.js`, src, { encoding: 'utf8' }, (err) => {
+  fs.writeFile(`${destination}/${name}${suffix}.js`, src, { encoding: 'utf8' }, (err) => {
     if (err) throw new Error(err);
     const d2 = new Date() - d1;
     process.stdout.write(`Finished '\x1b[36mdo:umd:${suffix}\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
@@ -206,7 +205,7 @@ function _doUMD(head, core, foot, suffix, done) {
 /**
  * Creates one UMD/ES6 library.
  *
- * @function (arg1, arg2, arg3, arg4)
+ * @function (arg1, arg2, arg3)
  * @private
  * @param {Array}           the files defining the library,
  * @param {String}          the suffix of the library name,
@@ -240,7 +239,7 @@ function _doLib(source, suffix, done) {
     .replace(/\n/g, '\n  ')
   ;
   // For testing purpose:
-  // fs.writeFileSync(`${destination}/${name}-${suffix}-core.js`, src);
+  // fs.writeFileSync(`${destination}/${name}${suffix}-core.js`, src);
 
   /**
    * Wait until completion.

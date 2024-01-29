@@ -1,6 +1,12 @@
 ### HEAD
 
-### 1.0.8 (January 28, 2022)
+### 1.0.9 (January 29, 2024)
+
+  * Removed the minus char in the name of the library as it could be problematic,
+  * ...,
+
+
+### 1.0.8 (January 28, 2024)
 
   * Updated the project with ESLib v2.1 (no Gulp, Github Actions),
   * Release.
